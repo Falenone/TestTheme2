@@ -86,6 +86,13 @@ After every push to `main`, the workflow builds and deploys:
 /files/release/iitc_plugin_TestTheme2.meta.js
 ```
 
+
+## Theme selector button
+
+The plugin adds a **TestTheme2** button to the IITC toolbox. It uses the current IITC-CE toolbox API when available, falls back to older toolbox helpers, and finally appends a plain link to `#toolbox` if needed.
+
+Click the button to open the settings window and choose the active theme/options.
+
 ## In IITC
 
 Open IITC, then use the **TestTheme2** button in the IITC toolbox to:

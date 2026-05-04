@@ -310,13 +310,71 @@ function userscriptBody(version) {
   }
 
   function addToolboxButton() {
-    if (!window.toolbox || typeof window.toolbox.addButton !== 'function') return;
+    const buttonId = PLUGIN_ID + '-toolbox-button';
 
-    window.toolbox.addButton({
-      label: PLUGIN_NAME,
-      title: 'Configure ' + PLUGIN_NAME,
-      action: showSettings
-    });
+    if (document.getElementById(buttonId)) return true;
+
+    /*
+      IITC-CE v0.38+ Toolbox API.
+      See IITC migration docs: IITC.toolbox.addButton({ id, label, action }).
+    */
+    if (window.IITC && window.IITC.toolbox && typeof window.IITC.toolbox.addButton === 'function') {
+      window.IITC.toolbox.addButton({
+        id: buttonId,
+        label: PLUGIN_NAME,
+        title: 'Configure ' + PLUGIN_NAME,
+        action: showSettings
+      });
+      return true;
+    }
+
+    /*
+      Older/nonstandard toolbox API used by some plugins/builds.
+    */
+    if (window.toolbox && typeof window.toolbox.addButton === 'function') {
+      window.toolbox.addButton({
+        id: buttonId,
+        label: PLUGIN_NAME,
+        title: 'Configure ' + PLUGIN_NAME,
+        action: showSettings
+      });
+      return true;
+    }
+
+    /*
+      Last-resort legacy fallback: append directly to #toolbox.
+      This matches the old IITC plugin pattern and makes the button visible
+      even when no toolbox helper API is exposed.
+    */
+    const toolbox = document.getElementById('toolbox');
+    if (toolbox) {
+      const link = document.createElement('a');
+      link.id = buttonId;
+      link.href = '#';
+      link.textContent = PLUGIN_NAME;
+      link.title = 'Configure ' + PLUGIN_NAME;
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        showSettings();
+      });
+      toolbox.appendChild(link);
+      return true;
+    }
+
+    return false;
+  }
+
+  function addToolboxButtonWhenReady() {
+    if (addToolboxButton()) return;
+
+    let attempts = 0;
+    const timer = window.setInterval(function () {
+      attempts += 1;
+
+      if (addToolboxButton() || attempts >= 50) {
+        window.clearInterval(timer);
+      }
+    }, 200);
   }
 
   function keepStyleLast() {
@@ -334,7 +392,7 @@ function userscriptBody(version) {
 
   function setup() {
     applyTheme();
-    addToolboxButton();
+    addToolboxButtonWhenReady();
     keepStyleLast();
     console.log(PLUGIN_NAME + ' ' + VERSION);
   }
