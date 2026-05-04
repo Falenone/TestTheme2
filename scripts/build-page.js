@@ -75,6 +75,9 @@ const html = `<!doctype html>
     </tbody>
   </table>
 
+  <h2>Global imports</h2>
+  <p><code>global-imports.css</code> is compiled at the very top of injected CSS for non-default themes.</p>
+
   <h2>Global options</h2>
   <p>${escapeHtml(globalOptions)}</p>
 

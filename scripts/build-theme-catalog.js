@@ -6,6 +6,7 @@ import path from 'node:path'
 const root = process.cwd()
 const themesDir = path.join(root, 'themes')
 const globalOptionsDir = path.join(root, 'global-options')
+const globalImportsPath = path.join(root, 'global-imports.css')
 const buildDir = path.join(root, 'build')
 const catalogPath = path.join(buildDir, 'themes.json')
 
@@ -117,6 +118,7 @@ const catalog = {
     description: 'Turns off all theme CSS and options.',
     preview: ''
   },
+  globalImports: readCss(globalImportsPath),
   globalOptions: readCssFolder(globalOptionsDir),
   themes
 }

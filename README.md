@@ -52,6 +52,16 @@ Optional:
 - `variants/*.css`
 - `options/*.css`
 
+## Special global imports
+
+Use this file for CSS `@import` rules:
+
+```text
+global-imports.css
+```
+
+The contents of `global-imports.css` are always placed at the very top of the injected CSS whenever anything other than **Default** is selected. This keeps `@import` rules valid.
+
 ## Global options
 
 Global options go in:

@@ -155,10 +155,18 @@ function userscriptBody(version) {
     const theme = getTheme(settings.theme);
     if (!theme || theme.id === DEFAULT_THEME_ID) return '';
 
-    const css = [
-      '/* ' + PLUGIN_NAME + ': ' + theme.name + ' */',
-      theme.css || ''
-    ];
+    const css = [];
+
+    if (CATALOG.globalImports) {
+      /*
+        Keep this first so @import rules remain valid. CSS @import rules must
+        precede normal style rules, so do not move this below theme CSS.
+      */
+      css.push(CATALOG.globalImports);
+    }
+
+    css.push('/* ' + PLUGIN_NAME + ': ' + theme.name + ' */');
+    css.push(theme.css || '');
 
     const variants = Array.isArray(theme.variants) ? theme.variants : [];
     const variantId = selectedVariantFor(settings, theme);
@@ -238,6 +246,12 @@ function userscriptBody(version) {
     });
 
     return el;
+  }
+
+  let activeSettingsDialog = null;
+
+  function rerenderSettingsDialog() {
+    if (activeSettingsDialog) renderSettingsDialog(activeSettingsDialog);
   }
 
   function defaultPreviewSvg() {
@@ -363,7 +377,7 @@ function userscriptBody(version) {
           next.variants[selectedTheme.id] = variant.id;
           writeSettings(next);
           applyTheme();
-          renderSettingsDialog(container.parentNode);
+          rerenderSettingsDialog();
         }));
       });
 
@@ -516,6 +530,7 @@ function userscriptBody(version) {
       }
     });
 
+    activeSettingsDialog = container;
     renderSettingsDialog(container);
     return container;
   }
