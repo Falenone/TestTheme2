@@ -1,0 +1,9 @@
+/*
+  Optional toggle for Blueprint Light.
+*/
+
+#sidebar,
+#toolbox,
+.ui-dialog-content {
+  font-size: 12px !important;
+}

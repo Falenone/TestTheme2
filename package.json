@@ -1,0 +1,16 @@
+{
+  "name": "testtheme2",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Unlicense",
+  "type": "module",
+  "scripts": {
+    "build": "npm run build:all",
+    "build:catalog": "node scripts/build-theme-catalog.js",
+    "build:userscript": "node scripts/build-userscript.js --prod",
+    "build:userscript:dev": "node scripts/build-userscript.js --dev",
+    "build:page": "node scripts/build-page.js",
+    "build:all": "npm run build:catalog && npm run build:userscript && npm run build:page",
+    "build:alldev": "npm run build:catalog && npm run build:userscript:dev && npm run build:page"
+  }
+}

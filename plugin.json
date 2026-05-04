@@ -1,0 +1,10 @@
+{
+  "name": "IITC plugin: TestTheme2",
+  "id": "iitc_plugin_TestTheme2",
+  "category": "Themes",
+  "description": "Standalone IITC theme selector and CSS injector",
+  "author": "Falenone",
+  "displayName": "TestTheme2",
+  "downloadURL": "https://Falenone.github.io/TestTheme2/files/release/iitc_plugin_TestTheme2.user.js",
+  "previewUrl": "https://Falenone.github.io/TestTheme2/preview.png"
+}

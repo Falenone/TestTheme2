@@ -1,0 +1,31 @@
+/*
+  Blueprint Dark
+
+  This file is intentionally minimal.
+  Replace or extend it with your IITC theme CSS.
+
+  Tip: use !important where IITC or plugin CSS has higher specificity.
+*/
+
+:root {
+  --testtheme-background: #10151d;
+  --testtheme-panel: #18202b;
+  --testtheme-text: #d9ecff;
+  --testtheme-accent: #50d5ff;
+}
+
+/* Basic examples. Delete or replace as needed. */
+#sidebar,
+#toolbox,
+#chat,
+.ui-dialog,
+.ui-dialog-content {
+  background: var(--testtheme-panel) !important;
+  color: var(--testtheme-text) !important;
+}
+
+a,
+#toolbox a,
+.ui-dialog-title {
+  color: var(--testtheme-accent) !important;
+}
