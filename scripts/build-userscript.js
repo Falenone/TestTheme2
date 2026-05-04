@@ -64,63 +64,126 @@ function userscriptBody(version) {
   const PLUGIN_NAME = ${JSON.stringify(plugin.displayName || plugin.name.replace(/^IITC plugin:\\s*/i, ''))};
   const VERSION = ${JSON.stringify(version)};
   const CATALOG = ${JSON.stringify(catalog)};
+  const DEFAULT_THEME_ID = '__default__';
   const STORAGE_KEY = PLUGIN_ID + '.settings';
   const STYLE_ID = PLUGIN_ID + '-style';
   const LAST_STYLE_MARKER = 'data-' + PLUGIN_ID.toLowerCase() + '-managed';
 
-  function getThemes() {
+  function allThemes() {
+    const defaultTheme = Object.assign({
+      id: DEFAULT_THEME_ID,
+      name: 'Default',
+      description: 'Turns off all theme CSS and options.',
+      preview: ''
+    }, CATALOG.defaultTheme || {});
+
+    return [defaultTheme].concat(Array.isArray(CATALOG.themes) ? CATALOG.themes : []);
+  }
+
+  function selectableThemes() {
     return Array.isArray(CATALOG.themes) ? CATALOG.themes : [];
   }
 
+  function globalOptions() {
+    return Array.isArray(CATALOG.globalOptions) ? CATALOG.globalOptions : [];
+  }
+
   function getTheme(themeId) {
-    const themes = getThemes();
-    return themes.find(theme => theme.id === themeId) || themes[0] || null;
+    if (themeId === DEFAULT_THEME_ID) return allThemes()[0];
+
+    const themes = selectableThemes();
+    return themes.find(theme => theme.id === themeId) || themes[0] || allThemes()[0];
   }
 
   function defaultSettings() {
-    const firstTheme = getThemes()[0];
     return {
-      enabled: true,
-      theme: firstTheme ? firstTheme.id : '',
-      options: {}
+      theme: DEFAULT_THEME_ID,
+      variants: {},
+      themeOptions: {},
+      globalOptions: []
     };
+  }
+
+  function normalizeSettings(settings) {
+    const next = Object.assign(defaultSettings(), settings || {});
+
+    if (next.enabled === false) {
+      next.theme = DEFAULT_THEME_ID;
+    }
+
+    if (!next.theme) next.theme = DEFAULT_THEME_ID;
+    if (!next.variants || typeof next.variants !== 'object') next.variants = {};
+    if (!next.themeOptions || typeof next.themeOptions !== 'object') next.themeOptions = {};
+    if (!Array.isArray(next.globalOptions)) next.globalOptions = [];
+
+    return next;
   }
 
   function readSettings() {
     try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      return Object.assign(defaultSettings(), parsed);
+      return normalizeSettings(JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'));
     } catch (err) {
       return defaultSettings();
     }
   }
 
   function writeSettings(settings) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizeSettings(settings)));
   }
 
-  function selectedOptionsFor(settings, theme) {
-    const selected = settings.options && settings.options[theme.id];
+  function selectedVariantFor(settings, theme) {
+    if (!theme || theme.id === DEFAULT_THEME_ID) return '';
+
+    const variants = Array.isArray(theme.variants) ? theme.variants : [];
+    if (variants.length === 0) return '';
+
+    return settings.variants[theme.id] || variants[0].id;
+  }
+
+  function selectedThemeOptionsFor(settings, theme) {
+    if (!theme || theme.id === DEFAULT_THEME_ID) return [];
+
+    const selected = settings.themeOptions && settings.themeOptions[theme.id];
     return Array.isArray(selected) ? selected : [];
   }
 
   function cssFor(settings) {
-    if (!settings.enabled) return '';
+    settings = normalizeSettings(settings);
+
+    if (settings.theme === DEFAULT_THEME_ID) return '';
 
     const theme = getTheme(settings.theme);
-    if (!theme) return '';
+    if (!theme || theme.id === DEFAULT_THEME_ID) return '';
 
     const css = [
       '/* ' + PLUGIN_NAME + ': ' + theme.name + ' */',
       theme.css || ''
     ];
 
-    const selectedOptions = new Set(selectedOptionsFor(settings, theme));
-    const options = Array.isArray(theme.options) ? theme.options : [];
+    const variants = Array.isArray(theme.variants) ? theme.variants : [];
+    const variantId = selectedVariantFor(settings, theme);
 
-    options.forEach(function (option) {
+    variants.forEach(function (variant) {
+      if (variant.id === variantId) {
+        css.push('/* Variant: ' + variant.name + ' */');
+        css.push(variant.css || '');
+      }
+    });
+
+    const selectedOptions = new Set(selectedThemeOptionsFor(settings, theme));
+    const themeOptions = Array.isArray(theme.options) ? theme.options : [];
+
+    themeOptions.forEach(function (option) {
       if (selectedOptions.has(option.id)) {
-        css.push('/* Option: ' + option.name + ' */');
+        css.push('/* Theme option: ' + option.name + ' */');
+        css.push(option.css || '');
+      }
+    });
+
+    const selectedGlobalOptions = new Set(settings.globalOptions || []);
+    globalOptions().forEach(function (option) {
+      if (selectedGlobalOptions.has(option.id)) {
+        css.push('/* Global option: ' + option.name + ' */');
         css.push(option.css || '');
       }
     });
@@ -142,10 +205,6 @@ function userscriptBody(version) {
       document.head.appendChild(style);
     }
 
-    /*
-      Keep this plugin's CSS last in <head>, so it naturally wins over IITC
-      and other plugins unless they use stronger selectors or later inline styles.
-    */
     if (document.head && document.head.lastElementChild !== style) {
       document.head.appendChild(style);
     }
@@ -181,116 +240,283 @@ function userscriptBody(version) {
     return el;
   }
 
-  function renderSettings(container) {
+  function defaultPreviewSvg() {
+    return 'data:image/svg+xml;base64,' + btoa(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="250" height="166" viewBox="0 0 250 166">' +
+      '<rect width="250" height="166" fill="#20252b"/>' +
+      '<rect x="36" y="36" width="178" height="94" rx="12" fill="#2c333a"/>' +
+      '<text x="125" y="89" text-anchor="middle" fill="#d8dde3" font-family="Arial" font-size="22">Default</text>' +
+      '</svg>'
+    );
+  }
+
+  function createPreviewImage(theme) {
+    const img = makeElement('img', {
+      alt: theme.name,
+      src: theme.preview || defaultPreviewSvg(),
+      style: {
+        width: '250px',
+        height: '166px',
+        objectFit: 'cover',
+        display: 'block',
+        borderRadius: '6px',
+        background: '#111'
+      }
+    });
+
+    return img;
+  }
+
+  function createThemeCard(theme, selectedThemeId, onSelect) {
+    const selected = theme.id === selectedThemeId;
+
+    const card = makeElement('button', {
+      type: 'button',
+      className: PLUGIN_ID + '-theme-card',
+      style: {
+        width: '250px',
+        padding: '0',
+        margin: '0',
+        border: selected ? '2px solid #f5c542' : '1px solid rgba(255,255,255,0.25)',
+        borderRadius: '8px',
+        background: selected ? 'rgba(245,197,66,0.12)' : 'rgba(255,255,255,0.04)',
+        color: 'inherit',
+        cursor: 'pointer',
+        textAlign: 'center',
+        overflow: 'hidden'
+      }
+    }, [
+      createPreviewImage(theme),
+      makeElement('div', {
+        textContent: theme.name,
+        style: {
+          padding: '6px 4px 8px',
+          fontWeight: selected ? '700' : '500',
+          fontSize: '13px'
+        }
+      })
+    ]);
+
+    card.addEventListener('click', function () {
+      onSelect(theme.id);
+    });
+
+    return card;
+  }
+
+  function makeCheckbox(labelText, checked, onChange) {
+    const checkbox = makeElement('input', {type: 'checkbox'});
+    checkbox.checked = !!checked;
+    checkbox.addEventListener('change', function () {
+      onChange(checkbox.checked);
+    });
+
+    return makeElement('label', {style: {display: 'block', margin: '0.35em 0', cursor: 'pointer'}}, [
+      checkbox,
+      ' ' + labelText
+    ]);
+  }
+
+  function makeRadio(labelText, name, checked, onChange) {
+    const radio = makeElement('input', {type: 'radio', name: name});
+    radio.checked = !!checked;
+    radio.addEventListener('change', function () {
+      if (radio.checked) onChange();
+    });
+
+    return makeElement('label', {style: {display: 'block', margin: '0.35em 0', cursor: 'pointer'}}, [
+      radio,
+      ' ' + labelText
+    ]);
+  }
+
+  function renderRightPanel(container, settings, selectedTheme) {
+    container.textContent = '';
+
+    if (!selectedTheme || selectedTheme.id === DEFAULT_THEME_ID) {
+      container.appendChild(makeElement('h3', {textContent: 'Default'}));
+      container.appendChild(makeElement('p', {
+        textContent: 'Default turns off all injected theme, variant, theme-option, and global-option CSS.',
+        style: {marginTop: '0'}
+      }));
+      return;
+    }
+
+    container.appendChild(makeElement('h3', {textContent: selectedTheme.name}));
+    if (selectedTheme.description) {
+      container.appendChild(makeElement('p', {
+        textContent: selectedTheme.description,
+        style: {marginTop: '0', opacity: '0.85'}
+      }));
+    }
+
+    const variants = Array.isArray(selectedTheme.variants) ? selectedTheme.variants : [];
+    if (variants.length > 0) {
+      const box = makeElement('div', {style: {marginBottom: '1em'}});
+      box.appendChild(makeElement('h4', {textContent: 'Variants', style: {marginBottom: '0.25em'}}));
+
+      const selectedVariant = selectedVariantFor(settings, selectedTheme);
+      variants.forEach(function (variant) {
+        box.appendChild(makeRadio(variant.name, PLUGIN_ID + '-variant', variant.id === selectedVariant, function () {
+          const next = readSettings();
+          next.variants = next.variants || {};
+          next.variants[selectedTheme.id] = variant.id;
+          writeSettings(next);
+          applyTheme();
+          renderSettingsDialog(container.parentNode);
+        }));
+      });
+
+      container.appendChild(box);
+    }
+
+    const themeOptions = Array.isArray(selectedTheme.options) ? selectedTheme.options : [];
+    if (themeOptions.length > 0) {
+      const box = makeElement('div', {style: {marginBottom: '1em'}});
+      box.appendChild(makeElement('h4', {textContent: 'Theme options', style: {marginBottom: '0.25em'}}));
+
+      const selected = new Set(selectedThemeOptionsFor(settings, selectedTheme));
+      themeOptions.forEach(function (option) {
+        box.appendChild(makeCheckbox(option.name, selected.has(option.id), function (checked) {
+          const next = readSettings();
+          const nextOptions = new Set(selectedThemeOptionsFor(next, selectedTheme));
+
+          if (checked) nextOptions.add(option.id);
+          else nextOptions.delete(option.id);
+
+          next.themeOptions = next.themeOptions || {};
+          next.themeOptions[selectedTheme.id] = Array.from(nextOptions);
+          writeSettings(next);
+          applyTheme();
+        }));
+      });
+
+      container.appendChild(box);
+    }
+
+    const globals = globalOptions();
+    if (globals.length > 0) {
+      const box = makeElement('div', {style: {marginBottom: '1em'}});
+      box.appendChild(makeElement('h4', {textContent: 'Global options', style: {marginBottom: '0.25em'}}));
+
+      const selected = new Set(settings.globalOptions || []);
+      globals.forEach(function (option) {
+        box.appendChild(makeCheckbox(option.name, selected.has(option.id), function (checked) {
+          const next = readSettings();
+          const nextOptions = new Set(next.globalOptions || []);
+
+          if (checked) nextOptions.add(option.id);
+          else nextOptions.delete(option.id);
+
+          next.globalOptions = Array.from(nextOptions);
+          writeSettings(next);
+          applyTheme();
+        }));
+      });
+
+      container.appendChild(box);
+    }
+  }
+
+  function renderSettingsDialog(container) {
     const settings = readSettings();
-    const themes = getThemes();
-    const currentTheme = getTheme(settings.theme);
+    const selectedTheme = getTheme(settings.theme);
 
     container.textContent = '';
 
     container.appendChild(makeElement('p', {
-      textContent: 'Select which compiled CSS theme should overwrite IITC styles.',
-      style: {marginTop: '0'}
+      textContent: 'hello',
+      style: {
+        margin: '0 0 1em',
+        fontSize: '14px',
+        opacity: '0.9'
+      }
     }));
 
-    const enabled = makeElement('input', {type: 'checkbox'});
-    enabled.checked = settings.enabled;
-    enabled.addEventListener('change', function () {
-      const next = readSettings();
-      next.enabled = enabled.checked;
-      writeSettings(next);
-      applyTheme();
-      renderSettings(container);
+    const layout = makeElement('div', {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: 'max-content minmax(260px, 1fr)',
+        gap: '16px',
+        alignItems: 'start'
+      }
     });
 
-    const enabledLabel = makeElement('label', {style: {display: 'block', margin: '0.5em 0'}}, [
-      enabled,
-      ' Enabled'
-    ]);
-    container.appendChild(enabledLabel);
+    const left = makeElement('div');
+    left.appendChild(makeElement('h3', {textContent: 'Themes', style: {marginTop: '0'}}));
 
-    const themeSelect = makeElement('select', {style: {minWidth: '16em'}});
-    themes.forEach(function (theme) {
-      const option = makeElement('option', {value: theme.id, textContent: theme.name});
-      option.selected = currentTheme && theme.id === currentTheme.id;
-      themeSelect.appendChild(option);
+    const grid = makeElement('div', {
+      style: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 250px)',
+        gap: '10px',
+        maxHeight: '70vh',
+        overflow: 'auto',
+        paddingRight: '4px'
+      }
     });
 
-    themeSelect.addEventListener('change', function () {
-      const next = readSettings();
-      next.theme = themeSelect.value;
-      writeSettings(next);
-      applyTheme();
-      renderSettings(container);
-    });
+    allThemes().forEach(function (theme) {
+      grid.appendChild(createThemeCard(theme, settings.theme, function (themeId) {
+        const next = readSettings();
+        next.theme = themeId;
 
-    container.appendChild(makeElement('label', {style: {display: 'block', margin: '0.5em 0'}}, [
-      makeElement('span', {textContent: 'Theme ', style: {display: 'inline-block', minWidth: '5em'}}),
-      themeSelect
-    ]));
+        if (themeId === DEFAULT_THEME_ID) {
+          next.globalOptions = [];
+          next.themeOptions = {};
+        }
 
-    if (currentTheme && currentTheme.description) {
-      container.appendChild(makeElement('p', {
-        textContent: currentTheme.description,
-        style: {opacity: '0.8', margin: '0.25em 0 0.75em'}
+        writeSettings(next);
+        applyTheme();
+        renderSettingsDialog(container);
       }));
-    }
+    });
 
-    const options = currentTheme && Array.isArray(currentTheme.options) ? currentTheme.options : [];
+    left.appendChild(grid);
 
-    if (currentTheme && options.length > 0) {
-      const fieldset = makeElement('fieldset', {style: {marginTop: '0.75em'}});
-      fieldset.appendChild(makeElement('legend', {textContent: 'Options'}));
+    const right = makeElement('div', {
+      style: {
+        minWidth: '260px',
+        maxWidth: '360px',
+        padding: '0 0 0 6px'
+      }
+    });
 
-      const selected = new Set(selectedOptionsFor(settings, currentTheme));
+    renderRightPanel(right, settings, selectedTheme);
 
-      options.forEach(function (themeOption) {
-        const checkbox = makeElement('input', {type: 'checkbox', value: themeOption.id});
-        checkbox.checked = selected.has(themeOption.id);
-
-        checkbox.addEventListener('change', function () {
-          const next = readSettings();
-          const nextOptions = new Set(selectedOptionsFor(next, currentTheme));
-
-          if (checkbox.checked) nextOptions.add(themeOption.id);
-          else nextOptions.delete(themeOption.id);
-
-          next.options = next.options || {};
-          next.options[currentTheme.id] = Array.from(nextOptions);
-          writeSettings(next);
-          applyTheme();
-        });
-
-        fieldset.appendChild(makeElement('label', {style: {display: 'block', margin: '0.25em 0'}}, [
-          checkbox,
-          ' ' + themeOption.name
-        ]));
-      });
-
-      container.appendChild(fieldset);
-    }
-
-    const buttons = makeElement('div', {style: {marginTop: '1em'}});
-    const resetButton = makeElement('button', {type: 'button', textContent: 'Reset settings'});
+    const resetButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Reset to Default',
+      style: {marginTop: '1em'}
+    });
     resetButton.addEventListener('click', function () {
       resetSettings();
-      renderSettings(container);
+      renderSettingsDialog(container);
     });
-    buttons.appendChild(resetButton);
-    container.appendChild(buttons);
 
-    container.appendChild(makeElement('p', {
+    right.appendChild(resetButton);
+    right.appendChild(makeElement('p', {
       textContent: PLUGIN_NAME + ' ' + VERSION,
       style: {fontSize: '0.9em', opacity: '0.7', marginBottom: '0'}
     }));
+
+    layout.appendChild(left);
+    layout.appendChild(right);
+    container.appendChild(layout);
   }
 
   function createSettingsDialog() {
     const container = makeElement('div', {
       className: PLUGIN_ID + '-settings',
-      style: {minWidth: '280px'}
+      style: {
+        minWidth: '820px',
+        maxWidth: '95vw',
+        maxHeight: '80vh',
+        overflow: 'auto'
+      }
     });
-    renderSettings(container);
+
+    renderSettingsDialog(container);
     return container;
   }
 
@@ -314,10 +540,6 @@ function userscriptBody(version) {
 
     if (document.getElementById(buttonId)) return true;
 
-    /*
-      IITC-CE v0.38+ Toolbox API.
-      See IITC migration docs: IITC.toolbox.addButton({ id, label, action }).
-    */
     if (window.IITC && window.IITC.toolbox && typeof window.IITC.toolbox.addButton === 'function') {
       window.IITC.toolbox.addButton({
         id: buttonId,
@@ -328,9 +550,6 @@ function userscriptBody(version) {
       return true;
     }
 
-    /*
-      Older/nonstandard toolbox API used by some plugins/builds.
-    */
     if (window.toolbox && typeof window.toolbox.addButton === 'function') {
       window.toolbox.addButton({
         id: buttonId,
@@ -341,11 +560,6 @@ function userscriptBody(version) {
       return true;
     }
 
-    /*
-      Last-resort legacy fallback: append directly to #toolbox.
-      This matches the old IITC plugin pattern and makes the button visible
-      even when no toolbox helper API is exposed.
-    */
     const toolbox = document.getElementById('toolbox');
     if (toolbox) {
       const link = document.createElement('a');

@@ -5,6 +5,7 @@ import path from 'node:path'
 
 const root = process.cwd()
 const themesDir = path.join(root, 'themes')
+const globalOptionsDir = path.join(root, 'global-options')
 const buildDir = path.join(root, 'build')
 const catalogPath = path.join(buildDir, 'themes.json')
 
@@ -28,10 +29,30 @@ function humanize(slug) {
     .join(' ')
 }
 
-function readOptions(optionsDir) {
-  if (!fs.existsSync(optionsDir)) return []
+function readPreview(themeDir) {
+  const candidates = [
+    ['preview.svg', 'image/svg+xml'],
+    ['preview.png', 'image/png'],
+    ['preview.jpg', 'image/jpeg'],
+    ['preview.jpeg', 'image/jpeg'],
+    ['preview.webp', 'image/webp']
+  ]
 
-  return fs.readdirSync(optionsDir, {withFileTypes: true})
+  for (const [fileName, mime] of candidates) {
+    const filePath = path.join(themeDir, fileName)
+    if (!fs.existsSync(filePath)) continue
+
+    const data = fs.readFileSync(filePath).toString('base64')
+    return `data:${mime};base64,${data}`
+  }
+
+  return ''
+}
+
+function readCssFolder(dir, prefix = '') {
+  if (!fs.existsSync(dir)) return []
+
+  return fs.readdirSync(dir, {withFileTypes: true})
     .filter(entry => entry.isFile())
     .map(entry => entry.name)
     .filter(name => name.endsWith('.css'))
@@ -41,8 +62,8 @@ function readOptions(optionsDir) {
       return {
         id,
         name: humanize(id),
-        file: `options/${fileName}`,
-        css: readCss(path.join(optionsDir, fileName))
+        file: prefix ? `${prefix}/${fileName}` : fileName,
+        css: readCss(path.join(dir, fileName))
       }
     })
 }
@@ -68,8 +89,10 @@ const themes = fs.readdirSync(themesDir, {withFileTypes: true})
       id,
       name: metadata.name || humanize(id),
       description: metadata.description || '',
+      preview: readPreview(themeDir),
       css: readCss(basePath),
-      options: readOptions(path.join(themeDir, 'options'))
+      variants: readCssFolder(path.join(themeDir, 'variants'), 'variants'),
+      options: readCssFolder(path.join(themeDir, 'options'), 'options')
     }
   })
 
@@ -88,10 +111,17 @@ const catalog = {
     description: plugin.description,
     author: plugin.author
   },
+  defaultTheme: {
+    id: '__default__',
+    name: 'Default',
+    description: 'Turns off all theme CSS and options.',
+    preview: ''
+  },
+  globalOptions: readCssFolder(globalOptionsDir),
   themes
 }
 
 fs.mkdirSync(buildDir, {recursive: true})
 fs.writeFileSync(catalogPath, JSON.stringify(catalog, null, 2), 'utf8')
 
-console.log(`Wrote ${path.relative(root, catalogPath)} with ${themes.length} theme(s)`)
+console.log(`Wrote ${path.relative(root, catalogPath)} with ${themes.length} theme(s) and ${catalog.globalOptions.length} global option(s)`)

@@ -1,0 +1,9 @@
+/*
+  Global option: Rounded Panels
+*/
+
+#sidebar,
+#toolbox,
+.ui-dialog {
+  border-radius: 10px !important;
+}

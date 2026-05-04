@@ -27,18 +27,17 @@ if (fs.existsSync(path.join(root, 'dist'))) {
   fs.cpSync(path.join(root, 'dist'), path.join(ghPageDir, 'files', 'release'), {recursive: true})
 }
 
-if (fs.existsSync(path.join(root, 'theme', 'preview.png'))) {
-  fs.copyFileSync(path.join(root, 'theme', 'preview.png'), path.join(ghPageDir, 'preview.png'))
-}
-
 const installUrl = `files/release/${plugin.id}.user.js`
 const themeRows = catalog.themes.map(theme => `
   <tr>
     <td>${escapeHtml(theme.name)}</td>
     <td>${escapeHtml(theme.id)}</td>
-    <td>${escapeHtml((theme.options || []).map(option => option.name).join(', ') || '—')}</td>
+    <td>${escapeHtml((theme.variants || []).map(item => item.name).join(', ') || '—')}</td>
+    <td>${escapeHtml((theme.options || []).map(item => item.name).join(', ') || '—')}</td>
   </tr>
 `).join('\n')
+
+const globalOptions = (catalog.globalOptions || []).map(option => option.name).join(', ') || '—'
 
 const html = `<!doctype html>
 <html lang="en">
@@ -48,7 +47,7 @@ const html = `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root { color-scheme: light dark; }
-    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 900px; line-height: 1.5; }
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1000px; line-height: 1.5; }
     code { background: color-mix(in srgb, CanvasText 10%, Canvas); padding: 0.15rem 0.3rem; border-radius: 0.25rem; }
     .button { display: inline-block; padding: 0.75rem 1rem; border: 1px solid currentColor; border-radius: 0.5rem; text-decoration: none; font-weight: 600; }
     table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
@@ -67,13 +66,17 @@ const html = `<!doctype html>
       <tr>
         <th>Theme</th>
         <th>Folder</th>
-        <th>Options</th>
+        <th>Variants</th>
+        <th>Theme options</th>
       </tr>
     </thead>
     <tbody>
       ${themeRows}
     </tbody>
   </table>
+
+  <h2>Global options</h2>
+  <p>${escapeHtml(globalOptions)}</p>
 
   <h2>Standalone</h2>
   <p>This userscript has no runtime dependency on <code>iitcpluginkit</code>, <code>iitc-kuku-helper-handlebars</code>, or <code>iitc-theme-chooser</code>.</p>

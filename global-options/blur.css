@@ -1,0 +1,11 @@
+/*
+  Global option: Blur
+
+  This applies regardless of selected theme, unless Default is selected.
+*/
+
+#sidebar,
+#toolbox,
+.ui-dialog {
+  backdrop-filter: blur(8px);
+}

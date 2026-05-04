@@ -1,6 +1,6 @@
 # TestTheme2
 
-Standalone IITC theme plugin.
+Standalone IITC theme selector and CSS injector.
 
 This repo builds a userscript that works without any runtime dependencies:
 
@@ -8,20 +8,37 @@ This repo builds a userscript that works without any runtime dependencies:
 - no `iitc-kuku-helper-handlebars`
 - no `iitc-theme-chooser`
 
-It provides its own small theme selector inside IITC and injects the selected CSS directly into the Intel map page.
+## UI behavior
 
-## How themes work
+Inside IITC, click the **TestTheme2** toolbox button.
 
-Each folder in `themes/` is automatically treated as a selectable theme.
+The settings window shows:
+
+- a `hello` description at the top
+- theme preview cards on the left
+- each preview is displayed at 250×166 px
+- the theme title is shown under each preview
+- `Default`, which turns off all injected CSS and options
+- per-theme variants on the right
+- per-theme options on the right
+- global options on the right
+
+## Theme folders
+
+Every folder in `themes/` is automatically compiled as a selectable theme.
 
 ```text
 themes/
   my-theme/
     theme.json
+    preview.svg
     base.css
+    variants/
+      light.css
+      dark.css
     options/
+      blur.css
       compact.css
-      high-contrast.css
 ```
 
 Required:
@@ -30,48 +47,50 @@ Required:
 
 Optional:
 
-- `theme.json` for display metadata
-- `options/*.css` for toggleable options
+- `theme.json`
+- `preview.svg`, `preview.png`, `preview.jpg`, `preview.jpeg`, or `preview.webp`
+- `variants/*.css`
+- `options/*.css`
 
-GitHub Actions automatically discovers any new folder you add under `themes/`, compiles the CSS into the userscript, and deploys the result to GitHub Pages.
+## Global options
+
+Global options go in:
+
+```text
+global-options/
+  blur.css
+  rounded-panels.css
+```
+
+These are available no matter which non-default theme is selected.
 
 ## Add a new theme
 
-Create a new folder:
-
-```text
-themes/my-new-theme/
-```
-
-Add:
+Create:
 
 ```text
 themes/my-new-theme/base.css
 ```
 
-Optional metadata:
-
-```json
-{
-  "name": "My New Theme",
-  "description": "Short description"
-}
-```
-
-Optional toggles:
+Optionally add:
 
 ```text
-themes/my-new-theme/options/compact.css
-themes/my-new-theme/options/big-font.css
+themes/my-new-theme/theme.json
+themes/my-new-theme/preview.svg
+themes/my-new-theme/variants/light.css
+themes/my-new-theme/variants/dark.css
+themes/my-new-theme/options/blur.css
 ```
 
-Run locally:
+GitHub Actions will automatically discover and compile it on push.
+
+## Local build
 
 ```bash
 npm run build
 ```
 
-The generated userscript will appear in `dist/`.
+The generated userscript appears in `dist/`.
 
 ## GitHub Pages
 
@@ -85,21 +104,3 @@ After every push to `main`, the workflow builds and deploys:
 /files/release/iitc_plugin_TestTheme2.user.js
 /files/release/iitc_plugin_TestTheme2.meta.js
 ```
-
-
-## Theme selector button
-
-The plugin adds a **TestTheme2** button to the IITC toolbox. It uses the current IITC-CE toolbox API when available, falls back to older toolbox helpers, and finally appends a plain link to `#toolbox` if needed.
-
-Click the button to open the settings window and choose the active theme/options.
-
-## In IITC
-
-Open IITC, then use the **TestTheme2** button in the IITC toolbox to:
-
-- enable/disable theme injection
-- choose a theme
-- toggle CSS options
-- reset settings
-
-The plugin keeps the injected CSS at the end of `<head>`, so it is loaded after IITC’s existing styles and can override them.
