@@ -133,3 +133,10 @@
 .testtheme-reset-button {
   margin-top: 1em;
 }
+.testtheme-theme-grid button.iitc_plugin_TestTheme2-preview-card.testtheme-preview-card {
+background: transparent;
+	border: transparent;
+	overflow: hidden;
+	margin: 1px;
+	padding: 1px;
+}
