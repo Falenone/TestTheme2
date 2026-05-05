@@ -63,6 +63,7 @@ function userscriptBody(version) {
   const PLUGIN_ID = ${JSON.stringify(plugin.id)};
   const PLUGIN_NAME = ${JSON.stringify(plugin.displayName || plugin.name.replace(/^IITC plugin:\\s*/i, ''))};
   const VERSION = ${JSON.stringify(version)};
+  const BUILD_DATE = ${JSON.stringify(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).replace(',', ''))};
   const CATALOG = ${JSON.stringify(catalog)};
   const DEFAULT_THEME_ID = '__default__';
   const STORAGE_KEY = PLUGIN_ID + '.settings';
@@ -510,7 +511,7 @@ function userscriptBody(version) {
 
     right.appendChild(resetButton);
     right.appendChild(makeElement('p', {
-      textContent: PLUGIN_NAME + ' ' + VERSION,
+      textContent: PLUGIN_NAME + ' ' + VERSION + ' · Built ' + BUILD_DATE,
       style: {fontSize: '0.9em', opacity: '0.7', marginBottom: '0'}
     }));
 
