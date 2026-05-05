@@ -3486,186 +3486,186 @@ div#available_ap_display div {
 }
 /*Portal names end*/
 /************************************Wasabee start**************************************/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist input{
-	width: 50px;
+.wasabee-dialog-checklist input {
+	width: 50px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist table.wasabee-table.order input{
-    width: 4rem;
+.wasabee-dialog-checklist .wasabee-table.order input {
+    width: 4rem !important;
 }
 /* wasabee-tooltip is used for the quickdraw mouse follower */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-tooltip{
-	background-color: var(--tooltip);
-	        backdrop-filter: var(--bgblur);
-	border: 1px solid transparent;
-	border-radius: 7px;
-	color: var(--whitecol);
-	margin-left: 20px;
-	margin-top: -21px;
-	padding: 2px 4px;
-	position: absolute;
-	white-space: nowrap;
-	z-index: 6;
-	font-family: inherit;
+.wasabee-tooltip {
+	background-color: var(--tooltip) !important;
+	        backdrop-filter: var(--bgblur) !important;
+	border: 1px solid transparent !important;
+	border-radius: 7px !important;
+	color: var(--whitecol) !important;
+	margin-left: 20px !important;
+	margin-top: -21px !important;
+	padding: 2px 4px !important;
+	position: absolute !important;
+	white-space: nowrap !important;
+	z-index: 6 !important;
+	font-family: inherit !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-tooltip:before{
-	border-right: 6px solid var(--accentcol02);
-	        backdrop-filter: var(--bgblur);
-	border-right-color: var(--tooltip);
-	border-top: 6px solid transparent;
-	border-bottom: 6px solid transparent;
-	content: "";
-	position: absolute;
-	top: 5px;
-	left: -7px;
-	transition: all 0.3s;
+.wasabee-tooltip:before {
+	border-right: 6px solid var(--accentcol02) !important;
+	        backdrop-filter: var(--bgblur) !important;
+	border-right-color: var(--tooltip) !important;
+	border-top: 6px solid transparent !important;
+	border-bottom: 6px solid transparent !important;
+	content: "" !important;
+	position: absolute !important;
+	top: 5px !important;
+	left: -7px !important;
+	transition: all 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-error-tooltip{
-	        backdrop-filter: var(--bgblur);
-	background-color: var(--errortooltipbg);
-	border: 1px solid var(--errortooltipborder);
-	color: var(--errortooltipcol);
-	transition: all 0.3s;
+.wasabee-error-tooltip {
+	        backdrop-filter: var(--bgblur) !important;
+	background-color: var(--errortooltipbg) !important;
+	border: 1px solid var(--errortooltipborder) !important;
+	color: var(--errortooltipcol) !important;
+	transition: all 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-error-tooltip:before{
-	        backdrop-filter: var(--bgblur);
-	border-right-color: var(--errortooltip);
-	transition: all 0.3s;
+.wasabee-error-tooltip:before {
+	        backdrop-filter: var(--bgblur) !important;
+	border-right-color: var(--errortooltip) !important;
+	transition: all 0.3s !important;
 }
 /* used in anything that is a sortable table */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tr{
-	background-color: var(--tablecol);
-	transition: background-color 0.3s;
-	font-family: inherit;
+table.wasabee-table tbody tr {
+	background-color: var(--tablecol)!important;
+	transition: background-color 0.3s !important;
+	font-family: inherit !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tbody tr:nth-child(odd){
-	background: var(--sortablehov);
+table.wasabee-table tbody tr:nth-child(odd) {
+	background: var(--sortablehov) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable:before{
-	content: "";
-	display: inline-block;
-	float: right;
-	min-width: 1em;
-	text-align: right;
+table.wasabee-table > thead .sortable:before {
+	content: "" !important;
+	display: inline-block !important;
+	float: right !important;
+	min-width: 1em !important;
+	text-align: right !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tr:hover{
-	background: var(--sortablehov);
-	transition: background-color 0.3s;
+table.wasabee-table tbody tr:hover {
+	background: var(--sortablehov)!important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table td,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table th{
-	border-width: 0 1px;
-	border-style: solid;
-	padding: 2px 2px;
-	text-align: left;
-	vertical-align: baseline;
-	border-color: var(--tableborder);
-	font-family: inherit;
+table.wasabee-table td,
+table.wasabee-table th {
+	border-width: 0 1px !important;
+	border-style: solid !important;
+	padding: 2px 2px !important;
+	text-align: left !important;
+	vertical-align: baseline !important;
+	border-color: var(--tableborder) !important;
+	font-family: inherit !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sorted{
-	background-color: var(--portalslisttheadhov);
-	transition: background-color 0.3s;
+table.wasabee-table > thead .sorted {
+	background-color: var(--portalslisttheadhov)!important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable.asc:before{
-	content: "▲";
-	transition: content 0.3s;
+table.wasabee-table > thead .sortable.asc:before {
+	content: "▲" !important;
+	transition: content 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable.desc:before{
-	content: "▼";
-	transition: content 0.3s;
+table.wasabee-table > thead .sortable.desc:before {
+	content: "▼" !important;
+	transition: content 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.sortable{
-	background-color: var(--sortable);
-	transition: background-color 0.3s;
+.sortable {
+	background-color: var(--sortable)!important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.sortable:hover{
-	background: var(--sortablehov);
-	transition: background-color 0.3s;
+.sortable:hover {
+	background: var(--sortablehov)!important;
+	transition: background-color 0.3s !important;
 }
 /* this class is appended to leaflet-popup so we can adjust without stepping on other plugins */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup{
-	background: none;
-	border-radius: 6px;
-	font-weight: bolder;
-	backdrop-filter: blur(8px) grayscale(100%);
-	font-family: inherit;
+.wasabee-popup {
+	background: none !important;
+	border-radius: 6px !important;
+	font-weight: bolder !important;
+	backdrop-filter: blur(8px) grayscale(100%)!important;
+	font-family: inherit !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.unclaimed{
-	color: var(--whitecol);
-	font-size: 10pt;
-	letter-spacing: .6pt;
-	background: #707070;
-    border-radius: 3px;
+.wasabee-popup a.unclaimed {
+	color: var(--whitecol)!important;
+	font-size: 10pt !important;
+	letter-spacing: .6pt !important;
+	background: #707070 !important;
+    border-radius: 3px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body #map .wasabee-popup .leaflet-popup-content{
-	color: var(--leafletpopupcol);
-	text-align: center;
+#map .wasabee-popup .leaflet-popup-content {
+	color: var(--leafletpopupcol) !important;
+	text-align: center !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.enl{
-	color: var(--accentcol01);
-	text-shadow: 0px 0px 10px var(--whitecol);
-	font-size: 10pt;
+.wasabee-popup a.enl {
+	color: var(--accentcol01) !important;
+	text-shadow: 0px 0px 10px var(--whitecol) !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.res{
-	color: var(--respopup);
-	text-shadow: 0px 0px 10px var(--whitecol);
-	font-size: 10pt;
+.wasabee-popup a.res {
+	color: var(--respopup) !important;
+	text-shadow: 0px 0px 10px var(--whitecol) !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-popup-kind:hover{
-	text-decoration: underline;
-	transition: text-decoration 0.3s;
+.wasabee-marker-popup-kind:hover {
+	text-decoration: underline !important;
+	transition: text-decoration 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-buttonset button{
-	display: block;
-	        appearance: none;
-	background-color: var(--accentcol01);
-	border: 1px solid var(--buttonborder);
-	border-radius: 6px;
-	        box-shadow: var(--shadow2) 0 1px 0;
-	        box-sizing: border-box;
-	color: var(--whitecol);
-	cursor: pointer;
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 15px;
-	padding: 6px 12px;
-	text-align: center;
-	text-decoration: none;
-	     user-select: none;
-	    touch-action: manipulation;
-	white-space: nowrap;
-	margin: 3px;
-	font-family: inherit;
-	transition: background-color 0.3s;
+.wasabee-marker-buttonset button {
+	display: block !important;
+	        appearance: none !important;
+	background-color: var(--accentcol01) !important;
+	border: 1px solid var(--buttonborder) !important;
+	border-radius: 6px !important;
+	        box-shadow: var(--shadow2) 0 1px 0 !important;
+	        box-sizing: border-box !important;
+	color: var(--whitecol) !important;
+	cursor: pointer !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	line-height: 15px !important;
+	padding: 6px 12px !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	     user-select: none !important;
+	    touch-action: manipulation !important;
+	white-space: nowrap !important;
+	margin: 3px !important;
+	font-family: inherit !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-buttonset button:hover{
-	background-color: var(--hovers2);
-	transition: background-color 0.3s;
+.wasabee-marker-buttonset button:hover {
+	background-color: var(--hovers2) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button{
-	border: 0px;
-	background: var(--focus01);
-	        box-shadow: 0 0 10px 0 var(--focus01);
-	        animation: pulse-green 2s infinite;
-	        box-sizing: border-box;
-	color: var(--drawbutton);
-	padding: 6px 12px;
-	text-decoration: none;
-	transition: all 0.3s;
-	margin-top: 5px;
-	font-family: inherit;
-	        transform: scale(1.5);
+.wasabee-dialog-markeradd div.content button {
+	border: 0px !important;
+	background: var(--focus01) !important;
+	        box-shadow: 0 0 10px 0 var(--focus01) !important;
+	        animation: pulse-green 2s infinite !important;
+	        box-sizing: border-box !important;
+	color: var(--drawbutton) !important;
+	padding: 6px 12px !important;
+	text-decoration: none !important;
+	transition: all 0.3s !important;
+	margin-top: 5px !important;
+	font-family: inherit !important;
+	        transform: scale(1.5) !important;
 }
 /* all dialogs get this class -- do global stuff with it */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog{
-	border-radius: 10px;
-	        box-shadow: 0px 0px 20px 6px var(--dialogshadow);
-	min-width: 330px;
-	background-color: var(--bgroundcol);
-	        backdrop-filter: var(--bgblur);
+.wasabee-dialog {
+	border-radius: 10px !important;
+	        box-shadow: 0px 0px 20px 6px var(--dialogshadow) !important;
+	min-width: 330px !important;
+	background-color: var(--bgroundcol)!important;
+	        backdrop-filter: var(--bgblur) !important;
 	/*margin-top: 4px;*/
-	border: none;
-	font-family: inherit;
-    animation: fadein .2s, slide-bottom 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	border: none !important;
+	font-family: inherit !important;
+    animation: fadein .2s, slide-bottom 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both !important;
 }
 @keyframes fadein {
     from { opacity: 0; }
@@ -3679,698 +3679,690 @@ div#available_ap_display div {
             transform: translateY(10px);
   }
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar{
-	width: 8px;
-	height: 6px;
+.wasabee-dialog ::-webkit-scrollbar {
+	width: 8px !important;
+	height: 6px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar-track{
-	border-radius: 10px;
-	background: var(--scrolltrack);
+.wasabee-dialog ::-webkit-scrollbar-track {
+	border-radius: 10px !important;
+	background: var(--scrolltrack) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar-thumb{
-	border-radius: 10px;
-	background: var(--accentcol01);
+.wasabee-dialog ::-webkit-scrollbar-thumb {
+	border-radius: 10px !important;
+	background: var(--accentcol01) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button{
-	        appearance: none;
-	background-color: var(--accentcol01);
-	border: 1px solid var(--buttonborder);
-	border-radius: 6px;
-	        box-shadow: var(--shadow2) 0 1px 0;
-	        box-sizing: border-box;
-	color: var(--whitecol);
-	cursor: pointer;
-	display: inline-block;
+.wasabee-dialog button {
+	        appearance: none !important;
+	background-color: var(--accentcol01) !important;
+	border: 1px solid var(--buttonborder) !important;
+	border-radius: 6px !important;
+	        box-shadow: var(--shadow2) 0 1px 0 !important;
+	        box-sizing: border-box !important;
+	color: var(--whitecol) !important;
+	cursor: pointer !important;
+	display: inline-block !important;
 	/*****block ****/
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 15px;
-	padding: 6px 12px;
-	text-align: center;
-	text-decoration: none;
-	     user-select: none;
-	    touch-action: manipulation;
-	vertical-align: middle;
-	white-space: nowrap;
-	margin: 3px;
-    height: 30px;
-	font-family: inherit;
-	transition: background-color 0.3s;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	line-height: 15px !important;
+	padding: 6px 12px !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	     user-select: none !important;
+	    touch-action: manipulation !important;
+	vertical-align: middle !important;
+	white-space: nowrap !important;
+	margin: 3px !important;
+    height: 30px !important;
+	font-family: inherit !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button:hover{
-	background-color: var(--hovers2);
-	transition: background-color 0.3s;
-	text-decoration: none;
+.wasabee-dialog button:hover {
+	background-color: var(--hovers2) !important;
+	transition: background-color 0.3s !important;
+	text-decoration: none !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input{
-	appearance: none;
-	border: 0;
-	border-bottom: 1px solid var(--accentcol01);
-	background: transparent;
-	width: auto;
-	padding: 2px 0 0 0px;
-	font-size: 12px;
-	font-family: inherit;
-	color: var(--hovers3);
-	transition: all 0.3s;
-	caret-color: var(--focus01);
+.wasabee-dialog input {
+	appearance: none !important;
+	border: 0 !important;
+	border-bottom: 1px solid var(--accentcol01) !important;
+	background: transparent !important;
+	width: auto !important;
+	padding: 2px 0 0 0px !important;
+	font-size: 12px !important;
+	font-family: inherit !important;
+	color: var(--hovers3) !important;
+	transition: all 0.3s !important;
+	caret-color: var(--focus01) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input-placeholder{
-	color: var(--accentcol02);
-	opacity: 0.5;
-	font-family: inherit;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog input::placeholder {
+	color: var(--accentcol02) !important;
+	opacity: 0.5 !important;
+	font-family: inherit !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:hover::-webkit-input-placeholder{
-	opacity: 0.75;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog input:hover::-webkit-input::placeholder {
+	opacity: 0.75 !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:focus::-webkit-input-placeholder{
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog input:focus::-webkit-input::placeholder {
+	opacity: 0 !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:hover{
-	appearance: none;
-	border: 0;
-	border-bottom: 1px solid var(--hovers2);
-	background: transparent;
-	font-size: 12px;
-	font-family: inherit;
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input:hover {
+	appearance: none !important;
+	border: 0 !important;
+	border-bottom: 1px solid var(--hovers2) !important;
+	background: transparent !important;
+	font-size: 12px !important;
+	font-family: inherit !important;
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:focus{
-	border: none;
-	outline: none;
-	border-bottom: 1px solid var(--focus01);
-	transition: all 0.3s ease-in-out;
-	color: var(--whitecol);
+.wasabee-dialog input:focus {
+	border: none !important;
+	outline: none !important;
+	border-bottom: 1px solid var(--focus01) !important;
+	transition: all 0.3s ease-in-out !important;
+	color: var(--whitecol) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-webkit-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input::-webkit-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-moz-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input::-moz-placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:-ms-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input:-ms-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-ms-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input::-ms-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog a{
-	color: var(--focuscol);
+.wasabee-dialog a {
+	color: var(--focuscol) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog a:hover{
-	color: var(--lightwhite);
-	transition: color 0.3s ease-in-out;
-	text-decoration: none;
+.wasabee-dialog a:hover {
+	color: var(--lightwhite) !important;
+	transition: color 0.3s ease-in-out !important;
+	text-decoration: none !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog h3{
-	color: var(--hovers3);
+.wasabee-dialog h3 {
+	color: var(--hovers3) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog div.ui-dialog-titlebar{
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	background: var(--titlebarbg);
-	background: linear-gradient(180deg, var(--titlebarbggra) 0%, var(--titlebarbg2) 85%);
-	color: var(--accentcol02);
-	text-align: left;
-	line-height: 20px;
-	font-family: inherit;
-	font-size: 14px;
-	transition: background 0.3s;
+.wasabee-dialog div.ui-dialog-titlebar {
+	border-top-left-radius: 10px !important;
+	border-top-right-radius: 10px !important;
+	background: var(--titlebarbg) !important;
+	background: linear-gradient(180deg, var(--titlebarbggra) 0%, var(--titlebarbg2) 85%) !important;
+	color: var(--accentcol02) !important;
+	text-align: left !important;
+	line-height: 20px !important;
+	font-family: inherit !important;
+	font-size: 14px !important;
+	transition: background 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog span.ui-dialog-title{
-	color: var(--titlebartitlecol);
-	transition: color 0.3s;
-	margin-right: 65px
+.wasabee-dialog span.ui-dialog-title {
+	color: var(--titlebartitlecol) !important;
+	transition: color 0.3s !important;
+	margin-right: 65px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog span.ui-dialog-title-active{
-	color: var(--focus01);
-	transition: color 0.3s;
+.wasabee-dialog span.ui-dialog-title-active {
+	color: var(--focus01) !important;
+	transition: color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-titlebar-button{
-	border-radius: 6px;
-	height: 18px;
+.wasabee-dialog .ui-dialog-titlebar-button {
+	border-radius: 6px !important;
+	height: 18px!important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-titlebar-button-collapse{
-	right: 35px;
+.wasabee-dialog .ui-dialog-titlebar-button-collapse {
+	right: 35px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-content{
-	border-bottom: 1px solid var(--uidialogborder);
+.wasabee-dialog .ui-dialog-content {
+	border-bottom: 1px solid var(--uidialogborder) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-buttonpane{
-	padding: 4px;
-	border-top: initial;
+.wasabee-dialog .ui-dialog-buttonpane {
+	padding: 4px !important;
+	border-top: initial !important;
 }
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox],
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]{
-		appearance: none;
-		height: 21px;
-		outline: none;
-		display: inline-block;
-		vertical-align: top;
-		position: relative;
-		margin: 2px;
-		cursor: pointer;
-		font-family: inherit;
-		border: 1px solid var(--bc, var(--border));
-		background: var(--b, var(--background));
-		transition: background 0.3s, border-color 0.3s, box-shadow 0.2s, -webkit-box-shadow 0.2s;
-		place-self: center start;
+	.wasabee-dialog input[type=checkbox],
+	.wasabee-dialog input[type=radio] {
+		appearance: none !important;
+		height: 21px !important;
+		outline: none !important;
+		display: inline-block !important;
+		vertical-align: top !important;
+		position: relative !important;
+		margin: 2px !important;
+		cursor: pointer !important;
+		font-family: inherit !important;
+		border: 1px solid var(--bc, var(--border)) !important;
+		background: var(--b, var(--background)) !important;
+		transition: background 0.3s, border-color 0.3s, box-shadow 0.2s, -webkit-box-shadow 0.2s !important;
+		place-self: center start !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:after,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:after{
-		content: "";
-		display: block;
-		left: 0;
-		top: 0;
-		position: absolute;
-		transition: opacity var(--d-o, 0.2s), -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
+	.wasabee-dialog input[type=checkbox]:after,
+	.wasabee-dialog input[type=radio]:after {
+		content: "" !important;
+		display: block !important;
+		left: 0 !important;
+		top: 0 !important;
+		position: absolute !important;
+		transition: opacity var(--d-o, 0.2s), -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease) !important;
 		transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s),
 		-webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:hover{
+	.wasabee-dialog input[type=checkbox]:hover,
+	.wasabee-dialog input[type=radio]:hover {
 		--active: var(--hovers2);
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:checked,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:checked{
+	.wasabee-dialog input[type=checkbox]:checked,
+	.wasabee-dialog input[type=radio]:checked {
 		--b: var(--active);
 		--bc: var(--active);
 		--d-o: 0.3s;
 		--d-t: 0.6s;
 		--d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled{
+	.wasabee-dialog input[type=checkbox]:disabled,
+	.wasabee-dialog input[type=radio]:disabled {
 		--b: var(--disabled);
-		cursor: not-allowed;
-		opacity: 0.9;
+		cursor: not-allowed !important;
+		opacity: 0.9 !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled:checked,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled:checked{
+	.wasabee-dialog input[type=checkbox]:disabled:checked,
+	.wasabee-dialog input[type=radio]:disabled:checked {
 		--b: var(--disabled-inner);
 		--bc: var(--border);
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled + label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled + label{
-		cursor: not-allowed;
+	.wasabee-dialog input[type=checkbox]:disabled + label,
+	.wasabee-dialog input[type=radio]:disabled + label {
+		cursor: not-allowed !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:hover:not(:checked):not(:disabled),
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:hover:not(:checked):not(:disabled){
+	.wasabee-dialog input[type=checkbox]:hover:not(:checked):not(:disabled),
+	.wasabee-dialog input[type=radio]:hover:not(:checked):not(:disabled) {
 		--bc: var(--border-hover);
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch),
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch){
-		width: 21px;
+	.wasabee-dialog input[type=checkbox]:not(.switch),
+	.wasabee-dialog input[type=radio]:not(.switch) {
+		width: 21px !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):after,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch):after{
-		opacity: var(--o, 0);
+	.wasabee-dialog input[type=checkbox]:not(.switch):after,
+	.wasabee-dialog input[type=radio]:not(.switch):after {
+		opacity: var(--o, 0) !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):checked,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch):checked{
+	.wasabee-dialog input[type=checkbox]:not(.switch):checked,
+	.wasabee-dialog input[type=radio]:not(.switch):checked {
 		--o: 1;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox] + label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio] + label{
-		font-size: 14px;
-		line-height: 21px;
-		display: inline-block;
-		vertical-align: top;
-		cursor: pointer;
-		margin-left: 4px;
-		place-self: center start;
+	.wasabee-dialog input[type=checkbox] + label,
+	.wasabee-dialog input[type=radio] + label {
+		font-size: 14px !important;
+		line-height: 21px !important;
+		display: inline-block !important;
+		vertical-align: top !important;
+		cursor: pointer !important;
+		margin-left: 4px !important;
+		place-self: center start !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch){
-		border-radius: 7px;
+	.wasabee-dialog input[type=checkbox]:not(.switch) {
+		border-radius: 7px !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):after{
-		width: 5px;
-		height: 9px;
-		border: 2px solid var(--active-inner);
-		border-top: 0;
-		border-left: 0;
-		left: 7px;
-		top: 4px;
-		        transform: rotate(var(--r, 20deg));
+	.wasabee-dialog input[type=checkbox]:not(.switch):after {
+		width: 5px !important;
+		height: 9px !important;
+		border: 2px solid var(--active-inner) !important;
+		border-top: 0 !important;
+		border-left: 0 !important;
+		left: 7px !important;
+		top: 4px !important;
+		        transform: rotate(var(--r, 20deg)) !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):checked{
+	.wasabee-dialog input[type=checkbox]:not(.switch):checked {
 		--r: 43deg;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch{
-		width: 38px;
-		border-radius: 11px;
+	.wasabee-dialog input[type=checkbox].switch {
+		width: 38px !important;
+		border-radius: 11px !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:after{
-		left: 2px;
-		top: 2px;
-		border-radius: 50%;
-		width: 15px;
-		height: 15px;
-		background: var(--ab, var(--border));
-		        transform: translateX(var(--x, 0));
+	.wasabee-dialog input[type=checkbox].switch:after {
+		left: 2px !important;
+		top: 2px !important;
+		border-radius: 50% !important;
+		width: 15px !important;
+		height: 15px !important;
+		background: var(--ab, var(--border)) !important;
+		        transform: translateX(var(--x, 0)) !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:checked{
+	.wasabee-dialog input[type=checkbox].switch:checked {
 		--ab: var(--active-inner);
 		--x: 17px;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:disabled:not(:checked):after{
-		opacity: 0.6;
+	.wasabee-dialog input[type=checkbox].switch:disabled:not(:checked):after {
+		opacity: 0.6 !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]{
-		border-radius: 50%;
+	.wasabee-dialog input[type=radio] {
+		border-radius: 50% !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:after{
-		width: 19px;
-		height: 19px;
-		border-radius: 50%;
-		background: var(--active-inner);
-		opacity: 0;
-		        transform: scale(var(--s, 0.7));
+	.wasabee-dialog input[type=radio]:after {
+		width: 19px !important;
+		height: 19px !important;
+		border-radius: 50% !important;
+		background: var(--active-inner) !important;
+		opacity: 0 !important;
+		        transform: scale(var(--s, 0.7)) !important;
 	}
-	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:checked{
+	.wasabee-dialog input[type=radio]:checked {
 		--s: 0.5;
 	}
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb::before{
-	content: "";
-	font-size: 12pt;
+.wasabee-dialog button.drawb::before {
+	content: "" !important;
+	font-size: 12pt !important;
 }
 /* classes specific to various dialogs */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-auth .content{
-	display: grid;
-	font-family: inherit;
-	justify-items: center;
+.wasabee-dialog-auth .content {
+	display: grid !important;
+	font-family: inherit !important;
+	justify-items: center !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys div.portal{
-	padding: 4px 0px 8px 0px;
-	place-self: center start;
+.wasabee-dialog-wdkeys div.portal {
+	padding: 4px 0px 8px 0px !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys input{
-	padding: 4px;
-	place-self: center start;
-	width: 100%;
-	margin-bottom: 5px;
-	margin-top: 5px;
+.wasabee-dialog-wdkeys input {
+	padding: 4px !important;
+	place-self: center start !important;
+	width: 100% !important;
+	margin-bottom: 5px !important;
+	margin-top: 5px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button{
-	width: fit-content;
-	place-self: center start;
+.wasabee-dialog-wdkeys button {
+	width: fit-content !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea{
-	overflow-x: hidden;
+.wasabee-dialog-export textarea {
+	overflow-x: hidden !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea{
-	appearance: none;
-	width: 97%;
-	height: 250px;
-	resize: vertical;
-	border: 0;
-	border: 1px solid var(--hovers2);
-	background: rgba(43, 122, 120, .1);
-	padding: 5px 5px 5px 5px;
-	font-size: 12px;
-	font-family: inherit;
-	color: var(--hovers3);
-	border-radius: 10px;
-	transition: all 0.3s;
-	caret-color: var(--focus01);
+.wasabee-dialog-export textarea,
+.wasabee-dialog-import textarea,
+.wasabee-dialog-op-settings textarea {
+	appearance: none !important;
+	width: 97% !important;
+	height: 250px !important;
+	resize: vertical !important;
+	border: 0 !important;
+	border: 1px solid var(--hovers2) !important;
+	background: rgba(43, 122, 120, .1) !important;
+	padding: 5px 5px 5px 5px !important;
+	font-size: 12px !important;
+	font-family: inherit !important;
+	color: var(--hovers3) !important;
+	border-radius: 10px !important;
+	transition: all 0.3s !important;
+	caret-color: var(--focus01) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea-placeholder{
-	color: var(--accentcol02);
-	opacity: 0.5;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog-export textarea::placeholder,
+.wasabee-dialog-import textarea::placeholder,
+.wasabee-dialog-op-settings textarea::placeholder {
+	color: var(--accentcol02) !important;
+	opacity: 0.5 !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:hover::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:hover::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:hover::-webkit-input-placeholder{
-	opacity: 0.75;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog-export textarea:hover::-webkit-input::placeholder,
+.wasabee-dialog-import textarea:hover::-webkit-input::placeholder,
+.wasabee-dialog-op-settings textarea:hover::-webkit-input::placeholder {
+	opacity: 0.75 !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:focus::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:focus::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:focus::-webkit-input-placeholder{
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
+.wasabee-dialog-export textarea:focus::-webkit-input::placeholder,
+.wasabee-dialog-import textarea:focus::-webkit-input::placeholder,
+.wasabee-dialog-op-settings textarea:focus::-webkit-input::placeholder {
+	opacity: 0 !important;
+	transition: opacity 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:hover{
-	appearance: none;
-	border: 0;
-	border: 1px solid var(--textareahov);
-	background: var(--textareahov2);
-	font-size: 12px;
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea:hover,
+.wasabee-dialog-import textarea:hover,
+.wasabee-dialog-op-settings textarea:hover {
+	appearance: none !important;
+	border: 0 !important;
+	border: 1px solid var(--textareahov) !important;
+	background: var(--textareahov2) !important;
+	font-size: 12px !important;
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:focus,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:focus,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:focus{
-	outline: none;
-	color: var(--whitecol);
-	border: 1px solid var(--focus01);
-	background: var(--textareafocus);
-	transition: all 0.3s;
+.wasabee-dialog-export textarea:focus,
+.wasabee-dialog-import textarea:focus,
+.wasabee-dialog-op-settings textarea:focus {
+	outline: none !important;
+	color: var(--whitecol) !important;
+	border: 1px solid var(--focus01) !important;
+	background: var(--textareafocus) !important;
+	transition: all 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-webkit-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-webkit-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea::-webkit-input::placeholder, .wasabee-dialog-import textarea::-webkit-input::placeholder, .wasabee-dialog-op-settings textarea::-webkit-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-moz-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-moz-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-moz-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea::-moz-placeholder, .wasabee-dialog-import textarea::-moz-placeholder, .wasabee-dialog-op-settings textarea::-moz-placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:-ms-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:-ms-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:-ms-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea:-ms-input::placeholder, .wasabee-dialog-import textarea:-ms-input::placeholder, .wasabee-dialog-op-settings textarea:-ms-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-ms-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-ms-input-placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-ms-input-placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea::-ms-input::placeholder, .wasabee-dialog-import textarea::-ms-input::placeholder, .wasabee-dialog-op-settings textarea::-ms-input::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::placeholder,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::placeholder{
-	color: var(--hovers3);
-	transition: all 0.3s ease-in-out;
+.wasabee-dialog-export textarea::placeholder,
+.wasabee-dialog-import textarea::placeholder,
+.wasabee-dialog-op-settings textarea::placeholder {
+	color: var(--hovers3) !important;
+	transition: all 0.3s ease-in-out !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea{
-	margin-top: 15px;
-	width: 97%;
-	height: 250px;
-	resize: vertical;
+.wasabee-dialog-import textarea {
+	margin-top: 15px !important;
+	width: 97% !important;
+	height: 250px !important;
+	resize: vertical !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import input{
-	width: 100%;
-	resize: vertical;
-	margin-bottom: 5px;
-	margin-top: 5px;
+.wasabee-dialog-import input {
+	width: 100% !important;
+	resize: vertical !important;
+	margin-bottom: 5px !important;
+	margin-top: 5px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam div.list{
-	    grid-column-start: 1;
-	grid-column-end: 4;
-	border-bottom: 1px solid var(--mgrteamborder);
-	margin-bottom: 15px;
+.wasabee-dialog-manageteam div.list {
+	    grid-column-start: 1 !important;
+	grid-column-end: 4 !important;
+	border-bottom: 1px solid var(--mgrteamborder) !important;
+	margin-bottom: 15px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam label{
-	    grid-column-start: 1;
-	grid-column-end: 2;
-	place-self: center start;
+.wasabee-dialog-manageteam label {
+	    grid-column-start: 1 !important;
+	grid-column-end: 2 !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam input{
-	margin: 2px 2px 2px 2px;
-	    grid-column-start: 2;
-	grid-column-end: 3;
-	place-self: center start;
+.wasabee-dialog-manageteam input {
+	margin: 2px 2px 2px 2px !important;
+	    grid-column-start: 2 !important;
+	grid-column-end: 3 !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam button{
-	    grid-column-start: 3;
-	grid-column-end: 4;
-	width: fit-content;
-	place-self: start;
+.wasabee-dialog-manageteam button {
+	    grid-column-start: 3 !important;
+	grid-column-end: 4 !important;
+	width: fit-content !important;
+	place-self: start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings div.buttonset{
-	display: grid;
-	grid-template-columns: 1fr;
-	margin-top: 10px;
+.wasabee-dialog-op-settings div.buttonset {
+	display: grid !important;
+	grid-template-columns: 1fr !important;
+	margin-top: 10px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings div.buttonset button{
-	margin: 4px;
-	width: fit-content;
+.wasabee-dialog-op-settings div.buttonset button {
+	margin: 4px !important;
+	width: fit-content !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist div.ui-dialog-content,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist div.ui-dialog-content,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-blockerlist div.ui-dialog-content{
-	max-height: calc(97vh - 95px - 24px - 2px);
+.wasabee-dialog-checklist div.ui-dialog-content,
+.wasabee-dialog-keyslist div.ui-dialog-content,
+.wasabee-dialog-blockerlist div.ui-dialog-content {
+	max-height: calc(97vh - 95px - 24px - 2px)!important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist select{
- height: 20px;
+.wasabee-dialog-checklist select {
+ height: 20px!important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings{
-	max-width: min-content;
-	min-width: 400px;
+.wasabee-dialog-settings {
+	max-width: min-content !important;
+	min-width: 400px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings input[type=checkbox] + label{
-	margin-left: 0px;
-	font-size: 10pt;
-	place-self: center start;
+.wasabee-dialog-settings input[type=checkbox] + label {
+	margin-left: 0px !important;
+	font-size: 10pt !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings label{
-	    grid-column-start: 1;
-	grid-column-end: 2;
-	place-self: center start;
-	padding: 4px;
-	border-top: none;
+.wasabee-dialog-settings label {
+	    grid-column-start: 1 !important;
+	grid-column-end: 2 !important;
+	place-self: center start !important;
+	padding: 4px !important;
+	border-top: none !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings select{
-	    grid-column-start: 2;
-	grid-column-end: 3;
-	place-self: center start;
+.wasabee-dialog-settings select {
+	    grid-column-start: 2 !important;
+	grid-column-end: 3 !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog textarea{
-	caret-color: var(--focus01);
+.wasabee-dialog textarea {
+	caret-color: var(--focus01) !important;
 }
 /**Special disables for select menu downarrow big boxes start**/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body #dialog-wasabee-filter .filters.ui-tabs-panel select{
-	background: none;
-	padding: 0
+#dialog-wasabee-filter .filters.ui-tabs-panel select {
+	background: none !important;
+	padding: 0 !important;
 }
 /*Key list*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist .enough{
-  color: var(--wbenough);
+.wasabee-dialog-keyslist .enough {
+  color: var(--wbenough) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist .notenough{
-  color: var(--wbnotenough);
+.wasabee-dialog-keyslist .notenough {
+  color: var(--wbnotenough) !important;
 }
 /*Filters & actions*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-filter .filters{
-    grid-gap: 0.3em 0.6em;
-    align-items: center;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-items: start;
-    justify-content: center;
-    align-content: center;
+.wasabee-dialog-filter .filters {
+    grid-gap: 0.3em 0.6em !important;
+    align-items: center !important;
+    display: grid !important;
+    grid-template-columns: auto auto !important;
+    justify-items: start !important;
+    justify-content: center !important;
+    align-content: center !important;
 }
 /**Special disables for select menu downarrow big boxes end**/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select{
-	appearance: none;
-	outline: 0;
-	font: inherit;
-	width: fit-content;
-	min-height: 2em;
-	padding: 0 1.6em 0 0.3em;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--accentcol01) 19px, rgba(29, 36, 36, 0) 0px);
-	color: var(--whitecol);
-	border-radius: 5px;
-	border: 1px solid var(--accentcol01);
-	        box-shadow: 0 0 10px 0 var(--accentcol03);
-	cursor: pointer;
-	transition: background 0.3s linear;
-	place-self: center start;
-	font-family: inherit;
-    line-height: normal;
+.wasabee-dialog select {
+	appearance: none !important;
+	outline: 0 !important;
+	font: inherit !important;
+	width: fit-content !important;
+	min-height: 2em !important;
+	padding: 0 1.6em 0 0.3em !important;
+	background: url(data:image/svg+xml !important;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--accentcol01) 19px, rgba(29, 36, 36, 0) 0px);
+	color: var(--whitecol) !important;
+	border-radius: 5px !important;
+	border: 1px solid var(--accentcol01) !important;
+	        box-shadow: 0 0 10px 0 var(--accentcol03) !important;
+	cursor: pointer !important;
+	transition: background 0.3s linear !important;
+	place-self: center start !important;
+	font-family: inherit !important;
+    line-height: normal !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:hover{
-	content: "▼";
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--hovers2) 19px, rgba(29, 36, 36, 0) 0px);
-	border: 1px solid var(--hovers2);
+.wasabee-dialog select:hover {
+	content: "▼" !important;
+	background: url(data:image/svg+xml !important;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--hovers2) 19px, rgba(29, 36, 36, 0) 0px);
+	border: 1px solid var(--hovers2) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:disabled{
-	appearance: none;
-	outline: 0;
-	font: inherit;
-	width: fit-content;
-	min-height: 2em;
-	padding: 0 1.6em 0 0.3em;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--accentcol01) 19px, rgba(29, 36, 36, 0) 0px);
-	color: var(--whitecol);
-	border-radius: 5px;
-	border: 1px solid var(--accentcol01);
-	box-shadow: 0 0 10px 0 var(--accentcol03);
-	cursor: pointer;
-	margin-top: 1px;
-	line-height: 100%;
+.wasabee-dialog select:disabled {
+	appearance: none !important;
+	outline: 0 !important;
+	font: inherit !important;
+	width: fit-content !important;
+	min-height: 2em !important;
+	padding: 0 1.6em 0 0.3em !important;
+	background: url(data:image/svg+xml !important;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--accentcol01) 19px, rgba(29, 36, 36, 0) 0px);
+	color: var(--whitecol) !important;
+	border-radius: 5px !important;
+	border: 1px solid var(--accentcol01) !important;
+	box-shadow: 0 0 10px 0 var(--accentcol03) !important;
+	cursor: pointer !important;
+	margin-top: 1px !important;
+	line-height: 100% !important;
 	/*Normal*/
-	place-self: center start;
-	margin-bottom: 2px;
-	z-index: 2500;
-	opacity: 1;
+	place-self: center start !important;
+	margin-bottom: 2px !important;
+	z-index: 2500 !important;
+	opacity: 1 !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select option{
-	background-color: var(--hovers2);
+.wasabee-dialog select option {
+	background-color: var(--hovers2) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:focus{
-	outline: none;
+.wasabee-dialog select:focus {
+	outline: none !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings input{
-	    grid-column-start: 2;
-	grid-column-end: 3;
-	place-self: center start;
+.wasabee-dialog-settings input {
+	    grid-column-start: 2 !important;
+	grid-column-end: 3 !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings button{
-	    grid-column-start: 1;
-	grid-column-end: 3;
-	place-self: center;
+.wasabee-dialog-settings button {
+	    grid-column-start: 1 !important;
+	grid-column-end: 3 !important;
+	place-self: center !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ol.left{
-	clear: both;
-	border: 1px solid var(--mgrteamborder);
-	padding-left: 0;
-	margin-right: 1em;
-	transition: all 0.3s;
-	border-radius: 5px;
+.wasabee-dialog-skin ol.left {
+	clear: both !important;
+	border: 1px solid var(--mgrteamborder) !important;
+	padding-left: 0 !important;
+	margin-right: 1em !important;
+	transition: all 0.3s !important;
+	border-radius: 5px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ul.right{
-	clear: both;
-	border: 1px solid var(--mgrteamborder);
-	padding-left: 0;
-	transition: all 0.3s;
-	border-radius: 5px;
+.wasabee-dialog-skin ul.right {
+	clear: both !important;
+	border: 1px solid var(--mgrteamborder) !important;
+	padding-left: 0 !important;
+	transition: all 0.3s !important;
+	border-radius: 5px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ul.right{
-	list-style-type: none;
-	transition: all 0.3s;
+.wasabee-dialog-skin ul.right {
+	list-style-type: none !important;
+	transition: all 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li{
-	border: none;
-	height: 1.5em;
-	padding: 3px 4px;
-	text-align: left;
-	transition: all 0.3s;
-	cursor: grab;
+.wasabee-dialog-skin li {
+	border: none !important;
+	height: 1.5em !important;
+	padding: 3px 4px !important;
+	text-align: left !important;
+	transition: all 0.3s !important;
+	cursor: grab !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li:hover{
-	background: var(--sortablehov);
-	transition: background-color 0.3s;
+.wasabee-dialog-skin li:hover {
+	background: var(--sortablehov) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li:active{
-	background: var(--skinactive);
-	transition: background-color 0.3s;
+.wasabee-dialog-skin li:active {
+	background: var(--skinactive) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-link-seperator:before{
-	content: " ► ";
-	font-size: 10.5pt;
+.wasabee-link-seperator:before {
+	content: " ► " !important;
+	font-size: 10.5pt !important;
 }
 /* marker color */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.CapturePortalMarker{
-	color: #ACACAC;
-	font-weight: bold;
-	font-size: 10pt
+.CapturePortalMarker {
+	color: #ACACAC !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.LetDecayPortalAlert{
-	color: var(--accentcol02)000;
-	font-weight: bold;
-	font-size: 10pt
+.LetDecayPortalAlert {
+	color: var(--accentcol02) !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.DestroyPortalAlert{
-	color: var(--panecol);
-	font-weight: bold;
-	font-size: 10pt
+.DestroyPortalAlert {
+	color: var(--panecol) !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.FarmPortalMarker{
-	color: #f17030;
-	font-weight: bold;
-	font-size: 10pt
+.FarmPortalMarker {
+	color: #f17030 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.GotoPortalMarker{
-	color: #e235a9;
-	font-weight: bold;
-	font-size: 10pt;
+.GotoPortalMarker {
+	color: #e235a9 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.GetKeyPortalMarker{
-	color: #78b32c;
-	font-weight: bold;
-	font-size: 10pt;
+.GetKeyPortalMarker {
+	color: #78b32c !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.CreateLinkAlert{
-	color: #0a5d00;
-	font-weight: bold;
-	font-size: 10pt;
-	text-shadow: 0px 0px 10px var(--whitecol);
+.CreateLinkAlert {
+	color: #0a5d00 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
+	text-shadow: 0px 0px 10px var(--whitecol) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.MeetAgentPortalMarker{
-	color: #775E43;
-	font-weight: bold;
-	font-size: 10pt;
+.MeetAgentPortalMarker {
+	color: #775E43 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 	/*text-shadow: 0px 0px 10px var(--whitecol);*/
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.OtherPortalAlert{
-	color: #3c3c3c;
-	font-weight: bold;
-	font-size: 10pt;
-	text-shadow: 0px 0px 10px var(--whitecol);
+.OtherPortalAlert {
+	color: #3c3c3c !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
+	text-shadow: 0px 0px 10px var(--whitecol) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.RechargePortalAlert{
-	color: #298566;
-	font-weight: bold;
-	font-size: 10pt;
+.RechargePortalAlert {
+	color: #298566 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.UpgradePortalAlert{
-	color: #298566;
-	font-weight: bold;
-	font-size: 10pt;
+.UpgradePortalAlert {
+	color: #298566 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.UseVirusPortalAlert{
-	color: #400080;
-	font-weight: bold;
-	font-size: 10pt;
+.UseVirusPortalAlert {
+	color: #400080 !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.ExcludeMarker{
-	color: var(--accentcol02)099;
-	font-weight: bold;
-	font-size: 10pt;
+.ExcludeMarker {
+	color: var(--accentcol02) !important;
+	font-weight: bold !important;
+	font-size: 10pt !important;
 }
 /* color pickers */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body input.picker{
-	width: -webkit-fill-available;
+input.picker {
+	width: -webkit-fill-available !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist div .hidden-color-picker{
-	visibility: hidden;
-	width: 5px;
-	height: 0;
-	border: 0;
-	padding: 0;
-	margin: 0;
+.wasabee-dialog-checklist div .hidden-color-picker {
+	visibility: hidden !important;
+	width: 5px !important;
+	height: 0 !important;
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 /* Autodraw dialogs */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb{
-	border: 0px;
-	background: var(--focus01);
-	        box-shadow: 0 0 10px 0 var(--focus01);
-	        animation: pulse-green 2s infinite;
-	        box-sizing: border-box;
-	color: var(--drawbutton);
-	padding: 6px 12px;
-	transition: all 0.3s;
-	margin-top: 5px;
-	font-family: inherit;
-	        transform: scale(1.5);
+.wasabee-dialog button.drawb {
+	border: 0px !important;
+	background: var(--focus01) !important;
+	        box-shadow: 0 0 10px 0 var(--focus01) !important;
+	        animation: pulse-green 2s infinite !important;
+	        box-sizing: border-box !important;
+	color: var(--drawbutton) !important;
+	padding: 6px 12px !important;
+	transition: all 0.3s !important;
+	margin-top: 5px !important;
+	font-family: inherit !important;
+	        transform: scale(1.5) !important;
 }
 @keyframes pulse-green {
 	0% {
@@ -4390,181 +4382,181 @@ div#available_ap_display div {
 		        box-shadow: 0 0 10px 0 var(--pulse01);
 	}
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst .container,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks .container{
-	display: grid;
-	grid-gap: 0.2em 0.5em;
-	        align-items: center;
-	grid-template-columns: minmax(min-content, 10em) min-content auto;
-	font-family: inherit;
-	margin: 2px;
+.wasabee-dialog-fanfield .container,
+.wasabee-dialog-homogeneous .container,
+.wasabee-dialog-link .container,
+.wasabee-dialog-madrid .container,
+.wasabee-dialog-multimax .container,
+.wasabee-dialog-onion .container,
+.wasabee-dialog-starburst .container,
+.wasabee-dialog-savelinks .container {
+	display: grid !important;
+	grid-gap: 0.2em 0.5em !important;
+	        align-items: center !important;
+	grid-template-columns: minmax(min-content, 10em) min-content auto !important;
+	font-family: inherit !important;
+	margin: 2px !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst label,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks label{
-	grid-column: 1;
-	vertical-align: central;
-	font-family: inherit;
+.wasabee-dialog-fanfield label,
+.wasabee-dialog-link label,
+.wasabee-dialog-madrid label,
+.wasabee-dialog-multimax label,
+.wasabee-dialog-onion label,
+.wasabee-dialog-starburst label,
+.wasabee-dialog-savelinks label {
+	grid-column: 1 !important;
+	vertical-align: middle !important;
+	font-family: inherit !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks button,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button{
-	grid-column: 2;
-	cursor: pointer;
-	        appearance: none;
-	background-color: var(--accentcol01);
-	border: 1px solid var(--buttonborder);
-	border-radius: 6px;
-	        box-shadow: var(--shadow2) 0 1px 0;
-	        box-sizing: border-box;
-	color: var(--whitecol);
-	display: inline-block;
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 15px;
-	padding: 6px 12px;
-	text-align: center;
-	text-decoration: none;
-	     user-select: none;
-	    touch-action: manipulation;
-	vertical-align: middle;
-	white-space: nowrap;
-	margin: 3px;
-	font-family: inherit;
-	transition: background-color 0.3s;
-	place-self: center start;
+.wasabee-dialog-fanfield button,
+.wasabee-dialog-homogeneous button,
+.wasabee-dialog-link button,
+.wasabee-dialog-madrid button,
+.wasabee-dialog-multimax button,
+.wasabee-dialog-onion button,
+.wasabee-dialog-starburst button,
+.wasabee-dialog-savelinks button,
+.wasabee-dialog-wdkeys button {
+	grid-column: 2 !important;
+	cursor: pointer !important;
+	        appearance: none !important;
+	background-color: var(--accentcol01) !important;
+	border: 1px solid var(--buttonborder) !important;
+	border-radius: 6px !important;
+	        box-shadow: var(--shadow2) 0 1px 0 !important;
+	        box-sizing: border-box !important;
+	color: var(--whitecol) !important;
+	display: inline-block !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	line-height: 15px !important;
+	padding: 6px 12px !important;
+	text-align: center !important;
+	text-decoration: none !important;
+	     user-select: none !important;
+	    touch-action: manipulation !important;
+	vertical-align: middle !important;
+	white-space: nowrap !important;
+	margin: 3px !important;
+	font-family: inherit !important;
+	transition: background-color 0.3s !important;
+	place-self: center start !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button:hover,
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button:hover{
-	background-color: var(--hovers2);
-	transition: background-color 0.3s;
+.wasabee-dialog-fanfield button:hover,
+.wasabee-dialog-homogeneous button:hover,
+.wasabee-dialog-link button:hover,
+.wasabee-dialog-madrid button:hover,
+.wasabee-dialog-multimax button:hover,
+.wasabee-dialog-onion button:hover,
+.wasabee-dialog-starburst button:hover,
+.wasabee-dialog-savelinks button:hover,
+.wasabee-dialog button.drawb:hover,
+.wasabee-dialog-wdkeys button:hover,
+.wasabee-dialog-markeradd div.content button:hover {
+	background-color: var(--hovers2) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button:hover{
-	color: var(--lightwhite);
+.wasabee-dialog-markeradd div.content button:hover {
+	color: var(--lightwhite) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb:hover{
-	color: var(--lightwhite);
+.wasabee-dialog button.drawb:hover {
+	color: var(--lightwhite) !important;
 }
 /* Panes start*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane{
-	background: var(--drawbutton);
+.wasabee-pane {
+	background: var(--drawbutton) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .header{
-    color: var(--lightwhite);
-    background-color: transparent;
-    border: none;
-    backdrop-filter: blur(3px) grayscale(100%);
+.wasabee-pane .wasabee-dialog .header {
+    color: var(--lightwhite) !important;
+    background-color: transparent !important;
+    border: none !important;
+    backdrop-filter: blur(3px) grayscale(100%) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .buttonset{
-	background-color: transparent;
-	border: none;
-    backdrop-filter: blur(3px) grayscale(100%);
+.wasabee-pane .wasabee-dialog .buttonset {
+	background-color: transparent !important;
+	border: none !important;
+    backdrop-filter: blur(3px) grayscale(100%) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .buttonset button{
-    color: var(--lightwhite);
-    border: none;
-    margin: 5px;
-    background-color: var(--sortable);
+.wasabee-pane .wasabee-dialog .buttonset button {
+    color: var(--lightwhite) !important;
+    border: none !important;
+    margin: 5px !important;
+    background-color: var(--sortable) !important;
 }
 /*Panes end*/
 /*Toolbar start*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar{
-	list-style: none;
-	padding-left: 0;
-	font-family: inherit;
-	        backdrop-filter: var(--bgblur);
+.wasabee-buttons .leaflet-bar {
+	list-style: none !important;
+	padding-left: 0 !important;
+	font-family: inherit !important;
+	        backdrop-filter: var(--bgblur) !important;
 }
 /* overwrite leaflet css */
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a{
-	border-radius: unset;
-	background-color: var(--leafletbuttonbg);
-	transition: background-color 0.3s;
+.wasabee-buttons .leaflet-bar > li > a {
+	border-radius: unset !important;
+	background-color: var(--leafletbuttonbg) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a:hover{
-	background-color: var(--leafletbarhov);
-	transition: background-color 0.3s;
+.wasabee-buttons .leaflet-bar > li > a:hover {
+	background-color: var(--leafletbarhov) !important;
+	transition: background-color 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a{
-	border-bottom: 1px solid var(--leafletbuttonborder);
+.wasabee-buttons .leaflet-bar > li > a {
+	border-bottom: 1px solid var(--leafletbuttonborder) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons.leaflet-control a.active{
-	background-color: var(--leafletaactive);
+.wasabee-buttons.leaflet-control a.active {
+	background-color: var(--leafletaactive)!important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-subactions a{
-	padding-left: 8px;
-	padding-right: 8px;
-	border-left: none;
-	border-right: 1px solid var(--subactionborder);
-	color: var(--whitecol);
+.wasabee-subactions a {
+	padding-left: 8px !important;
+	padding-right: 8px !important;
+	border-left: none !important;
+	border-right: 1px solid var(--subactionborder) !important;
+	color: var(--whitecol) !important;
 	/*min-width: 50px;*/
-	min-width: fit-content;
-	font-family: inherit;
-	width: auto;
-	background-color: var(--subactionbg);
-	transition: all 0.3s;
+	min-width: fit-content !important;
+	font-family: inherit !important;
+	width: auto !important;
+	background-color: var(--subactionbg) !important;
+	transition: all 0.3s !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-subactions a:hover{
-	background-color: var(--subactionahov);
-	        backdrop-filter: var(--bgblur);
-	width: auto;
+.wasabee-subactions a:hover {
+	background-color: var(--subactionahov) !important;
+	        backdrop-filter: var(--bgblur) !important;
+	width: auto !important;
 }
 /*Toolbar end*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-tabs-nav li a:hover{
-	color: var(--lightwhite);
+.wasabee-dialog .ui-tabs-nav li a:hover {
+	color: var(--lightwhite) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-tabs-nav li.ui-tabs-active a{
-	color: var(--hovers);
+.wasabee-dialog .ui-tabs-nav li.ui-tabs-active a {
+	color: var(--hovers) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-anchor-buttonset{
-	display: block;
+.wasabee-anchor-buttonset {
+	display: block !important;
 }
 /*Wasabee markers button*/
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button{
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
-  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-	border: 1px solid transparent;
+.wasabee-markers .action-button {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3) !important;
+  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+	border: 1px solid transparent !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button::after{
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  	opacity: 0;
-  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+.wasabee-markers .action-button::after {
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  	opacity: 0 !important;
+  	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:active{
-	background-position: 0px 0px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.wasabee-markers .action-button:active {
+	background-position: 0px 0px !important;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:hover{
-	background-position: 0px 0px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
-	border: 1px solid var(--border-hover);
+.wasabee-markers .action-button:hover {
+	background-position: 0px 0px !important;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, .6) !important;
+	border: 1px solid var(--border-hover) !important;
 }
-:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:hover:after{
-	opacity: 1;
+.wasabee-markers .action-button:hover:after {
+	opacity: 1 !important;
 }
 /*FULL Wasabee end*/
 /* Autodraw dialogs end */
