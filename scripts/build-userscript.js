@@ -140,7 +140,24 @@ function userscriptBody(version) {
 
     return settings.variants[theme.id] || variants[0].id;
   }
+	function ensureDefaultVariant(settings, theme) {
+	  if (!theme || theme.id === DEFAULT_THEME_ID) return settings;
 
+	  const variants = Array.isArray(theme.variants) ? theme.variants : [];
+	  if (variants.length === 0) return settings;
+
+	  settings.variants = settings.variants || {};
+
+	  const selectedVariantExists = variants.some(function (variant) {
+		return variant.id === settings.variants[theme.id];
+	  });
+
+	  if (!selectedVariantExists) {
+		settings.variants[theme.id] = variants[0].id;
+	  }
+
+	  return settings;
+	}
   function selectedThemeOptionsFor(settings, theme) {
     if (!theme || theme.id === DEFAULT_THEME_ID) return [];
 
@@ -500,16 +517,18 @@ function userscriptBody(version) {
     allThemes().forEach(function (theme) {
       grid.appendChild(createThemeCard(theme, settings.theme, function (themeId) {
         const next = readSettings();
-        next.theme = themeId;
+	next.theme = themeId;
 
-        if (themeId === DEFAULT_THEME_ID) {
-          next.globalOptions = [];
-          next.themeOptions = {};
-        }
+	if (themeId === DEFAULT_THEME_ID) {
+	  next.globalOptions = [];
+	  next.themeOptions = {};
+	} else {
+	  ensureDefaultVariant(next, getTheme(themeId));
+	}
 
-        writeSettings(next);
-        applyTheme();
-        renderSettingsDialog(container);
+	writeSettings(next);
+	applyTheme();
+	renderSettingsDialog(container);
       }));
     });
 
