@@ -3653,7 +3653,6 @@ table.wasabee-table > thead .sortable.desc:before {
 	transition: all 0.3s !important;
 	margin-top: 5px !important;
 	font-family: inherit !important;
-	        transform: scale(1.5) !important;
 }
 /* all dialogs get this class -- do global stuff with it */
 .wasabee-dialog {
@@ -3727,7 +3726,6 @@ table.wasabee-table > thead .sortable.desc:before {
 	border: 0 !important;
 	border-bottom: 1px solid var(--accentcol01) !important;
 	background: transparent !important;
-	width: auto !important;
 	padding: 2px 0 0 0px !important;
 	font-size: 12px !important;
 	font-family: inherit !important;
@@ -3787,7 +3785,7 @@ table.wasabee-table > thead .sortable.desc:before {
 	transition: all 0.3s ease-in-out !important;
 }
 .wasabee-dialog a {
-	color: var(--focuscol) !important;
+	color: var(--lightwhite) !important;
 }
 .wasabee-dialog a:hover {
 	color: var(--lightwhite) !important;
@@ -4362,7 +4360,6 @@ input.picker {
 	transition: all 0.3s !important;
 	margin-top: 5px !important;
 	font-family: inherit !important;
-	        transform: scale(1.5) !important;
 }
 @keyframes pulse-green {
 	0% {
@@ -4522,7 +4519,7 @@ input.picker {
 }
 .wasabee-subactions a:hover {
 	background-color: var(--subactionahov) !important;
-	        backdrop-filter: var(--bgblur) !important;
+	        backdrop-filter: var(--active) !important;
 	width: auto !important;
 }
 /*Toolbar end*/
