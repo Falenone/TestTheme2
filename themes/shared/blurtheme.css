@@ -3539,10 +3539,10 @@ body table .wasabee-table tr {
 }
 body table .wasabee-table ttr:nth-child(2n + 1) {
 	background: transparent;
-	transition: background-color 0.3s;
+	transition: background-color 0.3s;/*Wasabee-stuff-stuff*/
 }
 body table .wasabee-table ttr:nth-child(odd) {
-	background: var(--sortable2);
+	background: var(--sortablehov); /*Sortable2*/
 }
 body table .wasabee-table > thead .sortable:before {
 	content: "";
