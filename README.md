@@ -175,3 +175,13 @@ After every push to `main`, the workflow builds and deploys:
 /files/release/iitc_plugin_TestTheme2.user.js
 /files/release/iitc_plugin_TestTheme2.meta.js
 ```
+
+## Settings window styling
+
+The plugin settings-window UI styles live in:
+
+```text
+ui/settings.css
+```
+
+Edit that file to change the chooser layout, preview-card sizing, spacing, borders, and other UI-only styles. These styles are compiled into the generated userscript automatically.

@@ -8,6 +8,7 @@ const root = process.cwd()
 const mode = process.argv.includes('--dev') ? 'dev' : 'prod'
 const plugin = JSON.parse(fs.readFileSync(path.join(root, 'plugin.json'), 'utf8'))
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'build/themes.json'), 'utf8'))
+const settingsUiCss = fs.readFileSync(path.join(root, 'ui/settings.css'), 'utf8')
 
 function shell(command, fallback = '') {
   try {
@@ -65,6 +66,7 @@ function userscriptBody(version) {
   const VERSION = ${JSON.stringify(version)};
   const BUILD_DATE = ${JSON.stringify(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).replace(',', ''))};
   const CATALOG = ${JSON.stringify(catalog)};
+  const SETTINGS_UI_CSS = ${JSON.stringify(settingsUiCss)};
   const DEFAULT_THEME_ID = '__default__';
   const STORAGE_KEY = PLUGIN_ID + '.settings';
   const STYLE_ID = PLUGIN_ID + '-style';
@@ -245,6 +247,20 @@ function userscriptBody(version) {
     return style;
   }
 
+  function ensureSettingsUiCss() {
+    const styleId = PLUGIN_ID + '-settings-ui-style';
+    let style = document.getElementById(styleId);
+
+    if (!style) {
+      style = document.createElement('style');
+      style.id = styleId;
+      style.type = 'text/css';
+      document.head.appendChild(style);
+    }
+
+    style.textContent = SETTINGS_UI_CSS;
+  }
+
   function applyTheme() {
     const settings = readSettings();
     const style = ensureStyleElement();
@@ -293,14 +309,7 @@ function userscriptBody(version) {
     const img = makeElement('img', {
       alt: theme.name,
       src: theme.preview || defaultPreviewSvg(),
-      style: {
-        width: '250px',
-        height: '166px',
-        objectFit: 'cover',
-        display: 'block',
-        borderRadius: '6px',
-        background: '#111'
-      }
+      className: 'testtheme-theme-preview'
     });
 
     return img;
@@ -311,28 +320,12 @@ function userscriptBody(version) {
 
     const card = makeElement('button', {
       type: 'button',
-      className: PLUGIN_ID + '-theme-card',
-      style: {
-        width: '250px',
-        padding: '0',
-        margin: '0',
-        border: selected ? '2px solid #f5c542' : '1px solid rgba(255,255,255,0.25)',
-        borderRadius: '8px',
-        background: selected ? 'rgba(245,197,66,0.12)' : 'rgba(255,255,255,0.04)',
-        color: 'inherit',
-        cursor: 'pointer',
-        textAlign: 'center',
-        overflow: 'hidden'
-      }
+      className: 'testtheme-theme-card ' + PLUGIN_ID + '-theme-card' + (selected ? ' is-selected' : '')
     }, [
       createPreviewImage(theme),
       makeElement('div', {
         textContent: theme.name,
-        style: {
-          padding: '6px 4px 8px',
-          fontWeight: selected ? '700' : '500',
-          fontSize: '13px'
-        }
+        className: 'testtheme-theme-title'
       })
     ]);
 
@@ -350,7 +343,7 @@ function userscriptBody(version) {
       onChange(checkbox.checked);
     });
 
-    return makeElement('label', {style: {display: 'block', margin: '0.35em 0', cursor: 'pointer'}}, [
+    return makeElement('label', {className: 'testtheme-checkbox'}, [
       checkbox,
       ' ' + labelText
     ]);
@@ -363,7 +356,7 @@ function userscriptBody(version) {
       if (radio.checked) onChange();
     });
 
-    return makeElement('label', {style: {display: 'block', margin: '0.35em 0', cursor: 'pointer'}}, [
+    return makeElement('label', {className: 'testtheme-radio'}, [
       radio,
       ' ' + labelText
     ]);
@@ -376,7 +369,7 @@ function userscriptBody(version) {
       container.appendChild(makeElement('h3', {textContent: 'Default'}));
       container.appendChild(makeElement('p', {
         textContent: 'Default turns off all injected theme, variant, theme-option, and global-option CSS.',
-        style: {marginTop: '0'}
+        className: 'testtheme-description'
       }));
       return;
     }
@@ -385,14 +378,14 @@ function userscriptBody(version) {
     if (selectedTheme.description) {
       container.appendChild(makeElement('p', {
         textContent: selectedTheme.description,
-        style: {marginTop: '0', opacity: '0.85'}
+        className: 'testtheme-description'
       }));
     }
 
     const variants = Array.isArray(selectedTheme.variants) ? selectedTheme.variants : [];
     if (variants.length > 0) {
-      const box = makeElement('div', {style: {marginBottom: '1em'}});
-      box.appendChild(makeElement('h4', {textContent: 'Variants', style: {marginBottom: '0.25em'}}));
+      const box = makeElement('div', {className: 'testtheme-option-section'});
+      box.appendChild(makeElement('h4', {textContent: 'Variants'}));
 
       const selectedVariant = selectedVariantFor(settings, selectedTheme);
       variants.forEach(function (variant) {
@@ -411,8 +404,8 @@ function userscriptBody(version) {
 
     const themeOptions = Array.isArray(selectedTheme.options) ? selectedTheme.options : [];
     if (themeOptions.length > 0) {
-      const box = makeElement('div', {style: {marginBottom: '1em'}});
-      box.appendChild(makeElement('h4', {textContent: 'Theme options', style: {marginBottom: '0.25em'}}));
+      const box = makeElement('div', {className: 'testtheme-option-section'});
+      box.appendChild(makeElement('h4', {textContent: 'Theme options'}));
 
       const selected = new Set(selectedThemeOptionsFor(settings, selectedTheme));
       themeOptions.forEach(function (option) {
@@ -435,8 +428,8 @@ function userscriptBody(version) {
 
     const globals = globalOptions();
     if (globals.length > 0) {
-      const box = makeElement('div', {style: {marginBottom: '1em'}});
-      box.appendChild(makeElement('h4', {textContent: 'Global options', style: {marginBottom: '0.25em'}}));
+      const box = makeElement('div', {className: 'testtheme-option-section'});
+      box.appendChild(makeElement('h4', {textContent: 'Global options'}));
 
       const selected = new Set(settings.globalOptions || []);
       globals.forEach(function (option) {
@@ -492,27 +485,15 @@ function userscriptBody(version) {
 	container.appendChild(header);	
 
     const layout = makeElement('div', {
-      style: {
-        display: 'grid',
-        gridTemplateColumns: 'max-content minmax(260px, 1fr)',
-        gap: '16px',
-        alignItems: 'start'
-      }
+      className: 'testtheme-layout'
     });
 
-    const left = makeElement('div');
-    left.appendChild(makeElement('h3', {textContent: 'Themes', style: {marginTop: '0'}}));
+    const left = makeElement('div', { className: 'testtheme-left' });
+    left.appendChild(makeElement('h3', {textContent: 'Themes'}));
 
 	const grid = makeElement('div', {
-	  style: {
-		display: 'grid',
-		gridTemplateColumns: '250px',
-		gap: '10px',
-		maxHeight: '70vh',
-		overflow: 'auto',
-		paddingRight: '4px'
-	  }
-	});
+      className: 'testtheme-theme-grid'
+    });
 
     allThemes().forEach(function (theme) {
       grid.appendChild(createThemeCard(theme, settings.theme, function (themeId) {
@@ -535,11 +516,7 @@ function userscriptBody(version) {
     left.appendChild(grid);
 
     const right = makeElement('div', {
-      style: {
-        minWidth: '260px',
-        maxWidth: '360px',
-        padding: '0 0 0 6px'
-      }
+      className: 'testtheme-right'
     });
 
     renderRightPanel(right, settings, selectedTheme);
@@ -547,7 +524,7 @@ function userscriptBody(version) {
     const resetButton = makeElement('button', {
       type: 'button',
       textContent: 'Reset to Default',
-      style: {marginTop: '1em'}
+      className: 'testtheme-reset-button'
     });
     resetButton.addEventListener('click', function () {
       resetSettings();
@@ -557,7 +534,7 @@ function userscriptBody(version) {
     right.appendChild(resetButton);
     right.appendChild(makeElement('p', {
       textContent: PLUGIN_NAME + ' ' + VERSION + ' · Built ' + BUILD_DATE,
-      style: {fontSize: '0.9em', opacity: '0.7', marginBottom: '0'}
+      className: 'testtheme-version'
     }));
 
     layout.appendChild(left);
@@ -567,13 +544,7 @@ function userscriptBody(version) {
 
   function createSettingsDialog() {
     const container = makeElement('div', {
-      className: PLUGIN_ID + '-settings',
-      style: {
-        minWidth: '820px',
-        maxWidth: '95vw',
-        maxHeight: '80vh',
-        overflow: 'auto'
-      }
+      className: 'testtheme-settings ' + PLUGIN_ID + '-settings'
     });
 
     activeSettingsDialog = container;
@@ -666,6 +637,7 @@ function userscriptBody(version) {
   }
 
   function setup() {
+    ensureSettingsUiCss();
     applyTheme();
     addToolboxButtonWhenReady();
     keepStyleLast();

@@ -1,0 +1,134 @@
+/*
+  Settings window UI CSS.
+
+  This controls only the plugin's theme chooser/settings window.
+  Theme CSS that affects the Intel map still belongs in:
+  - global-imports.css
+  - themes/shared/*.css
+  - themes/<theme>/base.css
+  - themes/<theme>/variants/*.css
+  - themes/<theme>/options/*.css
+  - global-options/*.css
+*/
+
+:root {
+  --testtheme-ui-gap: 16px;
+}
+
+.testtheme-settings {
+  min-width: 700px;
+  max-width: 95vw;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.testtheme-header {
+  text-align: center;
+  margin: 0 0 1em;
+}
+
+.testtheme-header-image {
+  max-width: 160px;
+  max-height: 80px;
+  display: block;
+  margin: 0 auto 0.5em;
+}
+
+.testtheme-header-text {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.testtheme-layout {
+  display: grid;
+  grid-template-columns: max-content minmax(260px, 1fr);
+  gap: var(--testtheme-ui-gap);
+  align-items: start;
+}
+
+.testtheme-left h3,
+.testtheme-right h3 {
+  margin-top: 0;
+}
+
+.testtheme-theme-grid {
+  display: grid;
+  grid-template-columns: 250px;
+  gap: 10px;
+  max-height: 70vh;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.testtheme-theme-card {
+  width: 250px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+}
+
+.testtheme-theme-card.is-selected {
+  border: 2px solid #f5c542;
+  background: rgba(245,197,66,0.12);
+}
+
+.testtheme-theme-preview {
+  width: 250px;
+  height: 166px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+  background: #111;
+}
+
+.testtheme-theme-title {
+  padding: 6px 4px 8px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.testtheme-theme-card.is-selected .testtheme-theme-title {
+  font-weight: 700;
+}
+
+.testtheme-right {
+  min-width: 260px;
+  max-width: 360px;
+  padding: 0 0 0 6px;
+}
+
+.testtheme-description {
+  margin-top: 0;
+  opacity: 0.85;
+}
+
+.testtheme-option-section {
+  margin-bottom: 1em;
+}
+
+.testtheme-option-section h4 {
+  margin-bottom: 0.25em;
+}
+
+.testtheme-checkbox,
+.testtheme-radio {
+  display: block;
+  margin: 0.35em 0;
+  cursor: pointer;
+}
+
+.testtheme-version {
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-bottom: 0;
+}
+
+.testtheme-reset-button {
+  margin-top: 1em;
+}
