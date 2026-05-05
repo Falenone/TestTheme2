@@ -1,0 +1,12 @@
+#toolbox_component{
+	/*Css test to replace a plugin doing the same thing*/
+	display: -ms-grid;
+	display: grid;
+	-ms-grid-columns: 50% 0px 50%;
+	grid-template-columns: 50% 50%;
+	-ms-grid-rows: 1fr;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-template-areas: ". .";
+	-ms-flex-line-pack: space-evenly;
+}

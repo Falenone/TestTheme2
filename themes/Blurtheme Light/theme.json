@@ -1,5 +1,5 @@
 {
   "name": "Blurtheme Light",
   "description": "Modern IITC theme in lighter color",
-  "sharedCss": "main.css"
+  "sharedCss": "blurtheme.css"
 }

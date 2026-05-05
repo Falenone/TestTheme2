@@ -1,0 +1,3 @@
+:root {
+	--bgblur: blur(3px) grayscale(100%)!important; /*The dialog and other blur background*/
+}

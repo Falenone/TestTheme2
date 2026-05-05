@@ -1,0 +1,10 @@
+html,
+body {
+	font-family: 'Manrope', sans-serif;
+}
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+}

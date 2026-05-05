@@ -1,0 +1,133 @@
+/******************Variables**************************/
+:root {
+	/*Colors*/
+	--chatdiv: #bbb; /*Chat divider text color, dates etc*/	
+	--enllight: #5e5; /*Light ENL color in chat, for portal captures linked from etc*/
+	--reslight: #2de; /*Light RES color in chat, for portal captures linked from etc*/
+	--maclight: #f44; /*Light Machina color in chat, for portal captures linked from etc*/	
+	--uidialog: #eee; /* For light theme*/		
+	--bgroundcol: rgb(0, 0, 0); /*Chat, sidebar etc bg*/
+	--whitecol: #FFFFFF; /*Hovers, focus text colors*/
+	--linkcol: #00FFFF; /*Link color*/
+	--lightwhite: #FFFFFF; /*Text and links*/
+	--lightwhite2: #F0F0F0; /*Text colors #2*/
+	--hovers: #FF6666; /* Hover colors bright blue ish*/
+	--hovers2: #B266FF; /*Button hovers and borders*/
+	--hovers3: #FFFFFF; /*Input field text colors, text hovers, placeholders*/
+	--hovers4: rgba(177, 76, 32, .2); /*Mod slot hover*/
+	--hovers5: rgba(122, 59, 43, .8); /*Redeem input hover, decay calc text, bookmarks*/
+	--textareahov: rgba(217, 112, 51, .8); /*Textarea hover border*/
+	--textareahov2: rgba(122, 65, 43, .5); /*Textarea hover background*/
+	--textareafocus: rgba(122, 85, 43, .7); /* Textarea focus background*/
+	--textareabg: rgba(122, 83, 43, .2); /*Textarea background*/
+	--titlebarbg: #1A1A1A; /*Titlebar background*/
+	--titlebarbg2: rgba(113, 113, 113, 0); /*Titlebar bg 2*/
+	--titlebarbggra: #000000; /*Titlebar background gradient*/
+	--titlebartitlecol: #FFFFFF; /*Titlebar title color*/
+	--buttonborder: rgba(255, 255, 255, .6); /*Titlebar, content button border*/
+	--uidialogborder: rgba(255, 255, 255, .8); /*Border right above buttons on ui dialog*/
+	--accentcol01: #FF6666; /*Button colors and such*/
+	--accentcol02: #FFFFFF; /* Placeholders, titlebar, bookmark span */
+	--accentcol03: rgba(255, 255, 255, .13); /*Mods, bookmark folder div*/
+	--accentcol04: rgba(198, 113, 64, .35); /*Redeem input color, bookmarks folder label*/
+	--modsborder: #FFFFFF; /*Border for mod rectangles*/
+	--uilinkcol: #FF6666; /*Dialog link color*/
+	--uilinkcolhover: #FFFFFF; /*Dialog link color hover*/
+	--uitooltip: #FFFFFF; /*UI tooltip text color*/
+	--titlebaractive: #FF9999; /*Dialog titlebar active text color*/
+	--login1: #0A0A0A; /*Login page gradient 1*/
+	--login2: #1A1A1A; /*Login page gradient 2*/
+	--login3: #050505; /*Login page gradient 3*/
+	--disabled2: #666666; /*Disabled color, for inputs, dropdowns etc*/
+	--enl: #00FF00; /*ENL color, sidebar portal details, chat agent name etc*/
+	--res: #00C5FF; /*RES color, sidebar portal details, chat agent name etc*/
+	--mac: #FF5F5F; /*Machina color, sidebar portal details, chat agent name etc*/
+	--neutralportal: #FFFFFF; /*Neutral color, sidebar portal details, chat agent name etc*/
+	/*Misc*/
+	--bgblur: blur(3px) grayscale(100%); /*The dialog and other blur background*/
+	--shadow: rgba(0,0,0,.5); /*Shadow behind dialogs and other stuff*/
+	--shadow2: rgba(35,29,27,.2); /*Box shadow for titlebar, content buttons*/
+	--historydetails: #FF0000; /*When not visited, captured, scoutcontrolled*/
+	--leafletpopup: rgb(0,0,0); /* Leaflet popup bg*/
+	--sortablehov: #F00; /*Sortable table hover*/
+	--sortable2: #64646445; /*Sortable table hover*/	
+	--tablecol: rgba(253, 118, 0, .27); /*Table color*/
+	--focuscol: #FFFFFF; /*focus and active colors for input, text fields etc*/
+	--tooltip: rgba(28,0,26,.9); /*Tooltips and chatinput color*/
+	--meter: rgba(0,0,0,.85); /* reso bar bg*/
+	--meterborder: rgba(255,255,255,.9); /*Reso bar border*/
+	--meterbg: #FF2E2E; /*Reso meter bar North color*/
+	--pulse0: rgba(29,36,36,.65); /*Reso bar pulse*/
+	--pulse50: rgba(29,36,36,.7); /*Reso bar pulse*/
+	--pulse100: rgba(29,36,36,.75); /*Reso bar pulse*/
+	--scrolltrack: rgba(255,255,255,.25); /*Scrollbar track*/
+	--emojibox: rgba(0,0,0,.7); /*Emojibox shadow*/
+	--tableborder: rgba(255,255,255,.8); /*Th, td border and background*/
+	--tabscol: #FF6666; /*Ui tabs active background and border*/
+	--active: #FF66CC; /*Checkbox/Radio buttons*/
+	--activebtngrad: linear-gradient(180deg, #FFFFFF 0%, #CCCCCC 100%); /* Active button gradient, light*/
+	--activebtngrad2: linear-gradient(180deg, rgba(255,102,204,.2) 0%, rgba(255,102,204,.2) 100%); /* Active button gradient, dark*/
+	--active-inner: #FFFFFF; /*Checkbox/Radio buttons*/
+	--border: #FFCCAA; /*Checkbox/Radio buttons*/
+	--border-hover: #FF66CC; /*Checkbox/Radio buttons*/
+	--background: #000000; /*Checkbox/Radio buttons*/
+	--disabled: #555555; /*Checkbox/Radio buttons*/
+	--disabled-inner: #888888; /*Checkbox/Radio buttons*/
+	--selection: #FF66CC; /*text selection color*/
+	/*Plugin specific*/
+	--fieldset: #FF66CC; /*Bannergress specific, border around contents in ui dialog with a small title up top*/
+	--lastactiondecaycalc: #FF9900; /*Decay calc, last action plugin colors in sidebar, bookmark link selected*/
+	--portalslisttd: rgba(255,255,255,.5); /*Portalslist td, sortable background*/
+	--portalslisttheadhov: rgba(255,102,102,.7); /*portalslist thead hover when sorted*/
+	--portalslistenl: var(--enl); /*Enl color in portalslist*/
+	--portalslistres: rgba(0,86,132,1); /*res color in portalslist*/
+	--portalslistfilterenl: rgba(0,127,0,1); /*Portalslist filter enl bg*/
+	--portalslisthistcap: rgba(255,0,0,1); /*portalslist history captured or not */
+	--portalslistscout: rgba(255,255,0,1); /*portalslist scoutcontrolled or not*/
+	--drsliderhov: rgba(255,255,255,1); /*Draw tools sp slider hover*/
+	--historydtldialoghov: #00FF00; /*History details complete, dialog list hover*/
+	--liveinvbg: rgba(255, 0, 0, .85); /*Live inventory th background*/
+	--bookmarksbox: rgb(0,0,0); /*Bookmarks box background*/
+	--bookmarksh5: #FFFFFF; /*Bookmarksbox H5 color*/
+	--bookmarksboxsort: rgba(78,58,8,.7); /*Bookmarks box sortable blaceholder bg*/
+	--bkmrksselected: #FF00FF; /*Bookmarks box bookmark selected color*/
+	--bkmrksmobilebtn: #222; /*Bookmarks box mobile button bg*/
+	--bkmrksmobilemove: #FF0000; /*Bookmarks box mobile move button bg*/
+	--favportalbg: rgba(0, 0, 0, 0); /*Fav portal bg lighter color*/
+	--portalnameblur: blur(.7px); /*Portal names blur bg*/	
+	--portalnamecol: #FFFFFF; /*Portal names text color*/
+	/*Wasabee*/
+	--wbnotenough: #FF6666; /*Not enough keys*/
+	--wbenough: #00FF7F; /*Enough keys*/
+	--drawbutton: #FFFFFF; /*Draw button text color*/
+	--errortooltipborder: #FF0000; /*Error tooltip border color*/
+	--errortooltipbg: #FFCCCC; /*Error tooltip bg*/
+	--errortooltipcol: #990000; /*Error tooltip color*/
+	--sortable: rgba(128,128,128,.7); /*sortable background color*/
+	--leafletpopupcol: #FFFFFF; /*Leaflet popup color*/
+	--respopup: #0081FF; /*Res popup color*/
+	--dialogshadow: rgba(0,0,0,.35); /*Dialog box shadow*/
+	--focus01: #FF66CC; /*Button, input, textarea focus borders, draw button background*/
+	--mgrteamborder: #FFFFFF; /*Manage team border, dialog ol left, ul right*/
+	--skinactive: #FFFFFF; /*Skin dialog active*/
+	--pulse01: rgba(217,51,51,0); /*Draw button pulse*/
+	--pulse02: rgba(211,51,217,.7); /*Draw button pulse*/
+	--panecol: #FF3333; /*Destroy portal alert, pane color*/
+	--panebg: rgba(78,8,27,.95); /*Pane background color*/
+	--leafletbuttonbg: rgba(255,233,232,.6); /*Leablet button background color*/
+	--leafletbarhov: rgba(153,117,148,.5); /*Leaflet bar button hover*/
+	--leafletbuttonborder: rgba(185,142,183,.75); /* Leaflet button border color*/
+	--leafletaactive: #CC33C4; /*Leaflet link active*/
+	--subactionborder: rgba(217,51,51,.5); /*Border color for subactions*/
+	--subactionbg: rgba(98,68,68,.85); /*background color for subactions*/
+	--subactionahov: rgba(255,255,255,.9); /*Hover color for subactions*/
+}
+.dialog-LiveInventory tr, tbody tr:nth-child(odd):hover {
+	background: var(--sortablehov)!important;
+	transition: all 0s ease!important;
+}
+/*Tables without hover color*/
+.ui-dialog-layerManager tr table tr:hover,
+#KuKuThemeChooser-Container tr:hover{
+	background: transparent!important;
+}
