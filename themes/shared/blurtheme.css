@@ -3486,14 +3486,14 @@ div#available_ap_display div {
 }
 /*Portal names end*/
 /************************************Wasabee start**************************************/
-html body.wasabee-dialog-checklist input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist input{
 	width: 50px;
 }
-html body.wasabee-dialog-checklist html body.wasabee-table.order input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist table.wasabee-table.order input{
     width: 4rem;
 }
 /* wasabee-tooltip is used for the quickdraw mouse follower */
-html body.wasabee-tooltip {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-tooltip{
 	background-color: var(--tooltip);
 	        backdrop-filter: var(--bgblur);
 	border: 1px solid transparent;
@@ -3507,7 +3507,7 @@ html body.wasabee-tooltip {
 	z-index: 6;
 	font-family: inherit;
 }
-html body.wasabee-tooltip:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-tooltip:before{
 	border-right: 6px solid var(--accentcol02);
 	        backdrop-filter: var(--bgblur);
 	border-right-color: var(--tooltip);
@@ -3519,47 +3519,40 @@ html body.wasabee-tooltip:before {
 	left: -7px;
 	transition: all 0.3s;
 }
-html body.wasabee-error-tooltip {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-error-tooltip{
 	        backdrop-filter: var(--bgblur);
 	background-color: var(--errortooltipbg);
 	border: 1px solid var(--errortooltipborder);
 	color: var(--errortooltipcol);
 	transition: all 0.3s;
 }
-html body.wasabee-error-tooltip:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-error-tooltip:before{
 	        backdrop-filter: var(--bgblur);
 	border-right-color: var(--errortooltip);
 	transition: all 0.3s;
 }
 /* used in anything that is a sortable table */
-html body table.wasabee-table tr {
-	background-color: var(--tablecol)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tr{
+	background-color: var(--tablecol);
 	transition: background-color 0.3s;
 	font-family: inherit;
 }
-html body table.wasabee-table tr:nth-child(2n + 1) {
-	background: transparent!important;
-	transition: background-color 0.3s;/*Wasabee-stuff-stuff*/
-}
-html body table.wasabee-table tr:nth-child(odd) {
-	background: var(--sortablehov)!important; /*Sortable2*/
-}
-html body table.wasabee-table tbody tr:nth-child(odd) {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tbody tr:nth-child(odd){
 	background: var(--sortablehov);
 }
-html body table.wasabee-table > thead .sortable:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable:before{
 	content: "";
 	display: inline-block;
 	float: right;
 	min-width: 1em;
 	text-align: right;
 }
-html body table.wasabee-table tr:hover {
-	background: var(--sortablehov)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table tr:hover{
+	background: var(--sortablehov);
 	transition: background-color 0.3s;
 }
-html body table.wasabee-table td,
-html body table.wasabee-table th {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table td,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table th{
 	border-width: 0 1px;
 	border-style: solid;
 	padding: 2px 2px;
@@ -3568,60 +3561,60 @@ html body table.wasabee-table th {
 	border-color: var(--tableborder);
 	font-family: inherit;
 }
-html body table.wasabee-table > thead .sorted {
-	background-color: var(--portalslisttheadhov)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sorted{
+	background-color: var(--portalslisttheadhov);
 	transition: background-color 0.3s;
 }
-html body table.wasabee-table > thead .sortable.asc:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable.asc:before{
 	content: "▲";
 	transition: content 0.3s;
 }
-html body table.wasabee-table > thead .sortable.desc:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body table.wasabee-table > thead .sortable.desc:before{
 	content: "▼";
 	transition: content 0.3s;
 }
-html body.sortable {
-	background-color: var(--sortable)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.sortable{
+	background-color: var(--sortable);
 	transition: background-color 0.3s;
 }
-html body.sortable:hover {
-	background: var(--sortablehov)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.sortable:hover{
+	background: var(--sortablehov);
 	transition: background-color 0.3s;
 }
 /* this class is appended to leaflet-popup so we can adjust without stepping on other plugins */
-html body.wasabee-popup {
-	background: none !important;
-	border-radius: 6px !important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup{
+	background: none;
+	border-radius: 6px;
 	font-weight: bolder;
-	backdrop-filter: blur(8px) grayscale(100%)!important;
+	backdrop-filter: blur(8px) grayscale(100%);
 	font-family: inherit;
 }
-html body.wasabee-popup a.unclaimed {
-	color: var(--whitecol)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.unclaimed{
+	color: var(--whitecol);
 	font-size: 10pt;
 	letter-spacing: .6pt;
 	background: #707070;
     border-radius: 3px;
 }
-html body #map .wasabee-popup .leaflet-popup-content {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body #map .wasabee-popup .leaflet-popup-content{
 	color: var(--leafletpopupcol);
 	text-align: center;
 }
-html body.wasabee-popup a.enl {
-	color: var(--accentcol01) !important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.enl{
+	color: var(--accentcol01);
 	text-shadow: 0px 0px 10px var(--whitecol);
 	font-size: 10pt;
 }
-html body.wasabee-popup a.res {
-	color: var(--respopup) !important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-popup a.res{
+	color: var(--respopup);
 	text-shadow: 0px 0px 10px var(--whitecol);
 	font-size: 10pt;
 }
-html body.wasabee-marker-popup-kind:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-popup-kind:hover{
 	text-decoration: underline;
 	transition: text-decoration 0.3s;
 }
-html body.wasabee-marker-buttonset button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-buttonset button{
 	display: block;
 	        appearance: none;
 	background-color: var(--accentcol01);
@@ -3644,11 +3637,11 @@ html body.wasabee-marker-buttonset button {
 	font-family: inherit;
 	transition: background-color 0.3s;
 }
-html body.wasabee-marker-buttonset button:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-marker-buttonset button:hover{
 	background-color: var(--hovers2);
 	transition: background-color 0.3s;
 }
-html body.wasabee-dialog-markeradd div.content button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button{
 	border: 0px;
 	background: var(--focus01);
 	        box-shadow: 0 0 10px 0 var(--focus01);
@@ -3663,11 +3656,11 @@ html body.wasabee-dialog-markeradd div.content button {
 	        transform: scale(1.5);
 }
 /* all dialogs get this class -- do global stuff with it */
-html body.wasabee-dialog {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog{
 	border-radius: 10px;
 	        box-shadow: 0px 0px 20px 6px var(--dialogshadow);
 	min-width: 330px;
-	background-color: var(--bgroundcol)!important;
+	background-color: var(--bgroundcol);
 	        backdrop-filter: var(--bgblur);
 	/*margin-top: 4px;*/
 	border: none;
@@ -3686,19 +3679,19 @@ html body.wasabee-dialog {
             transform: translateY(10px);
   }
 }
-html body.wasabee-dialog ::-webkit-scrollbar {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar{
 	width: 8px;
 	height: 6px;
 }
-html body.wasabee-dialog ::-webkit-scrollbar-track {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar-track{
 	border-radius: 10px;
 	background: var(--scrolltrack);
 }
-html body.wasabee-dialog ::-webkit-scrollbar-thumb {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog ::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background: var(--accentcol01);
 }
-html body.wasabee-dialog button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button{
 	        appearance: none;
 	background-color: var(--accentcol01);
 	border: 1px solid var(--buttonborder);
@@ -3724,12 +3717,12 @@ html body.wasabee-dialog button {
 	font-family: inherit;
 	transition: background-color 0.3s;
 }
-html body.wasabee-dialog button:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button:hover{
 	background-color: var(--hovers2);
 	transition: background-color 0.3s;
 	text-decoration: none;
 }
-html body.wasabee-dialog input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input{
 	appearance: none;
 	border: 0;
 	border-bottom: 1px solid var(--accentcol01);
@@ -3742,21 +3735,21 @@ html body.wasabee-dialog input {
 	transition: all 0.3s;
 	caret-color: var(--focus01);
 }
-html body.wasabee-dialog input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input-placeholder{
 	color: var(--accentcol02);
 	opacity: 0.5;
 	font-family: inherit;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog input:hover::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:hover::-webkit-input-placeholder{
 	opacity: 0.75;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog input:focus::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:focus::-webkit-input-placeholder{
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog input:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:hover{
 	appearance: none;
 	border: 0;
 	border-bottom: 1px solid var(--hovers2);
@@ -3766,45 +3759,45 @@ html body.wasabee-dialog input:hover {
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog input:focus {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:focus{
 	border: none;
 	outline: none;
 	border-bottom: 1px solid var(--focus01);
 	transition: all 0.3s ease-in-out;
 	color: var(--whitecol);
 }
-html body.wasabee-dialog input::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-webkit-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog input::-moz-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-moz-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog input:-ms-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input:-ms-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog input::-ms-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::-ms-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog input::placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input::placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog a {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog a{
 	color: var(--focuscol);
 }
-html body.wasabee-dialog a:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog a:hover{
 	color: var(--lightwhite);
 	transition: color 0.3s ease-in-out;
 	text-decoration: none;
 }
-html body.wasabee-dialog h3 {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog h3{
 	color: var(--hovers3);
 }
-html body.wasabee-dialog div.ui-dialog-titlebar {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog div.ui-dialog-titlebar{
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	background: var(--titlebarbg);
@@ -3816,32 +3809,32 @@ html body.wasabee-dialog div.ui-dialog-titlebar {
 	font-size: 14px;
 	transition: background 0.3s;
 }
-html body.wasabee-dialog span.ui-dialog-title {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog span.ui-dialog-title{
 	color: var(--titlebartitlecol);
 	transition: color 0.3s;
 	margin-right: 65px
 }
-html body.wasabee-dialog span.ui-dialog-title-active {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog span.ui-dialog-title-active{
 	color: var(--focus01);
 	transition: color 0.3s;
 }
-html body.wasabee-dialog .ui-dialog-titlebar-button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-titlebar-button{
 	border-radius: 6px;
-	height: 18px!important;
+	height: 18px;
 }
-html body.wasabee-dialog .ui-dialog-titlebar-button-collapse {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-titlebar-button-collapse{
 	right: 35px;
 }
-html body.wasabee-dialog .ui-dialog-content {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-content{
 	border-bottom: 1px solid var(--uidialogborder);
 }
-html body.wasabee-dialog .ui-dialog-buttonpane {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-dialog-buttonpane{
 	padding: 4px;
 	border-top: initial;
 }
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-	html body.wasabee-dialog input[type=checkbox],
-	html body.wasabee-dialog input[type=radio] {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox],
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]{
 		appearance: none;
 		height: 21px;
 		outline: none;
@@ -3856,8 +3849,8 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		transition: background 0.3s, border-color 0.3s, box-shadow 0.2s, -webkit-box-shadow 0.2s;
 		place-self: center start;
 	}
-	html body.wasabee-dialog input[type=checkbox]:after,
-	html body.wasabee-dialog input[type=radio]:after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:after,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:after{
 		content: "";
 		display: block;
 		left: 0;
@@ -3867,51 +3860,51 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s),
 		-webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
 	}
-	html body.wasabee-dialog input[type=checkbox]:hover,
-	html body.wasabee-dialog input[type=radio]:hover {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:hover{
 		--active: var(--hovers2);
 	}
-	html body.wasabee-dialog input[type=checkbox]:checked,
-	html body.wasabee-dialog input[type=radio]:checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:checked,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:checked{
 		--b: var(--active);
 		--bc: var(--active);
 		--d-o: 0.3s;
 		--d-t: 0.6s;
 		--d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 	}
-	html body.wasabee-dialog input[type=checkbox]:disabled,
-	html body.wasabee-dialog input[type=radio]:disabled {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled{
 		--b: var(--disabled);
 		cursor: not-allowed;
 		opacity: 0.9;
 	}
-	html body.wasabee-dialog input[type=checkbox]:disabled:checked,
-	html body.wasabee-dialog input[type=radio]:disabled:checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled:checked,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled:checked{
 		--b: var(--disabled-inner);
 		--bc: var(--border);
 	}
-	html body.wasabee-dialog input[type=checkbox]:disabled + label,
-	html body.wasabee-dialog input[type=radio]:disabled + label {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:disabled + label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:disabled + label{
 		cursor: not-allowed;
 	}
-	html body.wasabee-dialog input[type=checkbox]:hover:not(:checked):not(:disabled),
-	html body.wasabee-dialog input[type=radio]:hover:not(:checked):not(:disabled) {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:hover:not(:checked):not(:disabled),
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:hover:not(:checked):not(:disabled){
 		--bc: var(--border-hover);
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch),
-	html body.wasabee-dialog input[type=radio]:not(.switch) {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch),
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch){
 		width: 21px;
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch):after,
-	html body.wasabee-dialog input[type=radio]:not(.switch):after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):after,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch):after{
 		opacity: var(--o, 0);
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch):checked,
-	html body.wasabee-dialog input[type=radio]:not(.switch):checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):checked,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:not(.switch):checked{
 		--o: 1;
 	}
-	html body.wasabee-dialog input[type=checkbox] + label,
-	html body.wasabee-dialog input[type=radio] + label {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox] + label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio] + label{
 		font-size: 14px;
 		line-height: 21px;
 		display: inline-block;
@@ -3920,10 +3913,10 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		margin-left: 4px;
 		place-self: center start;
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch) {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch){
 		border-radius: 7px;
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch):after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):after{
 		width: 5px;
 		height: 9px;
 		border: 2px solid var(--active-inner);
@@ -3933,14 +3926,14 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		top: 4px;
 		        transform: rotate(var(--r, 20deg));
 	}
-	html body.wasabee-dialog input[type=checkbox]:not(.switch):checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox]:not(.switch):checked{
 		--r: 43deg;
 	}
-	html body.wasabee-dialog input[type=checkbox].switch {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch{
 		width: 38px;
 		border-radius: 11px;
 	}
-	html body.wasabee-dialog input[type=checkbox].switch:after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:after{
 		left: 2px;
 		top: 2px;
 		border-radius: 50%;
@@ -3949,17 +3942,17 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		background: var(--ab, var(--border));
 		        transform: translateX(var(--x, 0));
 	}
-	html body.wasabee-dialog input[type=checkbox].switch:checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:checked{
 		--ab: var(--active-inner);
 		--x: 17px;
 	}
-	html body.wasabee-dialog input[type=checkbox].switch:disabled:not(:checked):after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=checkbox].switch:disabled:not(:checked):after{
 		opacity: 0.6;
 	}
-	html body.wasabee-dialog input[type=radio] {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]{
 		border-radius: 50%;
 	}
-	html body.wasabee-dialog input[type=radio]:after {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:after{
 		width: 19px;
 		height: 19px;
 		border-radius: 50%;
@@ -3967,41 +3960,41 @@ html body.wasabee-dialog .ui-dialog-buttonpane {
 		opacity: 0;
 		        transform: scale(var(--s, 0.7));
 	}
-	html body.wasabee-dialog input[type=radio]:checked {
+	:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog input[type=radio]:checked{
 		--s: 0.5;
 	}
 }
-html body.wasabee-dialog button.drawb::before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb::before{
 	content: "";
 	font-size: 12pt;
 }
 /* classes specific to various dialogs */
-html body.wasabee-dialog-auth .content {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-auth .content{
 	display: grid;
 	font-family: inherit;
 	justify-items: center;
 }
-html body.wasabee-dialog-wdkeys div.portal {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys div.portal{
 	padding: 4px 0px 8px 0px;
 	place-self: center start;
 }
-html body.wasabee-dialog-wdkeys input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys input{
 	padding: 4px;
 	place-self: center start;
 	width: 100%;
 	margin-bottom: 5px;
 	margin-top: 5px;
 }
-html body.wasabee-dialog-wdkeys button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button{
 	width: fit-content;
 	place-self: center start;
 }
-html body.wasabee-dialog-export textarea {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea{
 	overflow-x: hidden;
 }
-html body.wasabee-dialog-export textarea,
-html body.wasabee-dialog-import textarea,
-html body.wasabee-dialog-op-settings textarea {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea{
 	appearance: none;
 	width: 97%;
 	height: 250px;
@@ -4017,28 +4010,28 @@ html body.wasabee-dialog-op-settings textarea {
 	transition: all 0.3s;
 	caret-color: var(--focus01);
 }
-html body.wasabee-dialog-export textarea-placeholder,
-html body.wasabee-dialog-import textarea-placeholder,
-html body.wasabee-dialog-op-settings textarea-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea-placeholder{
 	color: var(--accentcol02);
 	opacity: 0.5;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea:hover::-webkit-input-placeholder,
-html body.wasabee-dialog-import textarea:hover::-webkit-input-placeholder,
-html body.wasabee-dialog-op-settings textarea:hover::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:hover::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:hover::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:hover::-webkit-input-placeholder{
 	opacity: 0.75;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea:focus::-webkit-input-placeholder,
-html body.wasabee-dialog-import textarea:focus::-webkit-input-placeholder,
-html body.wasabee-dialog-op-settings textarea:focus::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:focus::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:focus::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:focus::-webkit-input-placeholder{
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea:hover,
-html body.wasabee-dialog-import textarea:hover,
-html body.wasabee-dialog-op-settings textarea:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:hover{
 	appearance: none;
 	border: 0;
 	border: 1px solid var(--textareahov);
@@ -4047,127 +4040,135 @@ html body.wasabee-dialog-op-settings textarea:hover {
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea:focus,
-html body.wasabee-dialog-import textarea:focus,
-html body.wasabee-dialog-op-settings textarea:focus {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:focus,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:focus,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:focus{
 	outline: none;
 	color: var(--whitecol);
 	border: 1px solid var(--focus01);
 	background: var(--textareafocus);
 	transition: all 0.3s;
 }
-html body.wasabee-dialog-export textarea::-webkit-input-placeholder, html body.wasabee-dialog-import textarea::-webkit-input-placeholder, html body.wasabee-dialog-op-settings textarea::-webkit-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-webkit-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-webkit-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea::-moz-placeholder, html body.wasabee-dialog-import textarea::-moz-placeholder, html body.wasabee-dialog-op-settings textarea::-moz-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-moz-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-moz-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-moz-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea:-ms-input-placeholder, html body.wasabee-dialog-import textarea:-ms-input-placeholder, html body.wasabee-dialog-op-settings textarea:-ms-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea:-ms-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea:-ms-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea:-ms-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea::-ms-input-placeholder, html body.wasabee-dialog-import textarea::-ms-input-placeholder, html body.wasabee-dialog-op-settings textarea::-ms-input-placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::-ms-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::-ms-input-placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::-ms-input-placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-export textarea::placeholder,
-html body.wasabee-dialog-import textarea::placeholder,
-html body.wasabee-dialog-op-settings textarea::placeholder {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-export textarea::placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea::placeholder,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings textarea::placeholder{
 	color: var(--hovers3);
 	transition: all 0.3s ease-in-out;
 }
-html body.wasabee-dialog-import textarea {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import textarea{
 	margin-top: 15px;
 	width: 97%;
 	height: 250px;
 	resize: vertical;
 }
-html body.wasabee-dialog-import input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-import input{
 	width: 100%;
 	resize: vertical;
 	margin-bottom: 5px;
 	margin-top: 5px;
 }
-html body.wasabee-dialog-manageteam div.list {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam div.list{
 	    grid-column-start: 1;
 	grid-column-end: 4;
 	border-bottom: 1px solid var(--mgrteamborder);
 	margin-bottom: 15px;
 }
-html body.wasabee-dialog-manageteam label {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam label{
 	    grid-column-start: 1;
 	grid-column-end: 2;
 	place-self: center start;
 }
-html body.wasabee-dialog-manageteam input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam input{
 	margin: 2px 2px 2px 2px;
 	    grid-column-start: 2;
 	grid-column-end: 3;
 	place-self: center start;
 }
-html body.wasabee-dialog-manageteam button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-manageteam button{
 	    grid-column-start: 3;
 	grid-column-end: 4;
 	width: fit-content;
 	place-self: start;
 }
-html body.wasabee-dialog-op-settings div.buttonset {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings div.buttonset{
 	display: grid;
 	grid-template-columns: 1fr;
 	margin-top: 10px;
 }
-html body.wasabee-dialog-op-settings div.buttonset button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-op-settings div.buttonset button{
 	margin: 4px;
 	width: fit-content;
 }
-html body.wasabee-dialog-checklist div.ui-dialog-content,
-html body.wasabee-dialog-keyslist div.ui-dialog-content,
-html body.wasabee-dialog-blockerlist div.ui-dialog-content {
-	max-height: calc(97vh - 95px - 24px - 2px)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist div.ui-dialog-content,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist div.ui-dialog-content,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-blockerlist div.ui-dialog-content{
+	max-height: calc(97vh - 95px - 24px - 2px);
 }
-html body.wasabee-dialog-checklist select {
- height: 20px!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist select{
+ height: 20px;
 }
-html body.wasabee-dialog-settings {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings{
 	max-width: min-content;
 	min-width: 400px;
 }
-html body.wasabee-dialog-settings input[type=checkbox] + label {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings input[type=checkbox] + label{
 	margin-left: 0px;
 	font-size: 10pt;
 	place-self: center start;
 }
-html body.wasabee-dialog-settings label {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings label{
 	    grid-column-start: 1;
 	grid-column-end: 2;
 	place-self: center start;
 	padding: 4px;
 	border-top: none;
 }
-html body.wasabee-dialog-settings select {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings select{
 	    grid-column-start: 2;
 	grid-column-end: 3;
 	place-self: center start;
 }
-html body.wasabee-dialog textarea {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog textarea{
 	caret-color: var(--focus01);
 }
 /**Special disables for select menu downarrow big boxes start**/
-#dialog-wasabee-filter .filters.ui-tabs-panel select {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body #dialog-wasabee-filter .filters.ui-tabs-panel select{
 	background: none;
 	padding: 0
 }
 /*Key list*/
-html body.wasabee-dialog-keyslist .enough {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist .enough{
   color: var(--wbenough);
 }
-html body.wasabee-dialog-keyslist .notenough {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-keyslist .notenough{
   color: var(--wbnotenough);
 }
 /*Filters & actions*/
-html body.wasabee-dialog-filter .filters {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-filter .filters{
     grid-gap: 0.3em 0.6em;
     align-items: center;
     display: grid;
@@ -4177,7 +4178,7 @@ html body.wasabee-dialog-filter .filters {
     align-content: center;
 }
 /**Special disables for select menu downarrow big boxes end**/
-html body.wasabee-dialog select {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select{
 	appearance: none;
 	outline: 0;
 	font: inherit;
@@ -4195,12 +4196,12 @@ html body.wasabee-dialog select {
 	font-family: inherit;
     line-height: normal;
 }
-html body.wasabee-dialog select:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:hover{
 	content: "▼";
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAtMjU2IDE3OTIgMTc5MiIKICAgaWQ9InN2ZzI5ODkiCiAgIHZlcnNpb249IjEuMSIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45Mi40ICg1ZGE2ODljMzEzLCAyMDE5LTAxLTE0KSIKICAgd2lkdGg9IjEwMCUiCiAgIGhlaWdodD0iMTAwJSIKICAgc29kaXBvZGk6ZG9jbmFtZT0iQ2FyZXRfZG93bl9mb250X2F3ZXNvbWVfd2hpdGV2YXJpYXRpb24uc3ZnIj4KICA8bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGEyOTk5Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPgogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcwogICAgIGlkPSJkZWZzMjk5NyIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IgogICAgIGJvcmRlcm9wYWNpdHk9IjEiCiAgICAgb2JqZWN0dG9sZXJhbmNlPSIxMCIKICAgICBncmlkdG9sZXJhbmNlPSIxMCIKICAgICBndWlkZXRvbGVyYW5jZT0iMTAiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAiCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjY0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI0ODAiCiAgICAgaWQ9Im5hbWVkdmlldzI5OTUiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuMTMxNjk2NDMiCiAgICAgaW5rc2NhcGU6Y3g9Ijg5NiIKICAgICBpbmtzY2FwZTpjeT0iODk2IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzI5ODkiIC8+CiAgPGcKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0MDIuNDQwNjgsMTIzOS44NjQ0KSIKICAgICBpZD0iZzI5OTEiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZiI+CiAgICA8cGF0aAogICAgICAgZD0ibSAxMDI0LDgzMiBxIDAsLTI2IC0xOSwtNDUgTCA1NTcsMzM5IHEgLTE5LC0xOSAtNDUsLTE5IC0yNiwwIC00NSwxOSBMIDE5LDc4NyBxIC0xOSwxOSAtMTksNDUgMCwyNiAxOSw0NSAxOSwxOSA0NSwxOSBoIDg5NiBxIDI2LDAgNDUsLTE5IDE5LC0xOSAxOSwtNDUgeiIKICAgICAgIGlkPSJwYXRoMjk5MyIKICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmIiAvPgogIDwvZz4KPC9zdmc+Cg==) no-repeat right 1px center/1.4em, linear-gradient(to left, var(--hovers2) 19px, rgba(29, 36, 36, 0) 0px);
 	border: 1px solid var(--hovers2);
 }
-html body.wasabee-dialog select:disabled {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:disabled{
 	appearance: none;
 	outline: 0;
 	font: inherit;
@@ -4221,23 +4222,23 @@ html body.wasabee-dialog select:disabled {
 	z-index: 2500;
 	opacity: 1;
 }
-html body.wasabee-dialog select option {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select option{
 	background-color: var(--hovers2);
 }
-html body.wasabee-dialog select:focus {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog select:focus{
 	outline: none;
 }
-html body.wasabee-dialog-settings input {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings input{
 	    grid-column-start: 2;
 	grid-column-end: 3;
 	place-self: center start;
 }
-html body.wasabee-dialog-settings button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-settings button{
 	    grid-column-start: 1;
 	grid-column-end: 3;
 	place-self: center;
 }
-html body.wasabee-dialog-skin ol.left {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ol.left{
 	clear: both;
 	border: 1px solid var(--mgrteamborder);
 	padding-left: 0;
@@ -4245,18 +4246,18 @@ html body.wasabee-dialog-skin ol.left {
 	transition: all 0.3s;
 	border-radius: 5px;
 }
-html body.wasabee-dialog-skin ul.right {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ul.right{
 	clear: both;
 	border: 1px solid var(--mgrteamborder);
 	padding-left: 0;
 	transition: all 0.3s;
 	border-radius: 5px;
 }
-html body.wasabee-dialog-skin ul.right {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin ul.right{
 	list-style-type: none;
 	transition: all 0.3s;
 }
-html body.wasabee-dialog-skin li {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li{
 	border: none;
 	height: 1.5em;
 	padding: 3px 4px;
@@ -4264,92 +4265,92 @@ html body.wasabee-dialog-skin li {
 	transition: all 0.3s;
 	cursor: grab;
 }
-html body.wasabee-dialog-skin li:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li:hover{
 	background: var(--sortablehov);
 	transition: background-color 0.3s;
 }
-html body.wasabee-dialog-skin li:active {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-skin li:active{
 	background: var(--skinactive);
 	transition: background-color 0.3s;
 }
-html body.wasabee-link-seperator:before {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-link-seperator:before{
 	content: " ► ";
 	font-size: 10.5pt;
 }
 /* marker color */
-html body.CapturePortalMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.CapturePortalMarker{
 	color: #ACACAC;
 	font-weight: bold;
 	font-size: 10pt
 }
-html body.LetDecayPortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.LetDecayPortalAlert{
 	color: var(--accentcol02)000;
 	font-weight: bold;
 	font-size: 10pt
 }
-html body.DestroyPortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.DestroyPortalAlert{
 	color: var(--panecol);
 	font-weight: bold;
 	font-size: 10pt
 }
-html body.FarmPortalMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.FarmPortalMarker{
 	color: #f17030;
 	font-weight: bold;
 	font-size: 10pt
 }
-html body.GotoPortalMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.GotoPortalMarker{
 	color: #e235a9;
 	font-weight: bold;
 	font-size: 10pt;
 }
-html body.GetKeyPortalMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.GetKeyPortalMarker{
 	color: #78b32c;
 	font-weight: bold;
 	font-size: 10pt;
 }
-html body.CreateLinkAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.CreateLinkAlert{
 	color: #0a5d00;
 	font-weight: bold;
 	font-size: 10pt;
 	text-shadow: 0px 0px 10px var(--whitecol);
 }
-html body.MeetAgentPortalMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.MeetAgentPortalMarker{
 	color: #775E43;
 	font-weight: bold;
 	font-size: 10pt;
 	/*text-shadow: 0px 0px 10px var(--whitecol);*/
 }
-html body.OtherPortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.OtherPortalAlert{
 	color: #3c3c3c;
 	font-weight: bold;
 	font-size: 10pt;
 	text-shadow: 0px 0px 10px var(--whitecol);
 }
-html body.RechargePortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.RechargePortalAlert{
 	color: #298566;
 	font-weight: bold;
 	font-size: 10pt;
 }
-html body.UpgradePortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.UpgradePortalAlert{
 	color: #298566;
 	font-weight: bold;
 	font-size: 10pt;
 }
-html body.UseVirusPortalAlert {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.UseVirusPortalAlert{
 	color: #400080;
 	font-weight: bold;
 	font-size: 10pt;
 }
-html body.ExcludeMarker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.ExcludeMarker{
 	color: var(--accentcol02)099;
 	font-weight: bold;
 	font-size: 10pt;
 }
 /* color pickers */
-input.picker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body input.picker{
 	width: -webkit-fill-available;
 }
-html body.wasabee-dialog-checklist div .hidden-color-picker {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-checklist div .hidden-color-picker{
 	visibility: hidden;
 	width: 5px;
 	height: 0;
@@ -4358,7 +4359,7 @@ html body.wasabee-dialog-checklist div .hidden-color-picker {
 	margin: 0;
 }
 /* Autodraw dialogs */
-html body.wasabee-dialog button.drawb {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb{
 	border: 0px;
 	background: var(--focus01);
 	        box-shadow: 0 0 10px 0 var(--focus01);
@@ -4389,14 +4390,14 @@ html body.wasabee-dialog button.drawb {
 		        box-shadow: 0 0 10px 0 var(--pulse01);
 	}
 }
-html body.wasabee-dialog-fanfield .container,
-html body.wasabee-dialog-homogeneous .container,
-html body.wasabee-dialog-link .container,
-html body.wasabee-dialog-madrid .container,
-html body.wasabee-dialog-multimax .container,
-html body.wasabee-dialog-onion .container,
-html body.wasabee-dialog-starburst .container,
-html body.wasabee-dialog-savelinks .container {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst .container,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks .container{
 	display: grid;
 	grid-gap: 0.2em 0.5em;
 	        align-items: center;
@@ -4404,26 +4405,26 @@ html body.wasabee-dialog-savelinks .container {
 	font-family: inherit;
 	margin: 2px;
 }
-html body.wasabee-dialog-fanfield label,
-html body.wasabee-dialog-link label,
-html body.wasabee-dialog-madrid label,
-html body.wasabee-dialog-multimax label,
-html body.wasabee-dialog-onion label,
-html body.wasabee-dialog-starburst label,
-html body.wasabee-dialog-savelinks label {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst label,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks label{
 	grid-column: 1;
 	vertical-align: central;
 	font-family: inherit;
 }
-html body.wasabee-dialog-fanfield button,
-html body.wasabee-dialog-homogeneous button,
-html body.wasabee-dialog-link button,
-html body.wasabee-dialog-madrid button,
-html body.wasabee-dialog-multimax button,
-html body.wasabee-dialog-onion button,
-html body.wasabee-dialog-starburst button,
-html body.wasabee-dialog-savelinks button,
-html body.wasabee-dialog-wdkeys button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks button,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button{
 	grid-column: 2;
 	cursor: pointer;
 	        appearance: none;
@@ -4449,42 +4450,42 @@ html body.wasabee-dialog-wdkeys button {
 	transition: background-color 0.3s;
 	place-self: center start;
 }
-html body.wasabee-dialog-fanfield button:hover,
-html body.wasabee-dialog-homogeneous button:hover,
-html body.wasabee-dialog-link button:hover,
-html body.wasabee-dialog-madrid button:hover,
-html body.wasabee-dialog-multimax button:hover,
-html body.wasabee-dialog-onion button:hover,
-html body.wasabee-dialog-starburst button:hover,
-html body.wasabee-dialog-savelinks button:hover,
-html body.wasabee-dialog button.drawb:hover,
-html body.wasabee-dialog-wdkeys button:hover,
-html body.wasabee-dialog-markeradd div.content button:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-fanfield button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-homogeneous button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-link button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-madrid button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-multimax button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-onion button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-starburst button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-savelinks button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-wdkeys button:hover,
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button:hover{
 	background-color: var(--hovers2);
 	transition: background-color 0.3s;
 }
-html body.wasabee-dialog-markeradd div.content button:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog-markeradd div.content button:hover{
 	color: var(--lightwhite);
 }
-html body.wasabee-dialog button.drawb:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog button.drawb:hover{
 	color: var(--lightwhite);
 }
 /* Panes start*/
-html body.wasabee-pane {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane{
 	background: var(--drawbutton);
 }
-html body.wasabee-pane html body.wasabee-dialog .header {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .header{
     color: var(--lightwhite);
     background-color: transparent;
     border: none;
     backdrop-filter: blur(3px) grayscale(100%);
 }
-html body.wasabee-pane html body.wasabee-dialog .buttonset {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .buttonset{
 	background-color: transparent;
 	border: none;
     backdrop-filter: blur(3px) grayscale(100%);
 }
-html body.wasabee-pane html body.wasabee-dialog .buttonset button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-pane .wasabee-dialog .buttonset button{
     color: var(--lightwhite);
     border: none;
     margin: 5px;
@@ -4492,29 +4493,29 @@ html body.wasabee-pane html body.wasabee-dialog .buttonset button {
 }
 /*Panes end*/
 /*Toolbar start*/
-html body.wasabee-buttons .leaflet-bar {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar{
 	list-style: none;
 	padding-left: 0;
 	font-family: inherit;
 	        backdrop-filter: var(--bgblur);
 }
 /* overwrite leaflet css */
-html body.wasabee-buttons .leaflet-bar > li > a {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a{
 	border-radius: unset;
 	background-color: var(--leafletbuttonbg);
 	transition: background-color 0.3s;
 }
-html body.wasabee-buttons .leaflet-bar > li > a:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a:hover{
 	background-color: var(--leafletbarhov);
 	transition: background-color 0.3s;
 }
-html body.wasabee-buttons .leaflet-bar > li > a {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons .leaflet-bar > li > a{
 	border-bottom: 1px solid var(--leafletbuttonborder);
 }
-html body.wasabee-buttons.leaflet-control a.active {
-	background-color: var(--leafletaactive)!important;
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-buttons.leaflet-control a.active{
+	background-color: var(--leafletaactive);
 }
-html body.wasabee-subactions a {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-subactions a{
 	padding-left: 8px;
 	padding-right: 8px;
 	border-left: none;
@@ -4527,42 +4528,42 @@ html body.wasabee-subactions a {
 	background-color: var(--subactionbg);
 	transition: all 0.3s;
 }
-html body.wasabee-subactions a:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-subactions a:hover{
 	background-color: var(--subactionahov);
 	        backdrop-filter: var(--bgblur);
 	width: auto;
 }
 /*Toolbar end*/
-html body.wasabee-dialog .ui-tabs-nav li a:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-tabs-nav li a:hover{
 	color: var(--lightwhite);
 }
-html body.wasabee-dialog .ui-tabs-nav li.ui-tabs-active a {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-dialog .ui-tabs-nav li.ui-tabs-active a{
 	color: var(--hovers);
 }
-html body.wasabee-anchor-buttonset {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-anchor-buttonset{
 	display: block;
 }
 /*Wasabee markers button*/
-html body.wasabee-markers .action-button {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button{
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
   	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 	border: 1px solid transparent;
 }
-html body.wasabee-markers .action-button::after {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button::after{
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   	opacity: 0;
   	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-html body.wasabee-markers .action-button:active {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:active{
 	background-position: 0px 0px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-html body.wasabee-markers .action-button:hover {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:hover{
 	background-position: 0px 0px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
 	border: 1px solid var(--border-hover);
 }
-html body.wasabee-markers .action-button:hover:after {
+:root:not(#wasabee-specificity-boost):not(#wasabee-specificity-boost-2):not(#wasabee-specificity-boost-3) body.wasabee-markers .action-button:hover:after{
 	opacity: 1;
 }
 /*FULL Wasabee end*/
