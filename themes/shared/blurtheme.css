@@ -4518,8 +4518,8 @@ input.picker {
 	transition: all 0.3s !important;
 }
 .wasabee-subactions a:hover {
-	background-color: var(--subactionahov) !important;
-	        backdrop-filter: var(--active) !important;
+	background-color: var(--active) !important;
+	        backdrop-filter: var(--bgblur) !important;
 	width: auto !important;
 }
 /*Toolbar end*/

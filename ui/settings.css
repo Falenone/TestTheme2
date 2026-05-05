@@ -47,8 +47,11 @@
   padding-right: 4px;
 }
 
-.testtheme-theme-card {
+.testtheme-preview-card {
+  appearance: none;
   width: 250px;
+  height: auto !important;
+  min-height: 0 !important;
   padding: 0;
   margin: 0;
   border: 1px solid rgba(255,255,255,0.25);
@@ -58,11 +61,22 @@
   cursor: pointer;
   text-align: center;
   overflow: hidden;
+  line-height: normal;
+  box-sizing: border-box;
 }
 
-.testtheme-theme-card.is-selected {
+.testtheme-preview-card.is-selected {
   border: 2px solid #f5c542;
   background: rgba(245,197,66,0.12);
+}
+
+.testtheme-preview-card:focus {
+  outline: 2px solid #f5c542;
+  outline-offset: 2px;
+}
+
+.testtheme-preview-card img {
+  pointer-events: none;
 }
 
 .testtheme-theme-preview {
@@ -80,7 +94,7 @@
   font-size: 13px;
 }
 
-.testtheme-theme-card.is-selected .testtheme-theme-title {
+.testtheme-preview-card.is-selected .testtheme-theme-title {
   font-weight: 700;
 }
 

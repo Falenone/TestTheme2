@@ -324,10 +324,10 @@ function userscriptBody(version) {
   function createThemeCard(theme, selectedThemeId, onSelect) {
     const selected = theme.id === selectedThemeId;
 
-    const card = makeElement('button', {
-      type: 'button',
-      className: 'testtheme-theme-card ' + PLUGIN_ID + '-theme-card' + (selected ? ' is-selected' : '')
-    }, [
+	const card = makeElement('button', {
+	  type: 'button',
+	  className: 'testtheme-preview-card ' + PLUGIN_ID + '-preview-card' + (selected ? ' is-selected' : '')
+	}, [
       createPreviewImage(theme),
       makeElement('div', {
         textContent: theme.name,
