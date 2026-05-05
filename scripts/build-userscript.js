@@ -503,16 +503,16 @@ function userscriptBody(version) {
     const left = makeElement('div');
     left.appendChild(makeElement('h3', {textContent: 'Themes', style: {marginTop: '0'}}));
 
-    const grid = makeElement('div', {
-      style: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 250px)',
-        gap: '10px',
-        maxHeight: '70vh',
-        overflow: 'auto',
-        paddingRight: '4px'
-      }
-    });
+	const grid = makeElement('div', {
+	  style: {
+		display: 'grid',
+		gridTemplateColumns: '250px',
+		gap: '10px',
+		maxHeight: '70vh',
+		overflow: 'auto',
+		paddingRight: '4px'
+	  }
+	});
 
     allThemes().forEach(function (theme) {
       grid.appendChild(createThemeCard(theme, settings.theme, function (themeId) {
