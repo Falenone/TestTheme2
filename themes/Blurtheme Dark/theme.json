@@ -1,8 +1,0 @@
-{
-  "name": "Blurtheme Dark",
-  "description": "Modern IITC theme, in darker color",
-  "sharedCss": [
-    "blurtheme.css",
-    "blurtheme-common.css"
-  ]
-}
