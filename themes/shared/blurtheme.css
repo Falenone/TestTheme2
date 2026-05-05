@@ -3533,16 +3533,16 @@ html body .wasabee-error-tooltip:before {
 }
 /* used in anything that is a sortable table */
 html body table .wasabee-table tr {
-	background-color: var(--tablecol);
+	background-color: var(--tablecol)!important;
 	transition: background-color 0.3s;
 	font-family: inherit;
 }
 html body table .wasabee-table tr:nth-child(2n + 1) {
-	background: transparent;
+	background: transparent!important;
 	transition: background-color 0.3s;/*Wasabee-stuff-stuff*/
 }
 html body table .wasabee-table tr:nth-child(odd) {
-	background: var(--sortablehov); /*Sortable2*/
+	background: var(--sortablehov)!important; /*Sortable2*/
 }
 html body table .wasabee-table > thead .sortable:before {
 	content: "";
@@ -3552,7 +3552,7 @@ html body table .wasabee-table > thead .sortable:before {
 	text-align: right;
 }
 html body table .wasabee-table tr:hover {
-	background: var(--sortablehov);
+	background: var(--sortablehov)!important;
 	transition: background-color 0.3s;
 }
 html body table .wasabee-table td,
@@ -3566,7 +3566,7 @@ html body table .wasabee-table th {
 	font-family: inherit;
 }
 html body table .wasabee-table > thead .sorted {
-	background-color: var(--portalslisttheadhov);
+	background-color: var(--portalslisttheadhov)!important;
 	transition: background-color 0.3s;
 }
 html body table .wasabee-table > thead .sortable.asc:before {
@@ -3578,11 +3578,11 @@ html body table .wasabee-table > thead .sortable.desc:before {
 	transition: content 0.3s;
 }
 html body .sortable {
-	background-color: var(--sortable);
+	background-color: var(--sortable)!important;
 	transition: background-color 0.3s;
 }
 html body .sortable:hover {
-	background: var(--sortablehov);
+	background: var(--sortablehov)!important;
 	transition: background-color 0.3s;
 }
 /* this class is appended to leaflet-popup so we can adjust without stepping on other plugins */
