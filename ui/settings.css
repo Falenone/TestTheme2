@@ -1,16 +1,3 @@
-/*
-  Settings window UI CSS.
-
-  This controls only the plugin's theme chooser/settings window.
-  Theme CSS that affects the Intel map still belongs in:
-  - global-imports.css
-  - themes/shared/*.css
-  - themes/<theme>/base.css
-  - themes/<theme>/variants/*.css
-  - themes/<theme>/options/*.css
-  - global-options/*.css
-*/
-
 :root {
   --testtheme-ui-gap: 16px;
 }

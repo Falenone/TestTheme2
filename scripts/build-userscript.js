@@ -236,12 +236,18 @@ function userscriptBody(version) {
       style.setAttribute(LAST_STYLE_MARKER, 'true');
     }
 
-    if (document.head && style.parentNode !== document.head) {
-      document.head.appendChild(style);
+    /*
+      Append to <html>, not only <head>. CSS still applies, but this keeps the
+      theme style after late plugin styles appended to <head>, including plugins
+      that inject their own CSS after IITC boot.
+    */
+    const target = document.documentElement || document.head || document.body;
+    if (target && style.parentNode !== target) {
+      target.appendChild(style);
     }
 
-    if (document.head && document.head.lastElementChild !== style) {
-      document.head.appendChild(style);
+    if (target && target.lastElementChild !== style) {
+      target.appendChild(style);
     }
 
     return style;
@@ -613,16 +619,28 @@ function userscriptBody(version) {
   }
 
   function keepStyleLast() {
-    if (!document.head || typeof MutationObserver !== 'function') return;
+    if (!document.documentElement || typeof MutationObserver !== 'function') return;
+
+    let scheduled = false;
+
+    const moveLast = function () {
+      scheduled = false;
+      const style = document.getElementById(STYLE_ID);
+      const target = document.documentElement || document.head || document.body;
+
+      if (style && target && target.lastElementChild !== style) {
+        target.appendChild(style);
+      }
+    };
 
     const observer = new MutationObserver(function () {
-      const style = document.getElementById(STYLE_ID);
-      if (style && document.head.lastElementChild !== style) {
-        document.head.appendChild(style);
-      }
+      if (scheduled) return;
+      scheduled = true;
+      window.setTimeout(moveLast, 0);
     });
 
-    observer.observe(document.head, {childList: true});
+    observer.observe(document.documentElement, {childList: true, subtree: true});
+    moveLast();
   }
 
   function setup() {
@@ -630,8 +648,19 @@ function userscriptBody(version) {
     applyTheme();
     addToolboxButtonWhenReady();
     keepStyleLast();
+    window.setTimeout(applyTheme, 250);
+    window.setTimeout(applyTheme, 1000);
     console.log(PLUGIN_NAME + ' ' + VERSION);
   }
+
+  setup.info = {
+    pluginId: PLUGIN_ID,
+    script: {
+      name: PLUGIN_NAME,
+      version: VERSION,
+      description: CATALOG.plugin && CATALOG.plugin.description ? CATALOG.plugin.description : ''
+    }
+  };
 
   window.plugin[PLUGIN_ID] = {
     setup: setup,
