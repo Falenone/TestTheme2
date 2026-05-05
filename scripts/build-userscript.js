@@ -467,7 +467,7 @@ function userscriptBody(version) {
 	}));
 
 	header.appendChild(makeElement('div', {
-      textContent: 'hello',
+      textContent: 'Welcome to Blurtheme! pick your theme and options below',
       className: 'testtheme-header-text'
     }));
 
