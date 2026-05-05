@@ -1,0 +1,11 @@
+/*
+  Shared theme CSS.
+
+  Put CSS here that should apply to every selectable theme.
+  This is compiled after global-imports.css and before the selected theme's base.css.
+
+  Example:
+  .ui-dialog {
+    font-family: inherit;
+  }
+*/

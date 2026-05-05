@@ -166,6 +166,13 @@ function userscriptBody(version) {
       css.push(CATALOG.globalImports);
     }
 
+    if (Array.isArray(theme.sharedCssFiles)) {
+      theme.sharedCssFiles.forEach(function (sharedFile) {
+        css.push('/* Shared theme CSS: ' + sharedFile.file + ' */');
+        css.push(sharedFile.css || '');
+      });
+    }
+
     css.push('/* ' + PLUGIN_NAME + ': ' + theme.name + ' */');
     css.push(theme.css || '');
 

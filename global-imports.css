@@ -1,9 +1,2 @@
-/*
-  Special global imports file.
-
-  Put @import rules here. This file is always compiled at the very top of the
-  injected CSS whenever any theme other than Default is selected.
-
-  Example:
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-*/
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Manrope:wght@600&display=swap');
+/*Because fonts need to be loaded first and this will be imported even if not being used*/

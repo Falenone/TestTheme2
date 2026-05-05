@@ -5,6 +5,7 @@ import path from 'node:path'
 
 const root = process.cwd()
 const themesDir = path.join(root, 'themes')
+const sharedThemeCssDir = path.join(themesDir, 'shared')
 const globalOptionsDir = path.join(root, 'global-options')
 const globalImportsPath = path.join(root, 'global-imports.css')
 const buildDir = path.join(root, 'build')
@@ -20,6 +21,34 @@ function readJson(filePath, fallback = {}) {
 
 function readCss(filePath) {
   return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') + '\n' : ''
+}
+
+function normalizeSharedCssList(value) {
+  if (value === false) return []
+  if (Array.isArray(value)) return value
+  if (typeof value === 'string') return [value]
+  return ['main.css']
+}
+
+function readSharedCssFiles(sharedCss) {
+  const files = normalizeSharedCssList(sharedCss)
+
+  return files.map(fileName => {
+    if (fileName.includes('..') || path.isAbsolute(fileName)) {
+      throw new Error(`Invalid sharedCss path: ${fileName}`)
+    }
+
+    const filePath = path.join(sharedThemeCssDir, fileName)
+
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Missing shared CSS file: themes/shared/${fileName}`)
+    }
+
+    return {
+      file: fileName,
+      css: readCss(filePath)
+    }
+  })
 }
 
 function humanize(slug) {
@@ -75,6 +104,7 @@ if (!fs.existsSync(themesDir)) {
 
 const themes = fs.readdirSync(themesDir, {withFileTypes: true})
   .filter(entry => entry.isDirectory())
+  .filter(entry => entry.name !== 'shared')
   .map(entry => entry.name)
   .sort()
   .map(id => {
@@ -90,6 +120,7 @@ const themes = fs.readdirSync(themesDir, {withFileTypes: true})
       id,
       name: metadata.name || humanize(id),
       description: metadata.description || '',
+      sharedCssFiles: readSharedCssFiles(metadata.sharedCss),
       preview: readPreview(themeDir),
       css: readCss(basePath),
       variants: readCssFolder(path.join(themeDir, 'variants'), 'variants'),
