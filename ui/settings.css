@@ -140,3 +140,8 @@ background: transparent;
 	margin: 1px;
 	padding: 1px;
 }
+.testtheme-theme-grid button.iitc_plugin_TestTheme2-preview-card.testtheme-preview-card.is-selected {
+  background-color: #0b5fff;
+  color: white;
+  border: 2px solid white;
+}
