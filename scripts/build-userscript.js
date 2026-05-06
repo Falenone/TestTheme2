@@ -161,7 +161,8 @@ function userscriptBody(version) {
       theme: DEFAULT_THEME_ID,
       variants: {},
       themeOptions: {},
-      globalOptions: []
+      globalOptions: [],
+      autoVariant: {}
     };
   }
 
@@ -176,6 +177,7 @@ function userscriptBody(version) {
     if (!next.variants || typeof next.variants !== 'object') next.variants = {};
     if (!next.themeOptions || typeof next.themeOptions !== 'object') next.themeOptions = {};
     if (!Array.isArray(next.globalOptions)) next.globalOptions = [];
+    if (!next.autoVariant || typeof next.autoVariant !== 'object') next.autoVariant = {};
 
     return next;
   }
@@ -220,6 +222,63 @@ function userscriptBody(version) {
     return settings;
   }
 
+  function timeToMinutes(value) {
+    const match = String(value || '').match(/^(\d{1,2}):(\d{2})$/);
+    if (!match) return 0;
+
+    const hours = Math.max(0, Math.min(23, parseInt(match[1], 10)));
+    const minutes = Math.max(0, Math.min(59, parseInt(match[2], 10)));
+
+    return hours * 60 + minutes;
+  }
+
+  function isCurrentTimeInRange(start, end) {
+    const now = new Date();
+    const current = now.getHours() * 60 + now.getMinutes();
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+
+    if (startMinutes === endMinutes) return false;
+    if (startMinutes > endMinutes) return current >= startMinutes || current < endMinutes;
+
+    return current >= startMinutes && current < endMinutes;
+  }
+
+  function getAutoVariantSettings(settings, theme) {
+    if (!theme || !theme.autoVariant || theme.autoVariant.enabled !== true) return null;
+
+    const stored = settings.autoVariant && settings.autoVariant[theme.id] ? settings.autoVariant[theme.id] : {};
+
+    return {
+      enabled: stored.enabled === true,
+      darkStart: stored.darkStart || theme.autoVariant.defaultDarkStart || '18:00',
+      darkEnd: stored.darkEnd || theme.autoVariant.defaultDarkEnd || '06:00'
+    };
+  }
+
+  function getEffectiveVariantId(settings, theme) {
+    const autoSettings = getAutoVariantSettings(settings, theme);
+
+    if (!autoSettings || autoSettings.enabled !== true) {
+      return selectedVariantFor(settings, theme);
+    }
+
+    const darkVariant = theme.autoVariant.dark || '';
+    const lightVariant = theme.autoVariant.light || '';
+
+    return isCurrentTimeInRange(autoSettings.darkStart, autoSettings.darkEnd) ? darkVariant : lightVariant;
+  }
+
+  function getEffectiveVariantLabel(settings, theme) {
+    const autoSettings = getAutoVariantSettings(settings, theme);
+
+    if (!autoSettings || autoSettings.enabled !== true) {
+      return selectedVariantFor(settings, theme) || 'none';
+    }
+
+    return 'Auto → ' + getEffectiveVariantId(settings, theme);
+  }
+
   function selectedThemeOptionsFor(settings, theme) {
     if (!theme || theme.id === DEFAULT_THEME_ID) return [];
 
@@ -252,7 +311,7 @@ function userscriptBody(version) {
     css.push(theme.css || '');
 
     const variants = Array.isArray(theme.variants) ? theme.variants : [];
-    const variantId = selectedVariantFor(settings, theme);
+    const variantId = getEffectiveVariantId(settings, theme);
 
     variants.forEach(function (variant) {
       if (variant.id === variantId) {
@@ -421,6 +480,24 @@ function userscriptBody(version) {
     ]);
   }
 
+  function renderMetadataBadges(container, theme) {
+    const tags = Array.isArray(theme.tags) ? theme.tags : [];
+    if (tags.length === 0) return;
+
+    const badgeRow = makeElement('div', {
+      className: 'testtheme-badge-row'
+    });
+
+    tags.forEach(function (tag) {
+      badgeRow.appendChild(makeElement('span', {
+        textContent: String(tag),
+        className: 'testtheme-badge'
+      }));
+    });
+
+    container.appendChild(badgeRow);
+  }
+
   function renderRightPanel(container, settings, selectedTheme) {
     container.textContent = '';
 
@@ -442,7 +519,10 @@ function userscriptBody(version) {
       }));
     }
 
+    renderMetadataBadges(container, selectedTheme);
+
     renderVariants(container, settings, selectedTheme);
+    renderAutoVariantOption(container, settings, selectedTheme);
     renderThemeOptions(container, settings, selectedTheme);
     renderGlobalOptions(container, settings);
   }
@@ -466,6 +546,82 @@ function userscriptBody(version) {
         rerenderSettingsDialog();
       }));
     });
+
+    container.appendChild(box);
+  }
+
+  function renderAutoVariantOption(container, settings, selectedTheme) {
+    if (!selectedTheme || !selectedTheme.autoVariant || selectedTheme.autoVariant.enabled !== true) return;
+
+    const autoSettings = getAutoVariantSettings(settings, selectedTheme);
+    const box = makeElement('div', {
+      className: 'testtheme-option-section testtheme-auto-variant-section'
+    });
+
+    box.appendChild(makeElement('h4', {
+      textContent: 'Auto light/dark'
+    }));
+
+    const enabled = makeElement('input', {
+      type: 'checkbox',
+      className: 'testtheme-auto-variant-toggle'
+    });
+    enabled.checked = autoSettings.enabled === true;
+
+    const darkStart = makeElement('input', {
+      type: 'time',
+      value: autoSettings.darkStart,
+      className: 'testtheme-time-input'
+    });
+
+    const darkEnd = makeElement('input', {
+      type: 'time',
+      value: autoSettings.darkEnd,
+      className: 'testtheme-time-input'
+    });
+
+    function saveAutoSettings() {
+      const next = readSettings();
+      next.autoVariant = next.autoVariant || {};
+      next.autoVariant[selectedTheme.id] = {
+        enabled: enabled.checked,
+        darkStart: darkStart.value || selectedTheme.autoVariant.defaultDarkStart || '18:00',
+        darkEnd: darkEnd.value || selectedTheme.autoVariant.defaultDarkEnd || '06:00'
+      };
+
+      writeSettings(next);
+      applyTheme();
+      rerenderSettingsDialog();
+    }
+
+    enabled.addEventListener('change', saveAutoSettings);
+    darkStart.addEventListener('change', saveAutoSettings);
+    darkEnd.addEventListener('change', saveAutoSettings);
+
+    box.appendChild(makeElement('label', {
+      className: 'testtheme-checkbox'
+    }, [
+      enabled,
+      ' Enable time-based auto light/dark'
+    ]));
+
+    box.appendChild(makeElement('div', {
+      className: 'testtheme-time-row'
+    }, [
+      makeElement('span', {
+        textContent: 'Dark from'
+      }),
+      darkStart,
+      makeElement('span', {
+        textContent: 'to'
+      }),
+      darkEnd
+    ]));
+
+    box.appendChild(makeElement('p', {
+      textContent: 'Current variant: ' + getEffectiveVariantLabel(settings, selectedTheme),
+      className: 'testtheme-debug-small'
+    }));
 
     container.appendChild(box);
   }
@@ -715,6 +871,160 @@ function userscriptBody(version) {
     }, 50);
   }
 
+  function getDetectedPlugins() {
+    const plugins = window.plugin || {};
+    const checks = [
+      ['Wasabee', 'wasabee'],
+      ['DrawTools', 'drawTools'],
+      ['Bookmarks', 'bookmarks'],
+      ['Missions', 'missions'],
+      ['Machina Tools', 'machinaTools'],
+      ['Unique Portal History', 'uniqueportalhistory']
+    ];
+
+    return checks.map(function (item) {
+      return {
+        name: item[0],
+        detected: !!plugins[item[1]]
+      };
+    });
+  }
+
+  function getThemeStyleStatus() {
+    const style = document.getElementById(STYLE_ID);
+    const target = document.documentElement || document.head || document.body;
+
+    return {
+      found: !!style,
+      cssLength: style ? style.textContent.length : 0,
+      lastInTarget: !!(style && target && target.lastElementChild === style)
+    };
+  }
+
+  function getWasabeeComputedStatus() {
+    const element = document.querySelector('table.wasabee-table tr td, table .wasabee-table tr td, table.wasabee-table tr, table .wasabee-table tr');
+    if (!element) {
+      return {
+        found: false,
+        backgroundColor: ''
+      };
+    }
+
+    return {
+      found: true,
+      backgroundColor: window.getComputedStyle(element).backgroundColor
+    };
+  }
+
+  function appendDebugRow(container, label, value) {
+    container.appendChild(makeElement('div', {
+      className: 'testtheme-debug-row'
+    }, [
+      makeElement('strong', {
+        textContent: label
+      }),
+      makeElement('span', {
+        textContent: String(value)
+      })
+    ]));
+  }
+
+  function showDebugDialog() {
+    const settings = readSettings();
+    const theme = getTheme(settings.theme);
+    const styleStatus = getThemeStyleStatus();
+    const wasabeeStatus = getWasabeeComputedStatus();
+
+    const content = makeElement('div', {
+      className: 'testtheme-debug-dialog'
+    });
+
+    content.appendChild(makeElement('h3', {
+      textContent: 'Theme status'
+    }));
+    appendDebugRow(content, 'Selected theme', theme ? theme.name : 'none');
+    appendDebugRow(content, 'Selected variant', theme ? getEffectiveVariantLabel(settings, theme) : 'none');
+    appendDebugRow(content, 'Theme options', theme ? selectedThemeOptionsFor(settings, theme).join(', ') || 'none' : 'none');
+    appendDebugRow(content, 'Global options', (settings.globalOptions || []).join(', ') || 'none');
+    appendDebugRow(content, 'Theme style element', styleStatus.found ? 'found' : 'missing');
+    appendDebugRow(content, 'Theme style last in target', styleStatus.lastInTarget ? 'yes' : 'no');
+    appendDebugRow(content, 'Injected CSS length', styleStatus.cssLength);
+
+    if (theme && Array.isArray(theme.sharedCssFiles)) {
+      appendDebugRow(content, 'Shared CSS files', theme.sharedCssFiles.map(function (item) {
+        return item.file;
+      }).join(', ') || 'none');
+    }
+
+    content.appendChild(makeElement('h3', {
+      textContent: 'Detected plugins'
+    }));
+
+    getDetectedPlugins().forEach(function (pluginStatus) {
+      appendDebugRow(content, pluginStatus.name, pluginStatus.detected ? 'detected' : 'not detected');
+    });
+
+    content.appendChild(makeElement('h3', {
+      textContent: 'Computed checks'
+    }));
+    appendDebugRow(content, 'Wasabee element', wasabeeStatus.found ? 'found' : 'not found');
+    appendDebugRow(content, 'Wasabee background', wasabeeStatus.backgroundColor || 'n/a');
+
+    if (window.dialog) {
+      window.dialog({
+        html: content,
+        title: PLUGIN_NAME + ' Debug',
+        width: 'auto'
+      });
+      return;
+    }
+
+    alert('Debug information is only available inside IITC dialogs.');
+  }
+
+  function addDebugButtonToSettingsDialog() {
+    if (!activeSettingsDialog || typeof activeSettingsDialog.closest !== 'function') return false;
+
+    const dialogRoot = activeSettingsDialog.closest('.ui-dialog');
+    if (!dialogRoot) return false;
+
+    const buttonSet = dialogRoot.querySelector('.ui-dialog-buttonset');
+    if (!buttonSet) return false;
+
+    const buttonId = PLUGIN_ID + '-debug-dialog-button';
+    if (dialogRoot.querySelector('#' + buttonId)) return true;
+
+    const debugButton = document.createElement('button');
+    debugButton.id = buttonId;
+    debugButton.type = 'button';
+    debugButton.textContent = 'Debug';
+    debugButton.className = 'testtheme-debug-button ui-button ui-corner-all ui-widget';
+
+    debugButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      showDebugDialog();
+    });
+
+    buttonSet.insertBefore(debugButton, buttonSet.firstChild);
+    return true;
+  }
+
+  function addExtraButtonsToSettingsDialogWhenReady() {
+    if (addAboutButtonToSettingsDialog() && addDebugButtonToSettingsDialog()) return;
+
+    let attempts = 0;
+    const timer = window.setInterval(function () {
+      attempts += 1;
+
+      const aboutReady = addAboutButtonToSettingsDialog();
+      const debugReady = addDebugButtonToSettingsDialog();
+
+      if ((aboutReady && debugReady) || attempts >= 20) {
+        window.clearInterval(timer);
+      }
+    }, 50);
+  }
+
   function showSettings() {
     const content = createSettingsDialog();
 
@@ -724,7 +1034,7 @@ function userscriptBody(version) {
         title: PLUGIN_NAME,
         width: 'auto'
       });
-      addAboutButtonToSettingsDialogWhenReady();
+      addExtraButtonsToSettingsDialogWhenReady();
       return;
     }
 
@@ -816,11 +1126,25 @@ function userscriptBody(version) {
     moveLast();
   }
 
+  function startAutoVariantTimer() {
+    window.setInterval(function () {
+      const settings = readSettings();
+      const theme = getTheme(settings.theme);
+      const autoSettings = getAutoVariantSettings(settings, theme);
+
+      if (autoSettings && autoSettings.enabled === true) {
+        applyTheme();
+        rerenderSettingsDialog();
+      }
+    }, 60 * 1000);
+  }
+
   function setup() {
     ensureSettingsUiCss();
     applyTheme();
     addToolboxButtonWhenReady();
     keepStyleLast();
+    startAutoVariantTimer();
     window.setTimeout(applyTheme, 250);
     window.setTimeout(applyTheme, 1000);
     console.log(PLUGIN_NAME + ' ' + VERSION);

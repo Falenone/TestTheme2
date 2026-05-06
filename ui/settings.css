@@ -174,3 +174,56 @@ background: transparent;
   color: white;
   border: 2px solid white;
 }
+
+.testtheme-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0.5em 0 1em;
+}
+
+.testtheme-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.testtheme-time-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 0.5em 0;
+}
+
+.testtheme-time-input {
+  max-width: 7em;
+}
+
+.testtheme-debug-dialog {
+  min-width: 360px;
+  max-width: 520px;
+}
+
+.testtheme-debug-dialog h3 {
+  margin: 0.75em 0 0.35em;
+}
+
+.testtheme-debug-row {
+  display: grid;
+  grid-template-columns: 11em 1fr;
+  gap: 8px;
+  margin: 0.25em 0;
+}
+
+.testtheme-debug-small {
+  font-size: 0.9em;
+  opacity: 0.75;
+}
+
+.testtheme-debug-button {
+  cursor: pointer;
+}

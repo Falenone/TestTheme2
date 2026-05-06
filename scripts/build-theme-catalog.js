@@ -118,6 +118,8 @@ const themes = fs.readdirSync(themesDir, {withFileTypes: true})
       id,
       name: metadata.name || humanize(id),
       description: metadata.description || '',
+      tags: Array.isArray(metadata.tags) ? metadata.tags : [],
+      autoVariant: metadata.autoVariant && metadata.autoVariant.enabled === true ? metadata.autoVariant : null,
       sharedCssFiles: readSharedCssFiles(metadata.sharedCss),
       preview: readPreview(themeDir),
       css: readCss(basePath),
