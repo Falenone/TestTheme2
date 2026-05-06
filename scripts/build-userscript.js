@@ -1007,7 +1007,7 @@ function userscriptBody(version) {
     return {
       found: !!style,
       cssLength: cssText.length,
-      cssLines: cssText ? cssText.split(/\r\n|\r|\n/).length : 0,
+      cssLines: cssText ? cssText.replaceAll('\\r\\n', '\\n').replaceAll('\\r', '\\n').split('\\n').length : 0,
       lastInTarget: !!(style && target && target.lastElementChild === style)
     };
   }
