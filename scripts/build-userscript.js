@@ -546,7 +546,15 @@ function userscriptBody(version) {
     renderSettingsDialog(container);
     return container;
   }
-  function showAboutDialog() {
+	function showAboutDialog() {
+		const existingAboutDialog = document.querySelector('.testtheme-about-dialog');
+		if (existingAboutDialog) {
+		  const existingDialogRoot = existingAboutDialog.closest('.ui-dialog');
+		  if (window.$ && existingDialogRoot) {
+			window.$(existingDialogRoot).dialog('moveToTop');
+		  }
+		  return;
+		}
     const content = makeElement('div', {
       className: 'testtheme-about-dialog'
     }, [
