@@ -909,11 +909,32 @@ function userscriptBody(version) {
     return '';
   }
 
+  function addDetectedPlugin(detected, seen, pluginId, name, version) {
+    const id = String(pluginId || name || '').trim();
+    const displayName = String(name || pluginId || '').trim();
+
+    if (!id && !displayName) return;
+
+    const key = String(id || displayName).toLowerCase();
+    if (!key || key === PLUGIN_ID.toLowerCase() || seen.has(key)) return;
+
+    seen.add(key);
+    detected.push({
+      id: id || key,
+      name: displayName || id || key,
+      version: version || ''
+    });
+  }
+
   function getDetectedPlugins() {
     const seen = new Set();
     const detected = [];
-    const bootPlugins = Array.isArray(window.bootPlugins) ? window.bootPlugins : [];
 
+    /*
+      IITC may expose plugin metadata in different places depending on version
+      and plugin wrapper style. Check all common locations.
+    */
+    const bootPlugins = Array.isArray(window.bootPlugins) ? window.bootPlugins : [];
     bootPlugins.forEach(function (setupFunction, index) {
       if (typeof setupFunction !== 'function' || !setupFunction.info) return;
 
@@ -921,17 +942,36 @@ function userscriptBody(version) {
       const pluginId = info.pluginId || info.buildName || '';
       const name = pluginNameFromInfo(info, pluginId || 'Plugin ' + (index + 1));
       const version = pluginVersionFromInfo(info);
-      const key = String(pluginId || name).toLowerCase();
 
-      if (!key || key === PLUGIN_ID.toLowerCase() || seen.has(key)) return;
-
-      seen.add(key);
-      detected.push({
-        id: pluginId || key,
-        name: name,
-        version: version
-      });
+      addDetectedPlugin(detected, seen, pluginId, name, version);
     });
+
+    if (window.plugin_info && typeof window.plugin_info === 'object') {
+      Object.keys(window.plugin_info).forEach(function (pluginId) {
+        const info = window.plugin_info[pluginId] || {};
+        const name = pluginNameFromInfo(info, pluginId);
+        const version = pluginVersionFromInfo(info);
+
+        addDetectedPlugin(detected, seen, pluginId, name, version);
+      });
+    }
+
+    if (window.plugin && typeof window.plugin === 'object') {
+      Object.keys(window.plugin).forEach(function (pluginId) {
+        if (pluginId === 'prototype') return;
+
+        const pluginObject = window.plugin[pluginId];
+        const info = pluginObject && pluginObject.info ? pluginObject.info : null;
+        const name = pluginNameFromInfo(info, pluginId);
+        const version = pluginVersionFromInfo(info);
+
+        /*
+          Some plugins expose only window.plugin.<id> without metadata. That is
+          still enough to know the plugin is loaded, so include it by id.
+        */
+        addDetectedPlugin(detected, seen, pluginId, name, version);
+      });
+    }
 
     return detected.sort(function (a, b) {
       return a.name.localeCompare(b.name);
