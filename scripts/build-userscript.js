@@ -583,7 +583,7 @@ function userscriptBody(version) {
       return;
     }
 
-    alert(PLUGIN_NAME + '\nAuthor: ' + (CATALOG.plugin && CATALOG.plugin.author ? CATALOG.plugin.author : 'Falenone'));
+    alert(PLUGIN_NAME + '\\nAuthor: ' + (CATALOG.plugin && CATALOG.plugin.author ? CATALOG.plugin.author : 'Falenone'));
   }
 
   function addAboutButtonToSettingsDialog() {
