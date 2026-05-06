@@ -454,30 +454,49 @@ function userscriptBody(version) {
     return card;
   }
 
-  function makeCheckbox(labelText, checked, onChange) {
+  function makeOptionDescription(description) {
+    if (!description) return null;
+
+    return makeElement('span', {
+      textContent: description,
+      className: 'testtheme-option-description'
+    });
+  }
+
+  function makeCheckbox(labelText, checked, onChange, description) {
     const checkbox = makeElement('input', {type: 'checkbox'});
     checkbox.checked = !!checked;
     checkbox.addEventListener('change', function () {
       onChange(checkbox.checked);
     });
 
-    return makeElement('label', {className: 'testtheme-checkbox'}, [
+    const children = [
       checkbox,
       ' ' + labelText
-    ]);
+    ];
+
+    const optionDescription = makeOptionDescription(description);
+    if (optionDescription) children.push(optionDescription);
+
+    return makeElement('label', {className: 'testtheme-checkbox'}, children);
   }
 
-  function makeRadio(labelText, name, checked, onChange) {
+  function makeRadio(labelText, name, checked, onChange, description) {
     const radio = makeElement('input', {type: 'radio', name: name});
     radio.checked = !!checked;
     radio.addEventListener('change', function () {
       if (radio.checked) onChange();
     });
 
-    return makeElement('label', {className: 'testtheme-radio'}, [
+    const children = [
       radio,
       ' ' + labelText
-    ]);
+    ];
+
+    const optionDescription = makeOptionDescription(description);
+    if (optionDescription) children.push(optionDescription);
+
+    return makeElement('label', {className: 'testtheme-radio'}, children);
   }
 
   function renderMetadataBadges(container, theme) {
@@ -520,6 +539,13 @@ function userscriptBody(version) {
     }
 
     renderMetadataBadges(container, selectedTheme);
+
+    if (selectedTheme.notes) {
+      container.appendChild(makeElement('p', {
+        textContent: selectedTheme.notes,
+        className: 'testtheme-notes'
+      }));
+    }
 
     renderVariants(container, settings, selectedTheme);
     renderAutoVariantOption(container, settings, selectedTheme);
@@ -916,6 +942,38 @@ function userscriptBody(version) {
     ]));
   }
 
+  function getCurrentLocalTimeString() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    return hours + ':' + minutes;
+  }
+
+  function getAutoVariantConfigStatus(theme) {
+    if (!theme || !theme.autoVariant || theme.autoVariant.enabled !== true) return 'not configured';
+
+    const variants = Array.isArray(theme.variants) ? theme.variants : [];
+    const ids = variants.map(function (variant) {
+      return variant.id;
+    });
+    const missing = [];
+
+    if (!ids.includes(theme.autoVariant.light)) missing.push('light: ' + theme.autoVariant.light);
+    if (!ids.includes(theme.autoVariant.dark)) missing.push('dark: ' + theme.autoVariant.dark);
+
+    if (missing.length > 0) return 'misconfigured, missing ' + missing.join(', ');
+
+    return 'ok';
+  }
+
+  function reloadInjectedCssFromDebug() {
+    applyTheme();
+    keepStyleLast();
+    rerenderSettingsDialog();
+    showDebugDialog();
+  }
+
   function getActiveCssFiles(settings, theme) {
     const files = [];
 
@@ -1022,8 +1080,10 @@ function userscriptBody(version) {
       textContent: 'Theme status'
     }));
     appendDebugRow(content, 'Selected theme', theme ? theme.name : 'none');
+    appendDebugRow(content, 'Current time', getCurrentLocalTimeString());
     appendDebugRow(content, 'Selected variant', theme ? getEffectiveVariantLabel(settings, theme) : 'none');
     appendDebugRow(content, 'Saved variant', theme ? getSavedVariantDebugText(settings, theme) : 'none');
+    appendDebugRow(content, 'Auto config', theme ? getAutoVariantConfigStatus(theme) : 'none');
     appendDebugRow(content, 'Auto light/dark', theme ? getAutoVariantDebugText(settings, theme) : 'none');
     appendDebugRow(content, 'Theme options', theme ? selectedThemeOptionsFor(settings, theme).join(', ') || 'none' : 'none');
     appendDebugRow(content, 'Global options', (settings.globalOptions || []).join(', ') || 'none');
@@ -1067,13 +1127,27 @@ function userscriptBody(version) {
     appendDebugRow(content, '5', 'selected theme option CSS');
     appendDebugRow(content, '6', 'selected global option CSS');
 
+    const buttonRow = makeElement('div', {
+      className: 'testtheme-debug-button-row'
+    });
+
+    const reloadButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Reload injected CSS',
+      className: 'testtheme-reload-css-button'
+    });
+    reloadButton.addEventListener('click', reloadInjectedCssFromDebug);
+
     const clearButton = makeElement('button', {
       type: 'button',
       textContent: 'Clear saved settings',
       className: 'testtheme-clear-settings-button'
     });
     clearButton.addEventListener('click', clearSavedSettingsFromDebug);
-    content.appendChild(clearButton);
+
+    buttonRow.appendChild(reloadButton);
+    buttonRow.appendChild(clearButton);
+    content.appendChild(buttonRow);
 
     if (window.dialog) {
       window.dialog({

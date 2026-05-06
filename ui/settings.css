@@ -343,3 +343,29 @@ background: transparent;
   margin-top: 0.75em;
   cursor: pointer;
 }
+
+.testtheme-notes {
+  margin: 0.35em 0 0.65em;
+  opacity: 0.85;
+  font-size: 12px;
+}
+
+.testtheme-option-description {
+  display: block;
+  margin-left: 1.4em;
+  opacity: 0.7;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.testtheme-debug-button-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 0.75em;
+}
+
+.testtheme-reload-css-button,
+.testtheme-clear-settings-button {
+  cursor: pointer;
+}

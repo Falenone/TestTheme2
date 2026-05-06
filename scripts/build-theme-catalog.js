@@ -77,23 +77,37 @@ function readSharedCssFiles(sharedCss) {
   })
 }
 
+function sortByOrderThenName(a, b) {
+  const aOrder = Number.isFinite(a.order) ? a.order : 9999
+  const bOrder = Number.isFinite(b.order) ? b.order : 9999
+
+  if (aOrder !== bOrder) return aOrder - bOrder
+  return a.name.localeCompare(b.name)
+}
+
 function readCssFolder(dir, prefix = '') {
   if (!fs.existsSync(dir)) return []
+
+  const metadata = readJson(path.join(dir, 'metadata.json'), {})
 
   return fs.readdirSync(dir, {withFileTypes: true})
     .filter(entry => entry.isFile())
     .map(entry => entry.name)
     .filter(name => name.endsWith('.css'))
-    .sort()
     .map(fileName => {
       const id = fileName.replace(/\.css$/i, '')
+      const itemMetadata = metadata[id] || {}
+
       return {
         id,
-        name: humanize(id),
+        name: itemMetadata.name || humanize(id),
+        description: itemMetadata.description || '',
+        order: Number.isFinite(itemMetadata.order) ? itemMetadata.order : 9999,
         file: prefix ? `${prefix}/${fileName}` : fileName,
         css: readCss(path.join(dir, fileName))
       }
     })
+    .sort(sortByOrderThenName)
 }
 
 if (!fs.existsSync(themesDir)) {
@@ -118,6 +132,8 @@ const themes = fs.readdirSync(themesDir, {withFileTypes: true})
       id,
       name: metadata.name || humanize(id),
       description: metadata.description || '',
+      notes: metadata.notes || '',
+      order: Number.isFinite(metadata.order) ? metadata.order : 9999,
       tags: Array.isArray(metadata.tags) ? metadata.tags : [],
       autoVariant: metadata.autoVariant && metadata.autoVariant.enabled === true ? metadata.autoVariant : null,
       sharedCssFiles: readSharedCssFiles(metadata.sharedCss),
