@@ -129,6 +129,35 @@
   opacity: 0.7;
   margin-bottom: 0;
 }
+.testtheme-button-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.testtheme-reset-button,
+.testtheme-about-button {
+  cursor: pointer;
+}
+
+.testtheme-about-dialog {
+  min-width: 260px;
+  max-width: 360px;
+}
+
+.testtheme-about-dialog h3 {
+  margin-top: 0;
+}
+
+.testtheme-about-dialog p {
+  margin: 0.5em 0;
+}
+
+.testtheme-about-dialog a {
+  color: inherit;
+  text-decoration: underline;
+}
 
 .testtheme-reset-button {
   margin-top: 1em;

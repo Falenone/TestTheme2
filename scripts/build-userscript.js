@@ -516,17 +516,34 @@ function userscriptBody(version) {
 
     renderRightPanel(right, settings, selectedTheme);
 
-    const resetButton = makeElement('button', {
-      type: 'button',
-      textContent: 'Reset to Default',
-      className: 'testtheme-reset-button'
-    });
-    resetButton.addEventListener('click', function () {
-      resetSettings();
-      renderSettingsDialog(container);
-    });
+	const buttonRow = makeElement('div', {
+	  className: 'testtheme-button-row'
+	});
 
-    right.appendChild(resetButton);
+	const resetButton = makeElement('button', {
+	  type: 'button',
+	  textContent: 'Reset to Default',
+	  className: 'testtheme-reset-button'
+	});
+
+	resetButton.addEventListener('click', function () {
+	  resetSettings();
+	  renderSettingsDialog(container);
+	});
+
+	const aboutButton = makeElement('button', {
+	  type: 'button',
+	  textContent: 'About',
+	  className: 'testtheme-about-button'
+	});
+
+	aboutButton.addEventListener('click', function () {
+	  showAboutDialog();
+	});
+
+	buttonRow.appendChild(resetButton);
+	buttonRow.appendChild(aboutButton);
+	right.appendChild(buttonRow);
     right.appendChild(makeElement('p', {
       textContent: PLUGIN_NAME + ' ' + VERSION + ' · Built ' + BUILD_DATE,
       className: 'testtheme-version'
@@ -546,7 +563,45 @@ function userscriptBody(version) {
     renderSettingsDialog(container);
     return container;
   }
+	function showAboutDialog() {
+	  const content = makeElement('div', {
+		className: 'testtheme-about-dialog'
+	  }, [
+		makeElement('h3', {
+		  textContent: PLUGIN_NAME
+		}),
+		makeElement('p', {
+		  textContent: 'Author: Your Name Here'
+		}),
+		makeElement('p', {}, [
+		  makeElement('a', {
+			href: 'https://github.com/YOUR_USERNAME/YOUR_REPO',
+			target: '_blank',
+			rel: 'noopener noreferrer',
+			textContent: 'GitHub repository'
+		  })
+		]),
+		makeElement('p', {}, [
+		  makeElement('a', {
+			href: 'https://t.me/YOUR_TELEGRAM_LINK',
+			target: '_blank',
+			rel: 'noopener noreferrer',
+			textContent: 'Telegram'
+		  })
+		])
+	  ]);
 
+	  if (window.dialog) {
+		window.dialog({
+		  html: content,
+		  title: 'About ' + PLUGIN_NAME,
+		  width: 'auto'
+		});
+		return;
+	  }
+
+	  alert(PLUGIN_NAME + '\nAuthor: Your Name Here');
+	}
   function showSettings() {
     const content = createSettingsDialog();
 
