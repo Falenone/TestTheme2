@@ -546,7 +546,85 @@ function userscriptBody(version) {
     renderSettingsDialog(container);
     return container;
   }
+  function showAboutDialog() {
+    const content = makeElement('div', {
+      className: 'testtheme-about-dialog'
+    }, [
+      makeElement('h3', {
+        textContent: PLUGIN_NAME
+      }),
+      makeElement('p', {
+        textContent: 'Author: ' + (CATALOG.plugin && CATALOG.plugin.author ? CATALOG.plugin.author : 'Falenone')
+      }),
+      makeElement('p', {}, [
+        makeElement('a', {
+          href: 'https://github.com/Falenone/TestTheme2',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          textContent: 'GitHub repository'
+        })
+      ]),
+      makeElement('p', {}, [
+        makeElement('a', {
+          href: 'https://t.me/YOUR_TELEGRAM_LINK',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          textContent: 'Telegram'
+        })
+      ])
+    ]);
 
+    if (window.dialog) {
+      window.dialog({
+        html: content,
+        title: 'About ' + PLUGIN_NAME,
+        width: 'auto'
+      });
+      return;
+    }
+
+    alert(PLUGIN_NAME + '\nAuthor: ' + (CATALOG.plugin && CATALOG.plugin.author ? CATALOG.plugin.author : 'Falenone'));
+  }
+
+  function addAboutButtonToSettingsDialog() {
+    if (!activeSettingsDialog || typeof activeSettingsDialog.closest !== 'function') return false;
+
+    const dialogRoot = activeSettingsDialog.closest('.ui-dialog');
+    if (!dialogRoot) return false;
+
+    const buttonSet = dialogRoot.querySelector('.ui-dialog-buttonset');
+    if (!buttonSet) return false;
+
+    const buttonId = PLUGIN_ID + '-about-dialog-button';
+    if (dialogRoot.querySelector('#' + buttonId)) return true;
+
+    const aboutButton = document.createElement('button');
+    aboutButton.id = buttonId;
+    aboutButton.type = 'button';
+    aboutButton.textContent = 'About';
+    aboutButton.className = 'testtheme-about-button ui-button ui-corner-all ui-widget';
+
+    aboutButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      showAboutDialog();
+    });
+
+    buttonSet.insertBefore(aboutButton, buttonSet.firstChild);
+    return true;
+  }
+
+  function addAboutButtonToSettingsDialogWhenReady() {
+    if (addAboutButtonToSettingsDialog()) return;
+
+    let attempts = 0;
+    const timer = window.setInterval(function () {
+      attempts += 1;
+
+      if (addAboutButtonToSettingsDialog() || attempts >= 20) {
+        window.clearInterval(timer);
+      }
+    }, 50);
+  }
   function showSettings() {
     const content = createSettingsDialog();
 
@@ -556,6 +634,7 @@ function userscriptBody(version) {
         title: PLUGIN_NAME,
         width: 'auto'
       });
+      addAboutButtonToSettingsDialogWhenReady();
       return;
     }
 
