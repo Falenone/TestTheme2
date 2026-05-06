@@ -227,3 +227,104 @@ background: transparent;
 .testtheme-debug-button {
   cursor: pointer;
 }
+
+/* Compact settings window layout */
+.testtheme-settings {
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+.testtheme-header {
+  margin-bottom: 0.5em;
+}
+
+.testtheme-header-image {
+  max-width: 125px;
+  max-height: 83px;
+}
+
+.testtheme-layout {
+  gap: 10px;
+}
+
+.testtheme-theme-grid {
+  grid-template-columns: 125px;
+  gap: 6px;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.testtheme-preview-card {
+  width: 125px;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.testtheme-theme-preview {
+  width: 125px;
+  height: 83px;
+  border-radius: 4px;
+}
+
+.testtheme-theme-title {
+  padding: 3px 3px 5px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.testtheme-left h3,
+.testtheme-right h3 {
+  margin-top: 0;
+  margin-bottom: 0.35em;
+}
+
+.testtheme-right {
+  min-width: 220px;
+  max-width: 320px;
+  padding-left: 2px;
+}
+
+.testtheme-description {
+  margin-bottom: 0.5em;
+}
+
+.testtheme-option-section {
+  margin-bottom: 0.65em;
+}
+
+.testtheme-option-section h4 {
+  margin-top: 0.4em;
+  margin-bottom: 0.2em;
+}
+
+.testtheme-checkbox,
+.testtheme-radio {
+  margin: 0.2em 0;
+}
+
+.testtheme-badge-row {
+  margin: 0.35em 0 0.55em;
+  gap: 3px;
+}
+
+.testtheme-badge {
+  padding: 1px 5px;
+  font-size: 10px;
+}
+
+.testtheme-time-row {
+  margin: 0.3em 0;
+  gap: 4px;
+}
+
+.testtheme-reset-button {
+  margin-top: 0.4em;
+}
+
+.testtheme-version {
+  margin-top: 0.4em;
+}
