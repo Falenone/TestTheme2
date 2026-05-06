@@ -775,6 +775,23 @@ function userscriptBody(version) {
     return container;
   }
 
+  function bringDialogToFront(dialogContentSelector) {
+    const existingDialogContent = document.querySelector(dialogContentSelector);
+    if (!existingDialogContent) return false;
+
+    const existingDialogRoot = existingDialogContent.closest('.ui-dialog');
+    if (!existingDialogRoot) return true;
+
+    const allDialogs = Array.from(document.querySelectorAll('.ui-dialog'));
+    const highestZIndex = allDialogs.reduce(function (highest, dialog) {
+      const zIndex = parseInt(window.getComputedStyle(dialog).zIndex, 10);
+      return Number.isFinite(zIndex) ? Math.max(highest, zIndex) : highest;
+    }, 1000);
+
+    existingDialogRoot.style.zIndex = String(highestZIndex + 1);
+    return true;
+  }
+
   function showAboutDialog() {
     const existingAboutDialog = document.querySelector('.testtheme-about-dialog');
 
@@ -930,10 +947,16 @@ function userscriptBody(version) {
   }
 
   function showDebugDialog() {
+    if (bringDialogToFront('.testtheme-debug-dialog')) return;
+
     const settings = readSettings();
     const theme = getTheme(settings.theme);
     const styleStatus = getThemeStyleStatus();
-    const wasabeeStatus = getWasabeeComputedStatus();
+    const detectedPlugins = getDetectedPlugins();
+    const wasabeeDetected = detectedPlugins.some(function (pluginStatus) {
+      return pluginStatus.name === 'Wasabee' && pluginStatus.detected === true;
+    });
+    const wasabeeStatus = wasabeeDetected ? getWasabeeComputedStatus() : null;
 
     const content = makeElement('div', {
       className: 'testtheme-debug-dialog'
@@ -960,15 +983,17 @@ function userscriptBody(version) {
       textContent: 'Detected plugins'
     }));
 
-    getDetectedPlugins().forEach(function (pluginStatus) {
+    detectedPlugins.forEach(function (pluginStatus) {
       appendDebugRow(content, pluginStatus.name, pluginStatus.detected ? 'detected' : 'not detected');
     });
 
-    content.appendChild(makeElement('h3', {
-      textContent: 'Computed checks'
-    }));
-    appendDebugRow(content, 'Wasabee element', wasabeeStatus.found ? 'found' : 'not found');
-    appendDebugRow(content, 'Wasabee background', wasabeeStatus.backgroundColor || 'n/a');
+    if (wasabeeDetected && wasabeeStatus) {
+      content.appendChild(makeElement('h3', {
+        textContent: 'Wasabee computed checks'
+      }));
+      appendDebugRow(content, 'Wasabee element', wasabeeStatus.found ? 'found' : 'not found');
+      appendDebugRow(content, 'Wasabee background', wasabeeStatus.backgroundColor || 'n/a');
+    }
 
     if (window.dialog) {
       window.dialog({
