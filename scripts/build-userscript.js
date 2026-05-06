@@ -547,17 +547,31 @@ function userscriptBody(version) {
     return container;
   }
 	function showAboutDialog() {
-		const existingAboutDialog = document.querySelector('.testtheme-about-dialog');
-		if (existingAboutDialog) {
-		  const existingDialogRoot = existingAboutDialog.closest('.ui-dialog');
-		  if (window.$ && existingDialogRoot) {
-			window.$(existingDialogRoot).dialog('moveToTop');
+	  const existingAboutDialog = document.querySelector('.testtheme-about-dialog');
+	  if (existingAboutDialog) {
+		const existingDialogRoot = existingAboutDialog.closest('.ui-dialog');
+
+		if (existingDialogRoot) {
+		  const allDialogs = Array.from(document.querySelectorAll('.ui-dialog'));
+		  const highestZIndex = allDialogs.reduce(function (highest, dialog) {
+			const zIndex = parseInt(window.getComputedStyle(dialog).zIndex, 10);
+			return Number.isFinite(zIndex) ? Math.max(highest, zIndex) : highest;
+		  }, 1000);
+
+		  existingDialogRoot.style.zIndex = String(highestZIndex + 1);
+
+		  const titleBar = existingDialogRoot.querySelector('.ui-dialog-titlebar');
+		  if (titleBar) {
+			titleBar.scrollIntoView({block: 'nearest'});
 		  }
-		  return;
 		}
-    const content = makeElement('div', {
-      className: 'testtheme-about-dialog'
-    }, [
+
+		return;
+	  }
+
+	  const content = makeElement('div', {
+		className: 'testtheme-about-dialog'
+	  }, [
       makeElement('h3', {
         textContent: PLUGIN_NAME
       }),
