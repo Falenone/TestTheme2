@@ -888,116 +888,6 @@ function userscriptBody(version) {
     }, 50);
   }
 
-  function pluginNameFromInfo(info, fallback) {
-    if (!info) return fallback;
-
-    if (info.script && info.script.name) return info.script.name;
-    if (info.name) return info.name;
-    if (info.pluginId) return info.pluginId;
-    if (info.buildName) return info.buildName;
-
-    return fallback;
-  }
-
-  function pluginVersionFromInfo(info) {
-    if (!info) return '';
-
-    if (info.script && info.script.version) return info.script.version;
-    if (info.version) return info.version;
-    if (info.dateTimeVersion) return info.dateTimeVersion;
-
-    return '';
-  }
-
-  function addDetectedPlugin(detected, seen, pluginId, name, version) {
-    const id = String(pluginId || name || '').trim();
-    const displayName = String(name || pluginId || '').trim();
-
-    if (!id && !displayName) return;
-
-    const key = String(id || displayName).toLowerCase();
-    if (!key || key === PLUGIN_ID.toLowerCase() || seen.has(key)) return;
-
-    seen.add(key);
-    detected.push({
-      id: id || key,
-      name: displayName || id || key,
-      version: version || ''
-    });
-  }
-
-  function getDetectedPlugins() {
-    const seen = new Set();
-    const detected = [];
-
-    /*
-      IITC may expose plugin metadata in different places depending on version
-      and plugin wrapper style. Check all common locations.
-    */
-    const bootPluginInfo = window.bootPlugins && Array.isArray(window.bootPlugins.info) ? window.bootPlugins.info : [];
-    bootPluginInfo.forEach(function (info, index) {
-      if (!info || typeof info !== 'object') return;
-
-      const pluginId = info.pluginId || info.buildName || '';
-      const name = pluginNameFromInfo(info, pluginId || 'Plugin ' + (index + 1));
-      const version = pluginVersionFromInfo(info);
-
-      addDetectedPlugin(detected, seen, pluginId, name, version);
-    });
-
-    const bootPlugins = Array.isArray(window.bootPlugins) ? window.bootPlugins : [];
-    bootPlugins.forEach(function (setupFunction, index) {
-      if (typeof setupFunction !== 'function' || !setupFunction.info) return;
-
-      const info = setupFunction.info;
-      const pluginId = info.pluginId || info.buildName || '';
-      const name = pluginNameFromInfo(info, pluginId || 'Plugin ' + (index + 1));
-      const version = pluginVersionFromInfo(info);
-
-      addDetectedPlugin(detected, seen, pluginId, name, version);
-    });
-
-    if (window.plugin_info && typeof window.plugin_info === 'object') {
-      Object.keys(window.plugin_info).forEach(function (pluginId) {
-        const info = window.plugin_info[pluginId] || {};
-        const name = pluginNameFromInfo(info, pluginId);
-        const version = pluginVersionFromInfo(info);
-
-        addDetectedPlugin(detected, seen, pluginId, name, version);
-      });
-    }
-
-    if (window.plugin && typeof window.plugin === 'object') {
-      Object.keys(window.plugin).forEach(function (pluginId) {
-        if (pluginId === 'prototype') return;
-
-        const pluginObject = window.plugin[pluginId];
-        const info = pluginObject && pluginObject.info ? pluginObject.info : null;
-        const name = pluginNameFromInfo(info, pluginId);
-        const version = pluginVersionFromInfo(info);
-
-        /*
-          Some plugins expose only window.plugin.<id> without metadata. That is
-          still enough to know the plugin is loaded, so include it by id.
-        */
-        addDetectedPlugin(detected, seen, pluginId, name, version);
-      });
-    }
-
-    return detected.sort(function (a, b) {
-      return a.name.localeCompare(b.name);
-    });
-  }
-
-  function isPluginDetected(pluginNamePart) {
-    const needle = String(pluginNamePart || '').toLowerCase();
-
-    return getDetectedPlugins().some(function (pluginStatus) {
-      return String(pluginStatus.id || '').toLowerCase().includes(needle) ||
-        String(pluginStatus.name || '').toLowerCase().includes(needle);
-    });
-  }
-
   function getThemeStyleStatus() {
     const style = document.getElementById(STYLE_ID);
     const target = document.documentElement || document.head || document.body;
@@ -1009,21 +899,6 @@ function userscriptBody(version) {
       cssLength: cssText.length,
       cssLines: cssText ? cssText.replaceAll('\\r\\n', '\\n').replaceAll('\\r', '\\n').split('\\n').length : 0,
       lastInTarget: !!(style && target && target.lastElementChild === style)
-    };
-  }
-
-  function getWasabeeComputedStatus() {
-    const element = document.querySelector('table.wasabee-table tr td, table .wasabee-table tr td, table.wasabee-table tr, table .wasabee-table tr');
-    if (!element) {
-      return {
-        found: false,
-        backgroundColor: ''
-      };
-    }
-
-    return {
-      found: true,
-      backgroundColor: window.getComputedStyle(element).backgroundColor
     };
   }
 
@@ -1046,9 +921,6 @@ function userscriptBody(version) {
     const settings = readSettings();
     const theme = getTheme(settings.theme);
     const styleStatus = getThemeStyleStatus();
-    const detectedPlugins = getDetectedPlugins();
-    const wasabeeDetected = isPluginDetected('wasabee');
-    const wasabeeStatus = wasabeeDetected ? getWasabeeComputedStatus() : null;
 
     const content = makeElement('div', {
       className: 'testtheme-debug-dialog'
@@ -1070,26 +942,6 @@ function userscriptBody(version) {
       appendDebugRow(content, 'Shared CSS files', theme.sharedCssFiles.map(function (item) {
         return item.file;
       }).join(', ') || 'none');
-    }
-
-    content.appendChild(makeElement('h3', {
-      textContent: 'Detected plugins'
-    }));
-
-    if (detectedPlugins.length === 0) {
-      appendDebugRow(content, 'Plugins', 'none detected');
-    } else {
-      detectedPlugins.forEach(function (pluginStatus) {
-        appendDebugRow(content, pluginStatus.name, pluginStatus.version || 'detected');
-      });
-    }
-
-    if (wasabeeDetected && wasabeeStatus) {
-      content.appendChild(makeElement('h3', {
-        textContent: 'Wasabee computed checks'
-      }));
-      appendDebugRow(content, 'Wasabee element', wasabeeStatus.found ? 'found' : 'not found');
-      appendDebugRow(content, 'Wasabee background', wasabeeStatus.backgroundColor || 'n/a');
     }
 
     if (window.dialog) {
