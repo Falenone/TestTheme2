@@ -934,6 +934,17 @@ function userscriptBody(version) {
       IITC may expose plugin metadata in different places depending on version
       and plugin wrapper style. Check all common locations.
     */
+    const bootPluginInfo = window.bootPlugins && Array.isArray(window.bootPlugins.info) ? window.bootPlugins.info : [];
+    bootPluginInfo.forEach(function (info, index) {
+      if (!info || typeof info !== 'object') return;
+
+      const pluginId = info.pluginId || info.buildName || '';
+      const name = pluginNameFromInfo(info, pluginId || 'Plugin ' + (index + 1));
+      const version = pluginVersionFromInfo(info);
+
+      addDetectedPlugin(detected, seen, pluginId, name, version);
+    });
+
     const bootPlugins = Array.isArray(window.bootPlugins) ? window.bootPlugins : [];
     bootPlugins.forEach(function (setupFunction, index) {
       if (typeof setupFunction !== 'function' || !setupFunction.info) return;
@@ -991,9 +1002,12 @@ function userscriptBody(version) {
     const style = document.getElementById(STYLE_ID);
     const target = document.documentElement || document.head || document.body;
 
+    const cssText = style ? style.textContent : '';
+
     return {
       found: !!style,
-      cssLength: style ? style.textContent.length : 0,
+      cssLength: cssText.length,
+      cssLines: cssText ? cssText.split(/\r\n|\r|\n/).length : 0,
       lastInTarget: !!(style && target && target.lastElementChild === style)
     };
   }
@@ -1049,7 +1063,8 @@ function userscriptBody(version) {
     appendDebugRow(content, 'Global options', (settings.globalOptions || []).join(', ') || 'none');
     appendDebugRow(content, 'Theme style element', styleStatus.found ? 'found' : 'missing');
     appendDebugRow(content, 'Theme style last in target', styleStatus.lastInTarget ? 'yes' : 'no');
-    appendDebugRow(content, 'Injected CSS length', styleStatus.cssLength);
+    appendDebugRow(content, 'Injected CSS characters', styleStatus.cssLength);
+    appendDebugRow(content, 'Injected CSS lines', styleStatus.cssLines);
 
     if (theme && Array.isArray(theme.sharedCssFiles)) {
       appendDebugRow(content, 'Shared CSS files', theme.sharedCssFiles.map(function (item) {
