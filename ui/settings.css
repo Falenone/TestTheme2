@@ -328,3 +328,18 @@ background: transparent;
 .testtheme-version {
   margin-top: 0.4em;
 }
+
+.testtheme-debug-textarea {
+  width: 100%;
+  min-height: 4.5em;
+  max-height: 8em;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.testtheme-clear-settings-button {
+  margin-top: 0.75em;
+  cursor: pointer;
+}

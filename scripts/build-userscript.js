@@ -898,6 +898,7 @@ function userscriptBody(version) {
       found: !!style,
       cssLength: cssText.length,
       cssLines: cssText ? cssText.replaceAll('\\r\\n', '\\n').replaceAll('\\r', '\\n').split('\\n').length : 0,
+      parentTag: style && style.parentNode && style.parentNode.tagName ? style.parentNode.tagName.toLowerCase() : 'none',
       lastInTarget: !!(style && target && target.lastElementChild === style)
     };
   }
@@ -915,12 +916,103 @@ function userscriptBody(version) {
     ]));
   }
 
+  function getActiveCssFiles(settings, theme) {
+    const files = [];
+
+    if (!theme || theme.id === DEFAULT_THEME_ID) return files;
+
+    if (CATALOG.globalImports) {
+      files.push('global-imports.css');
+    }
+
+    if (Array.isArray(theme.sharedCssFiles)) {
+      theme.sharedCssFiles.forEach(function (sharedFile) {
+        files.push('themes/shared/' + sharedFile.file);
+      });
+    }
+
+    files.push('themes/' + theme.id + '/base.css');
+
+    const variantId = getEffectiveVariantId(settings, theme);
+    const variant = Array.isArray(theme.variants) ? theme.variants.find(function (item) {
+      return item.id === variantId;
+    }) : null;
+
+    if (variant && variant.file) {
+      files.push('themes/' + theme.id + '/' + variant.file);
+    }
+
+    const selectedThemeOptions = new Set(selectedThemeOptionsFor(settings, theme));
+    const themeOptions = Array.isArray(theme.options) ? theme.options : [];
+    themeOptions.forEach(function (option) {
+      if (selectedThemeOptions.has(option.id)) {
+        files.push('themes/' + theme.id + '/' + option.file);
+      }
+    });
+
+    const selectedGlobalOptions = new Set(settings.globalOptions || []);
+    globalOptions().forEach(function (option) {
+      if (selectedGlobalOptions.has(option.id)) {
+        files.push('global-options/' + option.file);
+      }
+    });
+
+    return files;
+  }
+
+  function getAutoVariantDebugText(settings, theme) {
+    const autoSettings = getAutoVariantSettings(settings, theme);
+
+    if (!autoSettings) return 'not available';
+    if (autoSettings.enabled !== true) return 'available, disabled';
+
+    return 'enabled, dark ' + autoSettings.darkStart + '–' + autoSettings.darkEnd + ', effective ' + getEffectiveVariantId(settings, theme);
+  }
+
+  function getSavedVariantDebugText(settings, theme) {
+    if (!theme || theme.id === DEFAULT_THEME_ID) return 'none';
+
+    const savedVariant = settings.variants && settings.variants[theme.id] ? settings.variants[theme.id] : '';
+    const variants = Array.isArray(theme.variants) ? theme.variants : [];
+
+    if (!savedVariant) return 'none saved';
+    if (variants.some(function (variant) { return variant.id === savedVariant; })) return savedVariant;
+
+    return savedVariant + ' (missing, fallback: ' + selectedVariantFor(settings, theme) + ')';
+  }
+
+  function getSettingsStorageStatus() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    return {
+      saved: raw !== null,
+      size: raw ? raw.length : 0
+    };
+  }
+
+  function clearSavedSettingsFromDebug() {
+    if (!window.confirm('Clear all saved ' + PLUGIN_NAME + ' settings? This will reset the plugin as if freshly installed.')) return;
+
+    localStorage.removeItem(STORAGE_KEY);
+    applyTheme();
+    rerenderSettingsDialog();
+
+    const existingDebugDialog = document.querySelector('.testtheme-debug-dialog');
+    if (existingDebugDialog && existingDebugDialog.closest('.ui-dialog')) {
+      existingDebugDialog.closest('.ui-dialog').remove();
+    }
+
+    showDebugDialog();
+  }
+
   function showDebugDialog() {
     if (bringDialogToFront('.testtheme-debug-dialog')) return;
 
     const settings = readSettings();
     const theme = getTheme(settings.theme);
     const styleStatus = getThemeStyleStatus();
+    const storageStatus = getSettingsStorageStatus();
+    const activeCssFiles = getActiveCssFiles(settings, theme);
 
     const content = makeElement('div', {
       className: 'testtheme-debug-dialog'
@@ -931,18 +1023,57 @@ function userscriptBody(version) {
     }));
     appendDebugRow(content, 'Selected theme', theme ? theme.name : 'none');
     appendDebugRow(content, 'Selected variant', theme ? getEffectiveVariantLabel(settings, theme) : 'none');
+    appendDebugRow(content, 'Saved variant', theme ? getSavedVariantDebugText(settings, theme) : 'none');
+    appendDebugRow(content, 'Auto light/dark', theme ? getAutoVariantDebugText(settings, theme) : 'none');
     appendDebugRow(content, 'Theme options', theme ? selectedThemeOptionsFor(settings, theme).join(', ') || 'none' : 'none');
     appendDebugRow(content, 'Global options', (settings.globalOptions || []).join(', ') || 'none');
     appendDebugRow(content, 'Theme style element', styleStatus.found ? 'found' : 'missing');
     appendDebugRow(content, 'Theme style last in target', styleStatus.lastInTarget ? 'yes' : 'no');
+    appendDebugRow(content, 'Style parent', styleStatus.parentTag);
     appendDebugRow(content, 'Injected CSS characters', styleStatus.cssLength);
     appendDebugRow(content, 'Injected CSS lines', styleStatus.cssLines);
+    appendDebugRow(content, 'Settings saved', storageStatus.saved ? 'yes' : 'no');
+    appendDebugRow(content, 'Settings size', storageStatus.size + ' characters');
+    appendDebugRow(content, 'Storage key', STORAGE_KEY);
 
     if (theme && Array.isArray(theme.sharedCssFiles)) {
       appendDebugRow(content, 'Shared CSS files', theme.sharedCssFiles.map(function (item) {
         return item.file;
       }).join(', ') || 'none');
     }
+
+    content.appendChild(makeElement('h3', {
+      textContent: 'Active CSS files'
+    }));
+
+    if (activeCssFiles.length === 0) {
+      appendDebugRow(content, 'Files', 'none');
+    } else {
+      const activeFilesBox = makeElement('textarea', {
+        className: 'testtheme-debug-textarea',
+        readonly: 'readonly'
+      });
+      activeFilesBox.value = activeCssFiles.join('\\n');
+      content.appendChild(activeFilesBox);
+    }
+
+    content.appendChild(makeElement('h3', {
+      textContent: 'CSS order'
+    }));
+    appendDebugRow(content, '1', 'global-imports.css');
+    appendDebugRow(content, '2', 'selected theme shared CSS files');
+    appendDebugRow(content, '3', 'selected theme base.css');
+    appendDebugRow(content, '4', 'selected variant CSS');
+    appendDebugRow(content, '5', 'selected theme option CSS');
+    appendDebugRow(content, '6', 'selected global option CSS');
+
+    const clearButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Clear saved settings',
+      className: 'testtheme-clear-settings-button'
+    });
+    clearButton.addEventListener('click', clearSavedSettingsFromDebug);
+    content.appendChild(clearButton);
 
     if (window.dialog) {
       window.dialog({
