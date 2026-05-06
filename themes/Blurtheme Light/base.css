@@ -1,0 +1,29 @@
+/*
+  Blueprint Light
+
+  This file is intentionally minimal.
+  Replace or extend it with your IITC theme CSS.
+*/
+
+:root {
+  --testtheme-background: #f5f8fb;
+  --testtheme-panel: #ffffff;
+  --testtheme-text: #17202a;
+  --testtheme-accent: #006fbf;
+}
+
+/* Basic examples. Delete or replace as needed. */
+#sidebar,
+#toolbox,
+#chat,
+.ui-dialog,
+.ui-dialog-content {
+  background: var(--testtheme-panel) !important;
+  color: var(--testtheme-text) !important;
+}
+
+a,
+#toolbox a,
+.ui-dialog-title {
+  color: var(--testtheme-accent) !important;
+}

@@ -23,34 +23,6 @@ function readCss(filePath) {
   return fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') + '\n' : ''
 }
 
-function normalizeSharedCssList(value) {
-  if (value === false) return []
-  if (Array.isArray(value)) return value
-  if (typeof value === 'string') return [value]
-  return ['main.css']
-}
-
-function readSharedCssFiles(sharedCss) {
-  const files = normalizeSharedCssList(sharedCss)
-
-  return files.map(fileName => {
-    if (fileName.includes('..') || path.isAbsolute(fileName)) {
-      throw new Error(`Invalid sharedCss path: ${fileName}`)
-    }
-
-    const filePath = path.join(sharedThemeCssDir, fileName)
-
-    if (!fs.existsSync(filePath)) {
-      throw new Error(`Missing shared CSS file: themes/shared/${fileName}`)
-    }
-
-    return {
-      file: fileName,
-      css: readCss(filePath)
-    }
-  })
-}
-
 function humanize(slug) {
   return slug
     .split(/[-_]+/g)
@@ -77,6 +49,32 @@ function readPreview(themeDir) {
   }
 
   return ''
+}
+
+function normalizeSharedCssList(value) {
+  if (value === false) return []
+  if (Array.isArray(value)) return value
+  if (typeof value === 'string') return [value]
+  return ['main.css']
+}
+
+function readSharedCssFiles(sharedCss) {
+  return normalizeSharedCssList(sharedCss).map(fileName => {
+    if (fileName.includes('..') || path.isAbsolute(fileName)) {
+      throw new Error(`Invalid sharedCss path: ${fileName}`)
+    }
+
+    const filePath = path.join(sharedThemeCssDir, fileName)
+
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`Missing shared CSS file: themes/shared/${fileName}`)
+    }
+
+    return {
+      file: fileName,
+      css: readCss(filePath)
+    }
+  })
 }
 
 function readCssFolder(dir, prefix = '') {
@@ -136,6 +134,7 @@ const plugin = readJson(path.join(root, 'plugin.json'), {})
 
 const catalog = {
   generatedAt: new Date().toISOString(),
+  globalImports: readCss(globalImportsPath),
   plugin: {
     id: plugin.id,
     name: plugin.name,
@@ -149,7 +148,6 @@ const catalog = {
     description: 'Turns off all theme CSS and options.',
     preview: ''
   },
-  globalImports: readCss(globalImportsPath),
   globalOptions: readCssFolder(globalOptionsDir),
   themes
 }

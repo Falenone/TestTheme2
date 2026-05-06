@@ -1,0 +1,10 @@
+/*
+  Optional toggle for Blueprint Dark.
+  This option appears automatically in the plugin settings dialog.
+*/
+
+#sidebar,
+#toolbox,
+.ui-dialog-content {
+  font-size: 12px !important;
+}

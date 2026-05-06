@@ -62,67 +62,6 @@ global-imports.css
 
 The contents of `global-imports.css` are always placed at the very top of the injected CSS whenever anything other than **Default** is selected. This keeps `@import` rules valid.
 
-
-## Shared theme CSS
-
-Shared CSS files live here:
-
-```text
-themes/shared/
-  main.css
-  blurtheme-common.css
-  optional-example.css
-```
-
-Each theme chooses which shared CSS files it uses in its own `theme.json`.
-
-Use the default shared file:
-
-```json
-{
-  "name": "My Theme",
-  "sharedCss": "main.css"
-}
-```
-
-Use multiple shared files:
-
-```json
-{
-  "name": "My Theme",
-  "sharedCss": ["main.css", "blurtheme-common.css"]
-}
-```
-
-Use no shared CSS for a theme:
-
-```json
-{
-  "name": "My Theme",
-  "sharedCss": false
-}
-```
-
-If `sharedCss` is omitted, the theme uses:
-
-```json
-"sharedCss": "main.css"
-```
-
-The `themes/shared/` folder is not shown as a theme in the chooser.
-
-The CSS order is:
-
-```text
-global-imports.css
-selected theme shared CSS files
-selected theme base.css
-selected variant css
-selected theme options css
-global options css
-```
-
-
 ## Global options
 
 Global options go in:
@@ -175,13 +114,3 @@ After every push to `main`, the workflow builds and deploys:
 /files/release/iitc_plugin_TestTheme2.user.js
 /files/release/iitc_plugin_TestTheme2.meta.js
 ```
-
-## Settings window styling
-
-The plugin settings-window UI styles live in:
-
-```text
-ui/settings.css
-```
-
-Edit that file to change the chooser layout, preview-card sizing, spacing, borders, and other UI-only styles. These styles are compiled into the generated userscript automatically.
