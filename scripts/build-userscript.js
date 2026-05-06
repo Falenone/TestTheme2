@@ -888,22 +888,62 @@ function userscriptBody(version) {
     }, 50);
   }
 
-  function getDetectedPlugins() {
-    const plugins = window.plugin || {};
-    const checks = [
-      ['Wasabee', 'wasabee'],
-      ['DrawTools', 'drawTools'],
-      ['Bookmarks', 'bookmarks'],
-      ['Missions', 'missions'],
-      ['Machina Tools', 'machinaTools'],
-      ['Unique Portal History', 'uniqueportalhistory']
-    ];
+  function pluginNameFromInfo(info, fallback) {
+    if (!info) return fallback;
 
-    return checks.map(function (item) {
-      return {
-        name: item[0],
-        detected: !!plugins[item[1]]
-      };
+    if (info.script && info.script.name) return info.script.name;
+    if (info.name) return info.name;
+    if (info.pluginId) return info.pluginId;
+    if (info.buildName) return info.buildName;
+
+    return fallback;
+  }
+
+  function pluginVersionFromInfo(info) {
+    if (!info) return '';
+
+    if (info.script && info.script.version) return info.script.version;
+    if (info.version) return info.version;
+    if (info.dateTimeVersion) return info.dateTimeVersion;
+
+    return '';
+  }
+
+  function getDetectedPlugins() {
+    const seen = new Set();
+    const detected = [];
+    const bootPlugins = Array.isArray(window.bootPlugins) ? window.bootPlugins : [];
+
+    bootPlugins.forEach(function (setupFunction, index) {
+      if (typeof setupFunction !== 'function' || !setupFunction.info) return;
+
+      const info = setupFunction.info;
+      const pluginId = info.pluginId || info.buildName || '';
+      const name = pluginNameFromInfo(info, pluginId || 'Plugin ' + (index + 1));
+      const version = pluginVersionFromInfo(info);
+      const key = String(pluginId || name).toLowerCase();
+
+      if (!key || key === PLUGIN_ID.toLowerCase() || seen.has(key)) return;
+
+      seen.add(key);
+      detected.push({
+        id: pluginId || key,
+        name: name,
+        version: version
+      });
+    });
+
+    return detected.sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  function isPluginDetected(pluginNamePart) {
+    const needle = String(pluginNamePart || '').toLowerCase();
+
+    return getDetectedPlugins().some(function (pluginStatus) {
+      return String(pluginStatus.id || '').toLowerCase().includes(needle) ||
+        String(pluginStatus.name || '').toLowerCase().includes(needle);
     });
   }
 
@@ -953,9 +993,7 @@ function userscriptBody(version) {
     const theme = getTheme(settings.theme);
     const styleStatus = getThemeStyleStatus();
     const detectedPlugins = getDetectedPlugins();
-    const wasabeeDetected = detectedPlugins.some(function (pluginStatus) {
-      return pluginStatus.name === 'Wasabee' && pluginStatus.detected === true;
-    });
+    const wasabeeDetected = isPluginDetected('wasabee');
     const wasabeeStatus = wasabeeDetected ? getWasabeeComputedStatus() : null;
 
     const content = makeElement('div', {
@@ -983,9 +1021,13 @@ function userscriptBody(version) {
       textContent: 'Detected plugins'
     }));
 
-    detectedPlugins.forEach(function (pluginStatus) {
-      appendDebugRow(content, pluginStatus.name, pluginStatus.detected ? 'detected' : 'not detected');
-    });
+    if (detectedPlugins.length === 0) {
+      appendDebugRow(content, 'Plugins', 'none detected');
+    } else {
+      detectedPlugins.forEach(function (pluginStatus) {
+        appendDebugRow(content, pluginStatus.name, pluginStatus.version || 'detected');
+      });
+    }
 
     if (wasabeeDetected && wasabeeStatus) {
       content.appendChild(makeElement('h3', {
