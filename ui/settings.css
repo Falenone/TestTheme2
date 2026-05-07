@@ -227,8 +227,6 @@ background: transparent;
 .testtheme-debug-button {
   cursor: pointer;
 }
-
-/* Compact settings window layout */
 .testtheme-settings {
   min-width: 0;
   width: auto;
@@ -383,13 +381,13 @@ background: transparent;
 
 .testtheme-live-css-textarea {
   width: 100%;
-  min-height: 260px;
-  max-height: 60vh;
+  max-width: 100%;
+  min-height: 220px;
+  height: calc(100vh - 220px);
+  max-height: 55vh;
   box-sizing: border-box;
-  resize: vertical;
-  font-family: monospace;
-  font-size: 12px;
-  line-height: 1.35;
+  overflow: auto;
+  white-space: pre;
 }
 
 .testtheme-live-css-button-row {
@@ -413,7 +411,6 @@ background: transparent;
   cursor: pointer;
 }
 
-/* Responsive/mobile settings UI */
 .testtheme-settings,
 .testtheme-about-dialog,
 .testtheme-debug-dialog,
@@ -435,10 +432,6 @@ background: transparent;
   word-break: normal;
 }
 
-/*
-  Keep plugin dialogs inside the viewport. If content becomes too tall, use a
-  vertical scrollbar only. Avoid horizontal scrollbars in normal UI text.
-*/
 .ui-dialog:has(.testtheme-settings),
 .ui-dialog:has(.testtheme-about-dialog),
 .ui-dialog:has(.testtheme-debug-dialog),
@@ -459,10 +452,6 @@ background: transparent;
   overflow-y: auto !important;
 }
 
-/*
-  Default compact layout:
-  keep themes on the left and options/variants on the right.
-*/
 .testtheme-settings {
   min-width: 0;
   width: auto;
@@ -503,10 +492,6 @@ background: transparent;
   height: 83px;
 }
 
-/*
-  Debug should stay in two columns when there is room:
-  label on the left, value on the right.
-*/
 .testtheme-debug-dialog {
   min-width: min(420px, calc(100vw - 36px));
   max-width: min(560px, calc(100vw - 36px));
@@ -535,11 +520,6 @@ background: transparent;
   overflow-x: auto;
   white-space: pre;
 }
-
-/*
-  Live CSS editor: allow vertical scrolling if the dialog is too tall,
-  keep the textarea usable on mobile.
-*/
 .testtheme-live-css-dialog {
   min-width: min(520px, calc(100vw - 36px));
   max-width: min(720px, calc(100vw - 36px));
@@ -554,11 +534,6 @@ background: transparent;
   overflow-x: auto;
   white-space: pre;
 }
-
-/*
-  Narrow mobile fallback.
-  Only stack the main settings window when side-by-side cannot reasonably fit.
-*/
 @media (max-width: 460px) {
   .testtheme-layout {
     grid-template-columns: 1fr;
@@ -596,11 +571,6 @@ background: transparent;
     overflow-wrap: anywhere;
   }
 }
-
-/*
-  Very narrow screens: make Debug rows one-column only when two columns would
-  be cramped.
-*/
 @media (max-width: 360px) {
   .testtheme-debug-row {
     grid-template-columns: 1fr;
@@ -622,8 +592,6 @@ background: transparent;
     width: 100%;
   }
 }
-
-/* Mobile button wrapping */
 .testtheme-live-css-button-row,
 .testtheme-debug-button-row {
   display: flex;
