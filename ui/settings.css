@@ -46,10 +46,10 @@
   overflow: auto;
   padding-right: 4px;
 }
-
 .testtheme-preview-card {
   appearance: none;
-  width: 250px;
+  width: 125px;
+  max-width: 125px;
   height: auto !important;
   min-height: 0 !important;
   padding: 0;
@@ -79,6 +79,10 @@
   pointer-events: none;
 }
 
+.testtheme-preview-card.is-selected .testtheme-theme-title {
+  font-weight: 700;
+}
+
 .testtheme-theme-preview {
   width: 250px;
   height: 166px;
@@ -92,10 +96,6 @@
   padding: 6px 4px 8px;
   font-weight: 500;
   font-size: 13px;
-}
-
-.testtheme-preview-card.is-selected .testtheme-theme-title {
-  font-weight: 700;
 }
 
 .testtheme-right {
@@ -482,11 +482,6 @@ background: transparent;
   padding-right: 0;
 }
 
-.testtheme-preview-card {
-  width: 125px;
-  max-width: 125px;
-}
-
 .testtheme-theme-preview {
   width: 125px;
   height: 83px;
@@ -559,7 +554,88 @@ background: transparent;
     max-width: 115px;
     justify-self: center;
   }
+/* Theme preview card polish */
+.testtheme-preview-card {
+  position: relative;
+  transform: translateZ(0);
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    background-color 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
+  will-change: transform;
+}
 
+.testtheme-preview-card:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.06);
+}
+
+.testtheme-preview-card:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  filter: brightness(0.95);
+}
+
+.testtheme-preview-card.is-selected {
+  box-shadow:
+    0 0 0 1px rgba(245, 197, 66, 0.5),
+    0 0 14px rgba(245, 197, 66, 0.35);
+}
+
+.testtheme-preview-card.is-selected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 18px rgba(245, 197, 66, 0.18);
+}
+
+.testtheme-theme-preview {
+  transition:
+    transform 140ms ease,
+    filter 140ms ease;
+}
+
+.testtheme-preview-card:hover .testtheme-theme-preview {
+  transform: scale(1.035);
+  filter: contrast(1.05) saturate(1.08);
+}
+
+.testtheme-preview-card:active .testtheme-theme-preview {
+  transform: scale(1.01);
+}
+
+.testtheme-theme-title {
+  transition:
+    letter-spacing 120ms ease,
+    opacity 120ms ease;
+}
+
+.testtheme-preview-card:hover .testtheme-theme-title {
+  letter-spacing: 0.2px;
+  opacity: 1;
+}
+.testtheme-preview-card.is-selected {
+  animation: testtheme-card-selected 180ms ease-out;
+}
+
+@keyframes testtheme-card-selected {
+  0% {
+    transform: scale(0.96);
+  }
+
+  60% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
   .testtheme-theme-preview {
     width: 100%;
     height: auto;
