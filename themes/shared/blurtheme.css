@@ -137,12 +137,13 @@ input[type="button" i]:hover {
 	max-height: 600px;
 }
 .leaflet-control-attribution.leaflet-control {
-	bottom: -10px;
+	visibility: hidden;
+/*	bottom: -10px;
 	color: inherit;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 	padding: 0 10px;
-	padding-top: 3px;
+	padding-top: 3px;*/
 }
 /*Right layer menu end*/
 /*Chat*/
@@ -647,8 +648,6 @@ background-color: transparent!important; to override sidebar table colors where 
 	position: fixed;
 	right: 0;
 	z-index: 3002;*/
-	height: 24px;
-    padding-top: 6px;
 	font-size: 13px;
 	box-sizing: border-box;
 	border-top-left-radius: 10px;
