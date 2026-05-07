@@ -642,12 +642,7 @@ background-color: transparent!important; to override sidebar table colors where 
 /*Sidebar end*/
 /*Bottom right update status*/
 #updatestatus {
-	bottom: 0;
 	font-size: 13px;
-	padding: 4px;
-	position: fixed;
-	right: 0;
-	z-index: 3002;
 	box-sizing: border-box;
 	border-top-left-radius: 10px;
 	box-shadow: 0px 0px 20px 6px var(--shadow);
