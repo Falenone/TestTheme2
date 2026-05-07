@@ -369,3 +369,46 @@ background: transparent;
 .testtheme-clear-settings-button {
   cursor: pointer;
 }
+
+.testtheme-live-css-dialog {
+  min-width: 520px;
+  max-width: 90vw;
+}
+
+.testtheme-live-css-warning {
+  margin-top: 0;
+  opacity: 0.85;
+  font-size: 12px;
+}
+
+.testtheme-live-css-textarea {
+  width: 100%;
+  min-height: 260px;
+  max-height: 60vh;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.testtheme-live-css-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.6em;
+}
+
+.testtheme-live-css-status {
+  margin-bottom: 0;
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+.testtheme-live-css-button,
+.testtheme-live-css-apply-button,
+.testtheme-live-css-save-button,
+.testtheme-live-css-clear-button,
+.testtheme-live-css-load-current-button {
+  cursor: pointer;
+}

@@ -128,6 +128,8 @@ function userscriptBody(version) {
   const DEFAULT_THEME_ID = '__default__';
   const STORAGE_KEY = PLUGIN_ID + '.settings';
   const STYLE_ID = PLUGIN_ID + '-style';
+  const LIVE_CSS_STYLE_ID = PLUGIN_ID + '-live-dev-css-style';
+  const LIVE_CSS_STORAGE_KEY = PLUGIN_ID + '.liveCss';
   const LAST_STYLE_MARKER = 'data-' + PLUGIN_ID.toLowerCase() + '-managed';
 
   function allThemes() {
@@ -367,6 +369,49 @@ function userscriptBody(version) {
     return style;
   }
 
+  function ensureLiveCssStyleElement() {
+    let style = document.getElementById(LIVE_CSS_STYLE_ID);
+
+    if (!style) {
+      style = document.createElement('style');
+      style.id = LIVE_CSS_STYLE_ID;
+      style.type = 'text/css';
+      style.setAttribute(LAST_STYLE_MARKER, 'true');
+    }
+
+    const target = document.documentElement || document.head || document.body;
+    if (target && style.parentNode !== target) {
+      target.appendChild(style);
+    }
+
+    if (target && target.lastElementChild !== style) {
+      target.appendChild(style);
+    }
+
+    return style;
+  }
+
+  function readLiveCss() {
+    return localStorage.getItem(LIVE_CSS_STORAGE_KEY) || '';
+  }
+
+  function writeLiveCss(cssText) {
+    localStorage.setItem(LIVE_CSS_STORAGE_KEY, cssText || '');
+  }
+
+  function clearLiveCss() {
+    localStorage.removeItem(LIVE_CSS_STORAGE_KEY);
+  }
+
+  function applyLiveCss(cssText) {
+    const style = ensureLiveCssStyleElement();
+    style.textContent = cssText || '';
+  }
+
+  function applySavedLiveCss() {
+    applyLiveCss(readLiveCss());
+  }
+
   function ensureSettingsUiCss() {
     const styleId = PLUGIN_ID + '-settings-ui-style';
     let style = document.getElementById(styleId);
@@ -385,6 +430,7 @@ function userscriptBody(version) {
     const settings = readSettings();
     const style = ensureStyleElement();
     style.textContent = cssFor(settings);
+    applySavedLiveCss();
   }
 
   function resetSettings() {
@@ -1039,6 +1085,20 @@ function userscriptBody(version) {
     return savedVariant + ' (missing, fallback: ' + selectedVariantFor(settings, theme) + ')';
   }
 
+  function getLiveCssStatus() {
+    const saved = readLiveCss();
+    const style = document.getElementById(LIVE_CSS_STYLE_ID);
+    const cssText = style ? style.textContent : '';
+
+    return {
+      saved: saved.length > 0,
+      savedLength: saved.length,
+      active: cssText.length > 0,
+      activeLength: cssText.length,
+      activeLines: cssText ? cssText.replaceAll('\\r\\n', '\\n').replaceAll('\\r', '\\n').split('\\n').length : 0
+    };
+  }
+
   function getSettingsStorageStatus() {
     const raw = localStorage.getItem(STORAGE_KEY);
 
@@ -1070,6 +1130,7 @@ function userscriptBody(version) {
     const theme = getTheme(settings.theme);
     const styleStatus = getThemeStyleStatus();
     const storageStatus = getSettingsStorageStatus();
+    const liveCssStatus = getLiveCssStatus();
     const activeCssFiles = getActiveCssFiles(settings, theme);
 
     const content = makeElement('div', {
@@ -1095,6 +1156,10 @@ function userscriptBody(version) {
     appendDebugRow(content, 'Settings saved', storageStatus.saved ? 'yes' : 'no');
     appendDebugRow(content, 'Settings size', storageStatus.size + ' characters');
     appendDebugRow(content, 'Storage key', STORAGE_KEY);
+    appendDebugRow(content, 'Live CSS active', liveCssStatus.active ? 'yes' : 'no');
+    appendDebugRow(content, 'Live CSS saved', liveCssStatus.saved ? 'yes' : 'no');
+    appendDebugRow(content, 'Live CSS characters', liveCssStatus.activeLength);
+    appendDebugRow(content, 'Live CSS lines', liveCssStatus.activeLines);
 
     if (theme && Array.isArray(theme.sharedCssFiles)) {
       appendDebugRow(content, 'Shared CSS files', theme.sharedCssFiles.map(function (item) {
@@ -1189,7 +1254,7 @@ function userscriptBody(version) {
   }
 
   function addExtraButtonsToSettingsDialogWhenReady() {
-    if (addAboutButtonToSettingsDialog() && addDebugButtonToSettingsDialog()) return;
+    if (addAboutButtonToSettingsDialog() && addDebugButtonToSettingsDialog() && addLiveCssButtonToSettingsDialog()) return;
 
     let attempts = 0;
     const timer = window.setInterval(function () {
@@ -1197,11 +1262,139 @@ function userscriptBody(version) {
 
       const aboutReady = addAboutButtonToSettingsDialog();
       const debugReady = addDebugButtonToSettingsDialog();
+      const liveCssReady = addLiveCssButtonToSettingsDialog();
 
-      if ((aboutReady && debugReady) || attempts >= 20) {
+      if ((aboutReady && debugReady && liveCssReady) || attempts >= 20) {
         window.clearInterval(timer);
       }
     }, 50);
+  }
+
+  function showLiveCssDialog() {
+    if (bringDialogToFront('.testtheme-live-css-dialog')) return;
+
+    const savedLiveCss = readLiveCss();
+    const currentThemeStyle = document.getElementById(STYLE_ID);
+    const activeLiveStyle = document.getElementById(LIVE_CSS_STYLE_ID);
+
+    const textarea = makeElement('textarea', {
+      className: 'testtheme-live-css-textarea',
+      spellcheck: 'false'
+    });
+    textarea.value = activeLiveStyle && activeLiveStyle.textContent ? activeLiveStyle.textContent : savedLiveCss;
+
+    const status = makeElement('p', {
+      className: 'testtheme-live-css-status',
+      textContent: savedLiveCss ? 'Saved live CSS is active.' : 'Live CSS is temporary until you click Save.'
+    });
+
+    function updateStatus(message) {
+      status.textContent = message;
+    }
+
+    const applyButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Apply',
+      className: 'testtheme-live-css-apply-button'
+    });
+    applyButton.addEventListener('click', function () {
+      applyLiveCss(textarea.value);
+      updateStatus('Applied live CSS temporarily.');
+    });
+
+    const saveButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Save',
+      className: 'testtheme-live-css-save-button'
+    });
+    saveButton.addEventListener('click', function () {
+      writeLiveCss(textarea.value);
+      applyLiveCss(textarea.value);
+      updateStatus('Saved and applied live CSS.');
+    });
+
+    const clearButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Clear',
+      className: 'testtheme-live-css-clear-button'
+    });
+    clearButton.addEventListener('click', function () {
+      if (!window.confirm('Clear saved and active Live CSS?')) return;
+
+      textarea.value = '';
+      clearLiveCss();
+      applyLiveCss('');
+      updateStatus('Cleared saved and active live CSS.');
+    });
+
+    const loadCurrentButton = makeElement('button', {
+      type: 'button',
+      textContent: 'Load current injected CSS',
+      className: 'testtheme-live-css-load-current-button'
+    });
+    loadCurrentButton.addEventListener('click', function () {
+      textarea.value = currentThemeStyle ? currentThemeStyle.textContent : '';
+      updateStatus('Loaded current injected theme CSS into the editor. Copy only the changes you want.');
+    });
+
+    const buttonRow = makeElement('div', {
+      className: 'testtheme-live-css-button-row'
+    }, [
+      applyButton,
+      saveButton,
+      clearButton,
+      loadCurrentButton
+    ]);
+
+    const content = makeElement('div', {
+      className: 'testtheme-live-css-dialog'
+    }, [
+      makeElement('p', {
+        className: 'testtheme-live-css-warning',
+        textContent: 'Development tool: Live CSS is for testing only. Copy final changes into source CSS files before release.'
+      }),
+      textarea,
+      buttonRow,
+      status
+    ]);
+
+    if (window.dialog) {
+      window.dialog({
+        html: content,
+        title: PLUGIN_NAME + ' Live CSS',
+        width: 'auto'
+      });
+      return;
+    }
+
+    alert('Live CSS editor is only available inside IITC dialogs.');
+  }
+
+  function addLiveCssButtonToSettingsDialog() {
+    if (!activeSettingsDialog || typeof activeSettingsDialog.closest !== 'function') return false;
+
+    const dialogRoot = activeSettingsDialog.closest('.ui-dialog');
+    if (!dialogRoot) return false;
+
+    const buttonSet = dialogRoot.querySelector('.ui-dialog-buttonset');
+    if (!buttonSet) return false;
+
+    const buttonId = PLUGIN_ID + '-live-css-dialog-button';
+    if (dialogRoot.querySelector('#' + buttonId)) return true;
+
+    const liveCssButton = document.createElement('button');
+    liveCssButton.id = buttonId;
+    liveCssButton.type = 'button';
+    liveCssButton.textContent = 'Live CSS';
+    liveCssButton.className = 'testtheme-live-css-button ui-button ui-corner-all ui-widget';
+
+    liveCssButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      showLiveCssDialog();
+    });
+
+    buttonSet.insertBefore(liveCssButton, buttonSet.firstChild);
+    return true;
   }
 
   function showSettings() {
@@ -1285,10 +1478,29 @@ function userscriptBody(version) {
     const moveLast = function () {
       scheduled = false;
       const style = document.getElementById(STYLE_ID);
+      const liveStyle = document.getElementById(LIVE_CSS_STYLE_ID);
       const target = document.documentElement || document.head || document.body;
 
-      if (style && target && target.lastElementChild !== style) {
+      if (style && target && style.parentNode !== target) {
         target.appendChild(style);
+      }
+
+      if (liveStyle && target && liveStyle.parentNode !== target) {
+        target.appendChild(liveStyle);
+      }
+
+      if (style && liveStyle && target && liveStyle.previousElementSibling !== style) {
+        target.appendChild(style);
+        target.appendChild(liveStyle);
+        return;
+      }
+
+      if (style && !liveStyle && target && target.lastElementChild !== style) {
+        target.appendChild(style);
+      }
+
+      if (liveStyle && target && target.lastElementChild !== liveStyle) {
+        target.appendChild(liveStyle);
       }
     };
 
