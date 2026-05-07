@@ -153,12 +153,13 @@
   appearance: none;
   position: relative;
   transform: translateZ(0);
+  transform-style: preserve-3d;
   transition:
-    transform 120ms ease,
-    border-color 120ms ease,
-    background-color 120ms ease,
-    box-shadow 120ms ease,
-    filter 120ms ease;
+    transform 100ms ease,
+    border-color 100ms ease,
+    background-color 100ms ease,
+    box-shadow 100ms ease,
+    filter 100ms ease;
   will-change: transform;
   width: 100%;
   max-width: var(--testtheme-card-width);
@@ -177,15 +178,14 @@
 }
 
 .testtheme-preview-card:hover {
-  transform: translateY(-1px) scale(1.008);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.32);
-  filter: brightness(1.04);
+  transform: perspective(500px) rotateX(1.5deg) rotateY(-1.5deg) translateY(-1px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.035);
 }
 
 .testtheme-preview-card:active {
-  transform: translateY(0) scale(0.99);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.38);
-  filter: brightness(0.98);
+  transform: perspective(500px) rotateX(0deg) rotateY(0deg) scale(0.985);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.4);
 }
 
 .testtheme-preview-card:focus-visible {
@@ -224,7 +224,7 @@
 }
 
 .testtheme-preview-card:active .testtheme-theme-preview {
-  transform: scale(1.006);
+  transform: scale(1.005);
 }
 
 .testtheme-preview-card:hover .testtheme-theme-title {
@@ -255,8 +255,8 @@
   border-radius: 4px;
   background: #111;
   transition:
-    transform 140ms ease,
-    filter 140ms ease;
+    transform 110ms ease,
+    filter 110ms ease;
 }
 
 .testtheme-theme-title {
