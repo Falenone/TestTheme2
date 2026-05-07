@@ -412,3 +412,190 @@ background: transparent;
 .testtheme-live-css-load-current-button {
   cursor: pointer;
 }
+
+/* Responsive/mobile settings UI */
+.testtheme-settings,
+.testtheme-about-dialog,
+.testtheme-debug-dialog,
+.testtheme-live-css-dialog {
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.testtheme-description,
+.testtheme-notes,
+.testtheme-header-text,
+.testtheme-version,
+.testtheme-option-description,
+.testtheme-debug-row span,
+.testtheme-debug-small,
+.testtheme-live-css-warning,
+.testtheme-live-css-status {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.testtheme-debug-textarea,
+.testtheme-live-css-textarea {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/*
+  IITC/jQuery UI dialogs can set widths inline. These rules keep this plugin's
+  dialogs usable on narrow mobile screens without creating horizontal scrollbars.
+*/
+.ui-dialog:has(.testtheme-settings),
+.ui-dialog:has(.testtheme-about-dialog),
+.ui-dialog:has(.testtheme-debug-dialog),
+.ui-dialog:has(.testtheme-live-css-dialog) {
+  max-width: calc(100vw - 12px) !important;
+  box-sizing: border-box;
+}
+
+.ui-dialog:has(.testtheme-settings) .ui-dialog-content,
+.ui-dialog:has(.testtheme-about-dialog) .ui-dialog-content,
+.ui-dialog:has(.testtheme-debug-dialog) .ui-dialog-content,
+.ui-dialog:has(.testtheme-live-css-dialog) .ui-dialog-content {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 700px) {
+  .testtheme-settings {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .testtheme-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .testtheme-left,
+  .testtheme-right {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .testtheme-theme-grid {
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .testtheme-preview-card {
+    width: 100%;
+    max-width: 125px;
+    justify-self: center;
+  }
+
+  .testtheme-theme-preview {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 125 / 83;
+  }
+
+  .testtheme-theme-title {
+    overflow-wrap: anywhere;
+  }
+
+  .testtheme-time-row {
+    align-items: flex-start;
+  }
+
+  .testtheme-time-row span {
+    overflow-wrap: anywhere;
+  }
+
+  .testtheme-badge-row {
+    max-width: 100%;
+  }
+
+  .testtheme-debug-dialog,
+  .testtheme-about-dialog,
+  .testtheme-live-css-dialog {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .testtheme-debug-row {
+    grid-template-columns: 1fr;
+    gap: 1px;
+    padding-bottom: 0.25em;
+  }
+
+  .testtheme-debug-row strong,
+  .testtheme-debug-row span {
+    min-width: 0;
+  }
+
+  .testtheme-debug-textarea {
+    width: 100%;
+    min-height: 5.5em;
+    max-height: 10em;
+  }
+
+  .testtheme-live-css-textarea {
+    width: 100%;
+    min-height: 45vh;
+    max-height: 55vh;
+    font-size: 11px;
+  }
+
+  .testtheme-live-css-button-row,
+  .testtheme-debug-button-row {
+    gap: 4px;
+  }
+
+  .testtheme-live-css-button-row button,
+  .testtheme-debug-button-row button {
+    flex: 1 1 auto;
+    min-width: max-content;
+  }
+}
+
+@media (max-width: 420px) {
+  .testtheme-header-image {
+    max-width: 96px;
+    max-height: 64px;
+  }
+
+  .testtheme-theme-grid {
+    grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+  }
+
+  .testtheme-preview-card {
+    max-width: 105px;
+  }
+
+  .testtheme-theme-title {
+    font-size: 10px;
+  }
+
+  .testtheme-right h3,
+  .testtheme-left h3,
+  .testtheme-option-section h4,
+  .testtheme-debug-dialog h3 {
+    overflow-wrap: anywhere;
+  }
+
+  .testtheme-time-input {
+    max-width: 6.5em;
+  }
+
+  .testtheme-live-css-button-row button,
+  .testtheme-debug-button-row button {
+    width: 100%;
+  }
+}
