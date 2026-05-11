@@ -10,21 +10,37 @@ const catalog = JSON.parse(fs.readFileSync(path.join(root, 'build/themes.json'),
 
 function escapeHtml(value = '') {
   return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function copyRecursive(source, destination) {
+  const stat = fs.statSync(source)
+
+  if (stat.isDirectory()) {
+    fs.mkdirSync(destination, {recursive: true})
+
+    fs.readdirSync(source, {withFileTypes: true}).forEach(entry => {
+      copyRecursive(path.join(source, entry.name), path.join(destination, entry.name))
+    })
+    return
+  }
+
+  fs.mkdirSync(path.dirname(destination), {recursive: true})
+  fs.copyFileSync(source, destination)
 }
 
 fs.rmSync(ghPageDir, {recursive: true, force: true})
 fs.mkdirSync(ghPageDir, {recursive: true})
 
 if (fs.existsSync(path.join(root, 'build'))) {
-  fs.cpSync(path.join(root, 'build'), path.join(ghPageDir, 'files', 'build'), {recursive: true})
+  copyRecursive(path.join(root, 'build'), path.join(ghPageDir, 'files', 'build'))
 }
 
 if (fs.existsSync(path.join(root, 'dist'))) {
-  fs.cpSync(path.join(root, 'dist'), path.join(ghPageDir, 'files', 'release'), {recursive: true})
+  copyRecursive(path.join(root, 'dist'), path.join(ghPageDir, 'files', 'release'))
 }
 
 const installUrl = `files/release/${plugin.id}.user.js`
